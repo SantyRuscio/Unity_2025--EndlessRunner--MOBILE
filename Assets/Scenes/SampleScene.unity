@@ -381,13 +381,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   Feets: {fileID: 1013670210}
-  PlayerCamera: {fileID: 963194228}
   PlayerBody: {fileID: 754182946}
   Speed: 20
-  Sensitivity: 3
+  ForwardSpeed: 3
   JumpForce: 20
   GroundCheckDistance: 1
-  ForwardSpeed: 5
 --- !u!54 &754182946
 Rigidbody:
   m_ObjectHideFlags: 0
