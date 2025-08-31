@@ -18,12 +18,15 @@ public class MovimientoPllayer : MonoBehaviour
     [SerializeField] private float JumpForce = 5f;
     [SerializeField] private float GroundCheckDistance = 0.2f;
 
+    [SerializeField] private float ForwardSpeed = 5f;
+
     private bool isGrounded;
 
     private void Update()
     {
-        PlayerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        PlayerMouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+          PlayerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+          PlayerMouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
         // 👇 Chequear si está en el suelo
         isGrounded = Physics.CheckSphere(Feets.position, GroundCheckDistance, FloorMask);
@@ -34,10 +37,13 @@ public class MovimientoPllayer : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * Speed;
+        Vector3 MoveVector = new Vector3(PlayerMovementInput.x, 0f, 0f) * Speed;
+
+        MoveVector += transform.forward * ForwardSpeed;
+
         PlayerBody.velocity = new Vector3(MoveVector.x, PlayerBody.velocity.y, MoveVector.z);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) 
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             PlayerBody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
         }
@@ -45,11 +51,11 @@ public class MovimientoPllayer : MonoBehaviour
 
     private void MovePlayerCamera()
     {
-        XRot -= PlayerMouseInput.y * Sensitivity;
-        XRot = Mathf.Clamp(XRot, -90f, 90f); 
+        // XRot -= PlayerMouseInput.y * Sensitivity;
+      //  XRot = Mathf.Clamp(XRot, -90f, 90f); 
 
-        transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
-        PlayerCamera.transform.localRotation = Quaternion.Euler(XRot, 0f, 0f);
+     //   transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
+       // PlayerCamera.transform.localRotation = Quaternion.Euler(XRot, 0f, 0f);
     }
 
 }
