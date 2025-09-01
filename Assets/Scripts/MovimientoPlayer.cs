@@ -7,21 +7,25 @@ public class MovimientoPlayer : MonoBehaviour
 {
     private Vector3 playerMovementInput;
     private bool isGrounded;
-
     [SerializeField] private LayerMask FloorMask;
+
+
     [SerializeField] private Transform Feets;
     [SerializeField] private Rigidbody PlayerBody;
 
-    [SerializeField] private float Speed = 5f;        
-    [SerializeField] private float ForwardSpeed = 3f; 
+    [SerializeField] private float Speed = 5f;
+    [SerializeField] private float acceleration = 0.5f;
+    [SerializeField] private float maxForwardSpeed = 20f;
+    [SerializeField] private float ForwardSpeed = 10f; 
     [SerializeField] private float JumpForce = 5f;
     [SerializeField] private float GroundCheckDistance = 0.2f;
 
+    
     private Movement movimiento; // 👈 composición
 
     private void Awake()
     {
-        movimiento = new Movement(PlayerBody, transform, Speed, ForwardSpeed, JumpForce); //Composicion
+        movimiento = new Movement(PlayerBody, transform, Speed, ForwardSpeed, JumpForce, acceleration, maxForwardSpeed); //Composicion
     }
 
     private void Update()
@@ -40,5 +44,6 @@ public class MovimientoPlayer : MonoBehaviour
             movimiento.Jump();
         }
     }
+
 }
 

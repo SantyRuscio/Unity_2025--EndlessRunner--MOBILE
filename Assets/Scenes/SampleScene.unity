@@ -223,7 +223,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.3152263, y: -9.684298, z: -34.904163}
-  m_LocalScale: {x: 30, y: 0.13336387, z: 100}
+  m_LocalScale: {x: 9.356391, y: 0.13336387, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1088939961}
@@ -384,7 +384,9 @@ MonoBehaviour:
   Feets: {fileID: 1013670210}
   PlayerBody: {fileID: 754182946}
   Speed: 20
-  ForwardSpeed: 3
+  acceleration: 0.5
+  maxForwardSpeed: 20
+  ForwardSpeed: 10
   JumpForce: 20
   GroundCheckDistance: 1
 --- !u!54 &754182946
