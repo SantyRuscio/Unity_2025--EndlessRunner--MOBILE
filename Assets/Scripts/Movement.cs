@@ -18,7 +18,7 @@ public class Movement
         this.jumpForce = jumpForce;
     }
 
-    public void Mover(Vector3 input, bool isGrounded)
+    public void Mover(Vector3 input)
     {
         // Movimiento lateral (X, Z por input)
         Vector3 moveVector = new Vector3(input.x, 0f, input.z) * speed;
@@ -29,9 +29,9 @@ public class Movement
         // Aplicar velocidad
         playerBody.velocity = new Vector3(moveVector.x, playerBody.velocity.y, moveVector.z);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+    }
+    public void Jump()
+    {
+        playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }

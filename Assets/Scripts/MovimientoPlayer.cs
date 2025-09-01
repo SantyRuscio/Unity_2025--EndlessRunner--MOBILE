@@ -33,7 +33,12 @@ public class MovimientoPlayer : MonoBehaviour
         isGrounded = Physics.CheckSphere(Feets.position, GroundCheckDistance, FloorMask);
 
         // Pasar input al objeto Movimiento
-        movimiento.Mover(playerMovementInput, isGrounded);
+        movimiento.Mover(playerMovementInput);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            movimiento.Jump();
+        }
     }
 }
 
