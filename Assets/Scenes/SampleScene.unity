@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 754182945}
   - component: {fileID: 754182948}
   - component: {fileID: 754182950}
+  - component: {fileID: 754182951}
   - component: {fileID: 754182949}
   m_Layer: 0
   m_Name: Player
@@ -382,6 +383,9 @@ MonoBehaviour:
   FloorMask:
     serializedVersion: 2
     m_Bits: 512
+  inputManager: {fileID: 754182951}
+  view: {fileID: 754182950}
+  playerCollider: {fileID: 754182948}
   Feets: {fileID: 1013670210}
   PlayerBody: {fileID: 754182946}
   Speed: 10
@@ -492,12 +496,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 754182949}
-  feet: {fileID: 1013670210}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 512
-  checkRadius: 0.2
-  playerCollider: {fileID: 754182948}
+--- !u!114 &754182951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754182944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c7d3b8955087b46a216488820f5552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +707,7 @@ Transform:
   m_Children:
   - {fileID: 151332376}
   - {fileID: 1224575288}
-  - {fileID: 1232531135}
+  - {fileID: 1645234721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1224575287
@@ -805,7 +815,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224575287}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1232531134
+--- !u!1 &1645234720
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -813,39 +823,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1232531135}
-  - component: {fileID: 1232531138}
-  - component: {fileID: 1232531137}
-  - component: {fileID: 1232531136}
+  - component: {fileID: 1645234721}
+  - component: {fileID: 1645234724}
+  - component: {fileID: 1645234723}
+  - component: {fileID: 1645234722}
   m_Layer: 0
-  m_Name: Pared (1)
+  m_Name: Pared (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1232531135
+--- !u!4 &1645234721
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232531134}
+  m_GameObject: {fileID: 1645234720}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.29, y: -4.46, z: -70.52}
+  m_LocalPosition: {x: 2.29, y: -4.47, z: -60.4}
   m_LocalScale: {x: 30.24, y: 6.98, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1088939961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1232531136
+--- !u!65 &1645234722
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232531134}
+  m_GameObject: {fileID: 1645234720}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -860,13 +870,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1232531137
+--- !u!23 &1645234723
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232531134}
+  m_GameObject: {fileID: 1645234720}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -902,13 +912,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1232531138
+--- !u!33 &1645234724
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232531134}
+  m_GameObject: {fileID: 1645234720}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &77378512403513662
 GameObject:

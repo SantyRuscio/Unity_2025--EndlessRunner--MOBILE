@@ -25,7 +25,7 @@ public class Movement
         this.maxForwardSpeed = maxForwardSpeed;
     }
 
-    public void Mover(Vector3 input)
+    public void Move(Vector3 input)
     {
         // Incrementar velocidad hacia adelante con el tiempo
         forwardSpeed = Mathf.Min(forwardSpeed + acceleration * Time.deltaTime, maxForwardSpeed);
