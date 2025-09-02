@@ -9,8 +9,18 @@ public class View : MonoBehaviour
     public LayerMask groundMask;
     public float checkRadius = 0.2f;
 
+    [SerializeField] CapsuleCollider playerCollider;
+    private float originalHeight;
+    private Vector3 originalCenter; 
+
     private bool isGrounded;
     private bool isRolling;
+
+    void Start()
+    {
+        originalHeight = playerCollider.height;
+        originalCenter = playerCollider.center;
+    }
 
     void Update()
     {
@@ -25,6 +35,9 @@ public class View : MonoBehaviour
         {
             animator.SetTrigger("RollTrigger");
             isRolling = true;
+
+            playerCollider.height = originalHeight * 0.5f;       // ACHICAR COLIDER 
+            playerCollider.center = originalCenter * 0.5f;       // EN UN FUTURO EN OTRO CODIGO
         }
         if (isRolling)
         {
@@ -32,6 +45,8 @@ public class View : MonoBehaviour
             if (!state.IsName("Roll")) 
             {
                 isRolling = false;
+                playerCollider.height = originalHeight;
+                playerCollider.center = originalCenter;
             }
         }
     }
