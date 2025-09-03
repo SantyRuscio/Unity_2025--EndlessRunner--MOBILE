@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad8c7266d3ef684aa071e145d08f6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyTransform: {fileID: 0}
+  MyTransform: {fileID: 347531432}
 --- !u!65 &347531431
 BoxCollider:
   m_ObjectHideFlags: 0
