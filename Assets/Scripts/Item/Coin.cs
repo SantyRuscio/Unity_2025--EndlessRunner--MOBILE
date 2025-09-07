@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class Coin : Item
 {
-    //Variables para coin
-    public override void Execute() //Lojica de coin
+    public int valor = 1;
+
+    public AudioClip sonido;
+
+    public override void Execute(GameObject jugador)
     {
-       
+        PuntuacionManager.Instance.AgregarMonedas(valor);
+
+        if (sonido != null)
+            AudioSource.PlayClipAtPoint(sonido, transform.position);
     }
 
+    public override void OnDestroy()
+    {
+
+    }
 }

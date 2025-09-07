@@ -4,37 +4,39 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class ParedTouch : Item
 {
-    [SerializeField] float _distance = 7f;      // Proximamente agregare rango de deteccion 
+    [SerializeField] private float _distance = 7f; // rango de deteccion
 
-    public override void Execute()
+    public override void Execute(GameObject jugador)
     {
-        Debug.Log("Entre a Execute()");
+        if (jugador == null) return;
 
-        if (Input.touchCount > 0) // si hay al menos un dedo en pantalla
+        // calcula distancia entre jugador y pared
+        float currentDistance = Vector3.Distance(jugador.transform.position, transform.position);
+        Debug.Log("Distancia actual es " + currentDistance);
+
+        if (currentDistance <= _distance)
         {
-            Touch touch = Input.GetTouch(0);
-
-            var player = GameManager.instance.GetPlayerModel();
-
-            float currentDistance = Vector3.Distance(player.transform.position, transform.position);
-
-            Debug.Log("Distancia actual es " + currentDistance);
-
-            if (touch.phase == TouchPhase.Began && currentDistance <= _distance)
+#if UNITY_EDITOR || UNITY_STANDALONE
+            // PC - click del mouse
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("entre al ultima etapa pared!");
+                Debug.Log("Pared tocada con click");
                 Destroy(gameObject);
             }
-        }
-    }
-    private void Update()
-    {
-        Execute();   //Hay que ver como sacar este upodate de aca
-    }
+#endif
 
-    private void OnMouseEnter()
-    {
-        Debug.Log("toque click");
-        Execute();
+#if UNITY_ANDROID || UNITY_IOS
+            // Móvil - touch
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Debug.Log("Pared tocada con touch");
+                    Destroy(gameObject);
+                }
+            }
+#endif
+        }
     }
 }
