@@ -14,14 +14,8 @@ public class Coin : Item
     private float _distanceToMove = 2; // esto cambia al agarrar el iman
     private float _distanceToSpeed = 2; // esto cambia al agarrar el iman
 
-    private void Awake()
-    {
-        _spinSpeed = 300f;
-    }
     private void Update()
     {
-        SpinConstant(_spinSpeed);
-
         float distance = Vector3.Distance(transform.position, _playerTr.position);
 
         if (distance < _distanceToMove) 
