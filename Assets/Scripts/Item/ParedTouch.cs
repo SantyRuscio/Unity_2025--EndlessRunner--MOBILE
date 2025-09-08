@@ -2,22 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+
 public class ParedTouch : Item
 {
-    [SerializeField] private float _distance = 7f; // rango de deteccion
+    [SerializeField] float _distance = 10f;      // rango de detección 
+    [SerializeField] private Transform _playerTr;
 
-    public override void Execute(GameObject jugador)
+    private void Update()
     {
-        if (jugador == null) return;
+        Execute();
+    }
 
-        // calcula distancia entre jugador y pared
-        float currentDistance = Vector3.Distance(jugador.transform.position, transform.position);
-        Debug.Log("Distancia actual es " + currentDistance);
+    public override void Execute()
+    {
+        if (_playerTr == null) return; 
+
+        float currentDistance = Vector3.Distance(transform.position, _playerTr.position);
 
         if (currentDistance <= _distance)
         {
+            // PC
 #if UNITY_EDITOR || UNITY_STANDALONE
-            // PC - click del mouse
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Pared tocada con click");
@@ -25,16 +31,12 @@ public class ParedTouch : Item
             }
 #endif
 
+            // Móvil
 #if UNITY_ANDROID || UNITY_IOS
-            // Móvil - touch
-            if (Input.touchCount > 0)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
-                {
-                    Debug.Log("Pared tocada con touch");
-                    Destroy(gameObject);
-                }
+                Debug.Log("Pared tocada con touch");
+                Destroy(gameObject);
             }
 #endif
         }

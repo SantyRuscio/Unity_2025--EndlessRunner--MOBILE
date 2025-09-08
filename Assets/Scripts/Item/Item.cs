@@ -10,21 +10,26 @@ public abstract class Item : MonoBehaviour
     [Tooltip("tag de lo que puede juntar este item")]
     public string playerTag = "Player";
 
-    public abstract void Execute(GameObject jugador);
+    protected float _spinSpeed;
+
+
+    public abstract void Execute();
+
+    public virtual void SpinConstant(float _spinSpeed)
+    {
+        transform.Rotate(Vector3.up * _spinSpeed * Time.deltaTime, Space.World);
+    }
 
     public virtual void OnDestroy()
     {
 
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
-            Execute(other.gameObject); 
-
-            Destroy(gameObject);       
+            Execute(); 
         }
     }
 }
