@@ -65,7 +65,7 @@ public class PlayerModel : MonoBehaviour
     void Roll()
     {
         if ( ! CheckIsGrounded() )  return;
-        playerCollider.height = originalHeight * 0.9f;
+        playerCollider.height = originalHeight * 0.7f;
         playerCollider.center = originalCenter * 0.9f;
         view.Roll();
     }

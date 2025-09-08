@@ -15,5 +15,5 @@ public class View : MonoBehaviour
     {
         animator.SetTrigger("RollTrigger");
     }
-  
+
 }
