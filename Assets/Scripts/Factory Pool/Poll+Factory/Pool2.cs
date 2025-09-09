@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Patterns.combined_Factory_Pool
 {
@@ -17,7 +18,7 @@ namespace Patterns.combined_Factory_Pool
         private List<T> _currentStock;
 
         //constructor se llama cuando se crea una referencia de un pool nuevo
-
+            
         public Pool2M (Func<T> factoryMethod, Action<T> turnOnCallBack , Action<T> turnOffCallBack, int initialAmount)
         {
 
@@ -49,7 +50,7 @@ namespace Patterns.combined_Factory_Pool
 
         }    
 
-        public T GetObject()
+        public T GetObject() //Este es el metodo al que le piden una bala
         {
             T result;
 
@@ -67,7 +68,7 @@ namespace Patterns.combined_Factory_Pool
             return result;  
         }
 
-        public void ReturnObjectToPool(T obj)
+        public void ReturnObjectToPool(T obj) //Este es el metodo que recibe la bala y la recicla
         {
             _turnOnOfflBack(obj);
             _currentStock.Add(obj);

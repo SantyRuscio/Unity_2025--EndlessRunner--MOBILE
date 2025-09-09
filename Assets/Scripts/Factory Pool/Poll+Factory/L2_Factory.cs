@@ -7,7 +7,7 @@ namespace Patterns.combined_Factory_Pool
     {
         public static L2_Factory Instance { get; private set; }
 
-        [SerializeField] private Levels[] _levelsPrefabs;   // Array de prefabs
+        [SerializeField] private Levels[] _levelsPrefabs;   // Array de prefabs DE NIVELES
         [SerializeField] private int _initialAmount;
 
         private Pool2M<Levels> _levelsPool;
