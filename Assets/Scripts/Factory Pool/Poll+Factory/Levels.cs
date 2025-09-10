@@ -1,26 +1,59 @@
-using Patterns.combined_Factory_Pool;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Levels : MonoBehaviour
 {
     private F_Generic<Levels> _Factorygeneric;
 
+    [SerializeField]
+    private Transform _nextPosition;
+
+    public Vector3 GetNextPosition 
+    {
+        get { return _nextPosition.position; } 
+        private set { } 
+    }
+
     private void Awake()
     {
         _Factorygeneric = FindAnyObjectByType<F_Generic<Levels>>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_Factorygeneric != null) 
+        {
+            _Factorygeneric.Create();
+        }
+    }
+
+    public void SetPosition(Vector3 NewPos)
+    {
+        transform.position = NewPos;
+    }
+
     public void Initialize(F_Generic<Levels> Factory)
     {
         _Factorygeneric = Factory;
+
+        SetPosition(LevelsManager.instance.CurrentNextPosition.position);
+
+        gameObject.SetActive(true);
+
+        LevelsManager.instance.CurrentNextPosition = _nextPosition; 
+
+        StartCoroutine(ReturnLevel());
     }
 
-    // Este método es solo para limpiar el objeto antes de volver al pool
-    public void Realease()
+    public void ResetObject()
     {
-      //  _Factorygeneric.ReleaseLevel(this);  // si activop esta linea tira error pero no se reciclan las cosas
+        gameObject.SetActive(false);
+    }
 
+    IEnumerator ReturnLevel()
+    {
+        yield return new WaitForSeconds(9);
+            
+        _Factorygeneric.ReleaseLevel(this);
     }
 }

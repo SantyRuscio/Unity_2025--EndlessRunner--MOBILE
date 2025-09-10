@@ -1,6 +1,4 @@
 using Patterns.combined_Factory_Pool;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelsFactory : F_Generic<Levels>
@@ -8,6 +6,7 @@ public class LevelsFactory : F_Generic<Levels>
     public Levels[] prefabs;
     private Pool2M<Levels> _pool;
 
+    [SerializeField]
     private int _initialAmount = 6;
 
     private void Awake()
@@ -15,8 +14,8 @@ public class LevelsFactory : F_Generic<Levels>
         // Creo el pool con los métodos que necesita (en el otro le pedi 4 cosas asi que le madno esas 4)
         _pool = new Pool2M<Levels>(
             CreatePrefab,
-            TurnOn,
-            TurnOff,
+            InitilizeNewObject,
+            DeactivateNewObject,
             _initialAmount
         );
     }
@@ -24,7 +23,6 @@ public class LevelsFactory : F_Generic<Levels>
     public override Levels Create()
     {
         var x = _pool.GetObject();
-        x.Initialize(this);
         return x ;
     }
 
@@ -35,15 +33,14 @@ public class LevelsFactory : F_Generic<Levels>
         return b;
     }
 
-    private void TurnOn(Levels lvl)
+    private void InitilizeNewObject(Levels lvl)
     {
-        lvl.gameObject.SetActive(true);
+        lvl.Initialize(this);
     }
 
-    private void TurnOff(Levels lvl)
+    private void DeactivateNewObject(Levels lvl)
     {
-        lvl.Realease(); 
-        lvl.gameObject.SetActive(false);
+        lvl.ResetObject();
     }
 
     //Obtiene un objeto del pool
@@ -55,5 +52,6 @@ public class LevelsFactory : F_Generic<Levels>
     public override void ReleaseLevel(Levels level)
     {
         _pool.ReturnObjectToPool(level); 
+
     }
 }

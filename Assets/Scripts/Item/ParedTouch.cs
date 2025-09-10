@@ -7,7 +7,6 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 public class ParedTouch : Item
 {
     [SerializeField] float _distance = 10f;      // rango de detección 
-    [SerializeField] private Transform _playerTr;
 
     private void Update()
     {
@@ -16,9 +15,7 @@ public class ParedTouch : Item
 
     public override void Execute()
     {
-        if (_playerTr == null) return; 
-
-        float currentDistance = Vector3.Distance(transform.position, _playerTr.position);
+        float currentDistance = Vector3.Distance(transform.position, GameManager.instance.GetPlayerModel().transform.position);
 
         if (currentDistance <= _distance)
         {
