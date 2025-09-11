@@ -6,11 +6,34 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class ParedTouch : Item
 {
-    [SerializeField] float _distance = 10f;      // rango de detección 
+    [SerializeField] float _distance = 10f;      // rango de detección
+    [SerializeField] float dissolveSpeed = 0.5f; // velocidad de disolución
+
+    private Material mat;
+    private float dissolve = 0f;
+    private bool isDissolving = false;
+
+    private void Start()
+    {
+        mat = GetComponent<Renderer>().material;
+    }
 
     private void Update()
     {
         Execute();
+
+        // Animación de disolución
+        if (isDissolving)
+        {
+            dissolve += Time.deltaTime * dissolveSpeed;
+            mat.SetFloat("_DissolveAmount", dissolve);
+
+            if (dissolve >= 1f)
+            {
+                isDissolving = false;
+                Destroy(gameObject);
+            }
+        }
     }
 
     public override void Execute()
@@ -23,8 +46,7 @@ public class ParedTouch : Item
 #if UNITY_EDITOR || UNITY_STANDALONE
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Pared tocada con click");
-                Destroy(gameObject);
+                StartDissolve();
             }
 #endif
 
@@ -32,10 +54,18 @@ public class ParedTouch : Item
 #if UNITY_ANDROID || UNITY_IOS
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                Debug.Log("Pared tocada con touch");
-                Destroy(gameObject);
+                StartDissolve();
             }
 #endif
+        }
+    }
+
+    private void StartDissolve()
+    {
+        if (!isDissolving)
+        {
+            Debug.Log("Pared tocada, empezando disolución");
+            isDissolving = true;
         }
     }
 }
