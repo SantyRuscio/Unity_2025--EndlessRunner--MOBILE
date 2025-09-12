@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerModel : MonoBehaviour
 {
@@ -26,8 +28,10 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private float JumpForce = 5f;
     [SerializeField] private float GroundCheckDistance = 0.2f;
 
-    
-    private Movement movimiento; // 👈 composición
+    //mobile
+    [SerializeField] private float deadZone = 0.1f;
+
+    private Movement movimiento; //composición
 
     private void Awake()
     {
@@ -54,13 +58,19 @@ public class PlayerModel : MonoBehaviour
         movimiento.Jump();
         view.Jump();
     }
-
     void Move(float dirHorizontal)
     {
+#if UNITY_ANDROID || UNITY_IOS
+        // Aplicar deadZone
+        if (Mathf.Abs(dirHorizontal) < deadZone)
+            dirHorizontal = 0f;
+#endif
+
+        // Construir input y mandar a Movement
         playerMovementInput = new Vector3(dirHorizontal, 0f, 0f);
-        // Pasar input al objeto Movimiento
         movimiento.Move(playerMovementInput);
     }
+
 
     void Roll()
     {
@@ -75,6 +85,5 @@ public class PlayerModel : MonoBehaviour
         playerCollider.height = originalHeight;
         playerCollider.center = originalCenter;
     }
-
 }
 

@@ -1002,6 +1002,7 @@ MonoBehaviour:
   ForwardSpeed: 10
   JumpForce: 13
   GroundCheckDistance: 1
+  deadZone: 0.1
 --- !u!54 &754182946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1095,6 +1096,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c7d3b8955087b46a216488820f5552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiltSensitivity: 2
+  minSwipeDistance: 100
 --- !u!1 &762295946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,8 +3024,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.61, y: 1, z: 1}
-  m_Center: {x: -0.17, y: 0.75, z: 20}
+  m_Size: {x: 6.65, y: 8.54, z: 1}
+  m_Center: {x: -0.53, y: 4.3, z: 20}
 --- !u!1 &1671319963
 GameObject:
   m_ObjectHideFlags: 0
