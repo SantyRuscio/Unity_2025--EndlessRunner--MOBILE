@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: a192367d2b2d8c64e8fe2b7ac8449627, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 163b649fc7324764388fb6fd465aecef, type: 2}
+      objectReference: {fileID: 2100000, guid: 3d2eba7bf25a91e42ae87e466a5f1f0d, type: 2}
     - target: {fileID: 919132149155446097, guid: a192367d2b2d8c64e8fe2b7ac8449627, type: 3}
       propertyPath: m_Name
       value: coin Variant
