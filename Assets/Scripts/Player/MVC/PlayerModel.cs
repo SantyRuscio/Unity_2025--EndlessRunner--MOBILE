@@ -51,7 +51,7 @@ public class PlayerModel : MonoBehaviour
         if (collision.collider.CompareTag("Obstacle"))
         {
             OnCollsionDead();
-            EventManager.Trigger(TypeEcvents.GameOver);
+            StartCoroutine(DeadTimeLapse()); 
         }
     }
 
@@ -59,6 +59,14 @@ public class PlayerModel : MonoBehaviour
     {
         view.Collisioner();
     }
+
+    private IEnumerator DeadTimeLapse()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("2 segundos después");
+        EventManager.Subscribe(TypeEcvents.GameOver);
+    }
+
 
     bool CheckIsGrounded()
     {
