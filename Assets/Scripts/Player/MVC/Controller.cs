@@ -40,6 +40,7 @@ public class Controller : MonoBehaviour
         if (!SystemInfo.supportsAccelerometer)
         {
             Debug.Log("NO LO SOPORTA");
+           // return;
         }
         else
         {

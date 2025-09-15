@@ -16,4 +16,9 @@ public class View : MonoBehaviour
         animator.SetTrigger("RollTrigger");
     }
 
+    public void Collisioner()
+    {
+       animator.SetTrigger("CollisionTrigger");
+    }
+
 }

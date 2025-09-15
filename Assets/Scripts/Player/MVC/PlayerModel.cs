@@ -46,6 +46,20 @@ public class PlayerModel : MonoBehaviour
         originalCenter = playerCollider.center;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Obstacle"))
+        {
+            OnCollsionDead();
+            EventManager.Trigger(TypeEcvents.GameOver);
+        }
+    }
+
+    private void OnCollsionDead()
+    {
+        view.Collisioner();
+    }
+
     bool CheckIsGrounded()
     {
         // Chequear suelo
@@ -70,7 +84,6 @@ public class PlayerModel : MonoBehaviour
         playerMovementInput = new Vector3(dirHorizontal, 0f, 0f);
         movimiento.Move(playerMovementInput);
     }
-
 
     void Roll()
     {
