@@ -46,6 +46,7 @@ public class PlayerModel : MonoBehaviour
         originalCenter = playerCollider.center;
     }
 
+    #region Collisioner Detecter y Trigger Event Manager
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Obstacle"))
@@ -64,9 +65,9 @@ public class PlayerModel : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         Debug.Log("2 segundos después");
-        EventManager.Subscribe(TypeEcvents.GameOver);
+        EventManager.Trigger(TypeEcvents.GameOver);
     }
-
+    #endregion
 
     bool CheckIsGrounded()
     {

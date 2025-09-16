@@ -17,7 +17,7 @@ public class PuntuacionManager : MonoBehaviour
     [Header("Refes")]
     public Transform jugador;
 
-    [Header("UI (opcional)")]
+    [Header("UI")]
 
     public TMP_Text textoMonedas; 
 
