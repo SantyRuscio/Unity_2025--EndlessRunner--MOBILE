@@ -20,8 +20,6 @@ public class ParedTouch : Item
 
     private void Update()
     {
-        Execute();
-
         // Animación de disolución
         if (isDissolving)
         {
@@ -36,27 +34,14 @@ public class ParedTouch : Item
         }
     }
 
+
     public override void Execute()
     {
         float currentDistance = Vector3.Distance(transform.position, GameManager.instance.GetPlayerModel().transform.position);
 
         if (currentDistance <= _distance)
         {
-            // PC
-#if UNITY_EDITOR || UNITY_STANDALONE
-            if (Input.GetMouseButtonDown(0))
-            {
-                StartDissolve();
-            }
-#endif
-
-            // Móvil
-#if UNITY_ANDROID || UNITY_IOS
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                StartDissolve();
-            }
-#endif
+            StartDissolve();
         }
     }
 

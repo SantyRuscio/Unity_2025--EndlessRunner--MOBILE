@@ -1703,6 +1703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c7d3b8955087b46a216488820f5552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _paredTouch: {fileID: 920738355}
   tiltSensitivity: 2
   minSwipeDistance: 100
 --- !u!1 &762295946
@@ -2492,6 +2493,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &920738355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3778744850370567069, guid: c8a4a4c4f91c30845938d9b99f33f8a8, type: 3}
+  m_PrefabInstance: {fileID: 5931295473231668088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285ed6ecaa4d65744a5db4f3a7d25b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &957006438
 GameObject:
   m_ObjectHideFlags: 0

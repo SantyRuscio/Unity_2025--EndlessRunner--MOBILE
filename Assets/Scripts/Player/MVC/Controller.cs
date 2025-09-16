@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
     public Action OnJump;
     public Action<float> OnMove;
     public Action OnRoll;
+    [SerializeField] private ParedTouch _paredTouch;
 
     [Header("Acelerómetro (solo móvil)")]
     [SerializeField] private float tiltSensitivity = 2f; //ESTA SENSIBILIDAD LA USO PARA DETECTAR EL MOVIMIENTO
@@ -76,6 +77,21 @@ public class Controller : MonoBehaviour
             OnRoll();
         }
 #endif
+
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (Input.GetMouseButtonDown(0))
+        {
+            _paredTouch.Execute();
+        }
+#endif
+
+        
+#if UNITY_ANDROID || UNITY_IOS
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            _paredTouch.Execute();
+        }
+#endif
     }
     private void DetectSwipe(Vector2 swipeDelta)
     {
@@ -95,6 +111,8 @@ public class Controller : MonoBehaviour
                     OnRoll.Invoke(); // Swipe Roll
             }
         }
+        
+
     }
 
 }

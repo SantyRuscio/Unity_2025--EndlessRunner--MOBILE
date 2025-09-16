@@ -8,6 +8,10 @@ public class Levels : MonoBehaviour
     [SerializeField]
     private Transform _nextPosition;
 
+    [SerializeField]
+    private float _timerNextLevel = 9f;
+
+
     public Vector3 GetNextPosition 
     {
         get { return _nextPosition.position; } 
@@ -52,7 +56,7 @@ public class Levels : MonoBehaviour
 
     IEnumerator ReturnLevel()
     {
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(_timerNextLevel);
             
         _Factorygeneric.ReleaseLevel(this);
     }
