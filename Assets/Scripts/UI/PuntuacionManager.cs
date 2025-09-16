@@ -9,7 +9,6 @@ public class PuntuacionManager : MonoBehaviour
 
     private int monedas = 0;
 
-
     private float metrosRecorridos = 0f;    
     
     private Vector3 ultimaPosicionJugador;
