@@ -38,7 +38,7 @@ public static class EventManager
         }
     }
 
-    public static void Subscribe(TypeEcvents name, params object[] parameters)  //EventManager.Trigger(TypeEvents.GameOver)
+    public static void Trigger(TypeEcvents name, params object[] parameters)  //EventManager.Trigger(TypeEvents.GameOver)
     {
         if (_events.ContainsKey(name))
         {
