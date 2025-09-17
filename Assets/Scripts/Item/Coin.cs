@@ -5,12 +5,6 @@ public class Coin : Item
     [Header("Variables")]
     public int valor = 1;
 
-    [SerializeField]
-    private float _distanceToMove = 2; // esto cambia al agarrar el iman
-
-    [SerializeField]
-    private float _distanceToSpeed = 2; // esto cambia al agarrar el iman
-
     private AudioSource _audioSource;
 
     private void Awake()
@@ -22,11 +16,12 @@ public class Coin : Item
     {
         float distance = Vector3.Distance(transform.position, GameManager.instance.GetPlayerModel().transform.position);
 
-        if (distance < _distanceToMove) 
+        // DetectionManager como dijo el profe
+        if (distance < DetectionManager.instance.CurrentDistance())
         {
             Vector3 dir = (GameManager.instance.GetPlayerModel().transform.position - transform.position).normalized;
 
-            transform.position += dir * _distanceToSpeed * Time.deltaTime; 
+            transform.position += dir * DetectionManager.instance.CurrentSpeed() * Time.deltaTime;
         }
     }
 

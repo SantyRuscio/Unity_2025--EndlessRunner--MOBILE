@@ -6,9 +6,10 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public Action OnJump;
+    public Action OnTouchAndClick;
     public Action<float> OnMove;
     public Action OnRoll;
-    [SerializeField] private ParedTouch _paredTouch;
+
 
     [Header("Acelerómetro (solo móvil)")]
     [SerializeField] private float tiltSensitivity = 2f; //ESTA SENSIBILIDAD LA USO PARA DETECTAR EL MOVIMIENTO
@@ -35,8 +36,7 @@ public class Controller : MonoBehaviour
         }
 #endif
 
-#if UNITY_ANDROID || UNITY_IOS
-        //MOBILE
+#if UNITY_ANDROID || UNITY_IOS //MOBILE
 
         if (!SystemInfo.supportsAccelerometer)
         {
@@ -63,8 +63,8 @@ public class Controller : MonoBehaviour
         }
 #endif
 
-#if UNITY_EDITOR || UNITY_STANDALONE
-        //PC
+#if UNITY_EDITOR || UNITY_STANDALONE //PC
+        
         OnMove(Input.GetAxisRaw("Horizontal"));
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -78,18 +78,18 @@ public class Controller : MonoBehaviour
         }
 #endif
 
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE //PC
         if (Input.GetMouseButtonDown(0))
         {
-            _paredTouch.Execute();
+            OnTouchAndClick();
         }
 #endif
 
         
-#if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS //MOBILE
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            _paredTouch.Execute();
+            OnTouchAndClick();
         }
 #endif
     }

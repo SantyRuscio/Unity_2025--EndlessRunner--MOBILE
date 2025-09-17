@@ -37,12 +37,7 @@ public class ParedTouch : Item
 
     public override void Execute()
     {
-        float currentDistance = Vector3.Distance(transform.position, GameManager.instance.GetPlayerModel().transform.position);
-
-        if (currentDistance <= _distance)
-        {
-            StartDissolve();
-        }
+        StartDissolve();
     }
 
     private void StartDissolve()

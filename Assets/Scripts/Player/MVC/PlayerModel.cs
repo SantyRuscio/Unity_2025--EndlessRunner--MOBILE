@@ -27,6 +27,8 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private float ForwardSpeed = 10f; 
     [SerializeField] private float JumpForce = 5f;
     [SerializeField] private float GroundCheckDistance = 0.2f;
+    [SerializeField] private float OverlapRadio = 10f;
+
 
     //mobile
     [SerializeField] private float deadZone = 0.1f;
@@ -39,6 +41,7 @@ public class PlayerModel : MonoBehaviour
         inputManager.OnJump += Jump;
         inputManager.OnMove += Move;
         inputManager.OnRoll += Roll;
+        inputManager.OnTouchAndClick += CheackWall;
     }
     private void Start()
     {
@@ -68,6 +71,21 @@ public class PlayerModel : MonoBehaviour
         EventManager.Trigger(TypeEcvents.GameOver);
     }
     #endregion
+
+    private void CheackWall()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, OverlapRadio);
+
+        foreach (Collider hit in hits)
+        {
+            var ParedTouch = hit.GetComponent<ParedTouch>();
+
+            if (ParedTouch != null)
+            {
+                ParedTouch.Execute();
+            }
+        }
+    }
 
     bool CheckIsGrounded()
     {
