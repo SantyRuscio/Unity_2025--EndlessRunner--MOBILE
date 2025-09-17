@@ -16,6 +16,11 @@ public class Coin : Item
     {
         float distance = Vector3.Distance(transform.position, GameManager.instance.GetPlayerModel().transform.position);
 
+        if(!DetectionManager.instance)
+        {
+            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        }
+
         // DetectionManager como dijo el profe
         if (distance < DetectionManager.instance.CurrentDistance())
         {
