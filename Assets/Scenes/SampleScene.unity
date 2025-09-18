@@ -4574,6 +4574,7 @@ GameObject:
   - component: {fileID: 1802497695}
   - component: {fileID: 1802497696}
   - component: {fileID: 1802497697}
+  - component: {fileID: 1802497698}
   m_Layer: 0
   m_Name: IMAN
   m_TagString: Untagged
@@ -4590,7 +4591,7 @@ Transform:
   m_GameObject: {fileID: 1802497694}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.48, y: 0.449, z: 19.3}
+  m_LocalPosition: {x: 1.48, y: 1.142, z: 19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4631,6 +4632,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+--- !u!95 &1802497698
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802497694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd4be777a9b6abb4e95a697e9023dc75, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1829510487
 GameObject:
   m_ObjectHideFlags: 0
