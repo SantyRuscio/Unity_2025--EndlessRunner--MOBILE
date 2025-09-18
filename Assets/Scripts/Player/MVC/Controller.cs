@@ -11,7 +11,7 @@ public class Controller : MonoBehaviour
     public Action OnRoll;
 
 
-    [Header("Acelerómetro (solo móvil)")]
+    [Header("Acelerï¿½metro (solo mï¿½vil)")]
     [SerializeField] private float tiltSensitivity = 2f; //ESTA SENSIBILIDAD LA USO PARA DETECTAR EL MOVIMIENTO
 
     [Header("Swipe")]
