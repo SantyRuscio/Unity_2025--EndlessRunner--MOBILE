@@ -57,7 +57,7 @@ public class PlayerModel : MonoBehaviour
 
     private void OnCollsionDead()
     {
-        view.Collisioner();
+        view.CollisionerAnim();
     }
 
     private IEnumerator DeadTimeLapse()
@@ -93,7 +93,7 @@ public class PlayerModel : MonoBehaviour
     {
         if ( ! CheckIsGrounded() ) return;
         movimiento.Jump();
-        view.Jump();
+        view.JumpAnim();
     }
     void Move(float dirHorizontal)
     {
@@ -113,7 +113,7 @@ public class PlayerModel : MonoBehaviour
         if ( ! CheckIsGrounded() )  return;
         playerCollider.height = originalHeight * 0.7f;
         playerCollider.center = originalCenter * 0.9f;
-        view.Roll();
+        view.RollAnim();
     }
 
     public void OnRollEnd()
