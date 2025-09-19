@@ -6,17 +6,17 @@ public class View : MonoBehaviour
 {
     public Animator animator;
 
-    public void Jump()
+    public void JumpAnim()
     {
         animator.SetTrigger("JumpTrigger");
     }
 
-    public void Roll()
+    public void RollAnim()
     {
         animator.SetTrigger("RollTrigger");
     }
 
-    public void Collisioner()
+    public void CollisionerAnim()
     {
        animator.SetTrigger("CollisionTrigger");
     }
