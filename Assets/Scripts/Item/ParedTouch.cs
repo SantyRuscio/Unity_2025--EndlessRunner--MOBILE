@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+<<<<<<< HEAD
 //using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+=======
+>>>>>>> 4aa320d0c3b5e1023d6bfb42ddcca4d6f294d26c
 
 public class ParedTouch : Item
 {

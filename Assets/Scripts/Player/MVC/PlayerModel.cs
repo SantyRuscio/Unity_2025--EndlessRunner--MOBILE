@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using Unity.VisualScripting;
 //using UnityEditor.AnimatedValues;
+=======
+>>>>>>> 4aa320d0c3b5e1023d6bfb42ddcca4d6f294d26c
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerModel : MonoBehaviour
 {
@@ -61,7 +63,7 @@ public class PlayerModel : MonoBehaviour
 
     private void OnCollsionDead()
     {
-        view.Collisioner();
+        view.CollisionerAnim();
     }
 
     private IEnumerator DeadTimeLapse()
@@ -97,7 +99,7 @@ public class PlayerModel : MonoBehaviour
     {
         if ( ! CheckIsGrounded() ) return;
         movimiento.Jump();
-        view.Jump();
+        view.JumpAnim();
     }
     void Move(float dirHorizontal)
     {
@@ -117,7 +119,7 @@ public class PlayerModel : MonoBehaviour
         if ( ! CheckIsGrounded() )  return;
         playerCollider.height = originalHeight * 0.7f;
         playerCollider.center = originalCenter * 0.9f;
-        view.Roll();
+        view.RollAnim();
     }
 
     public void OnRollEnd()
