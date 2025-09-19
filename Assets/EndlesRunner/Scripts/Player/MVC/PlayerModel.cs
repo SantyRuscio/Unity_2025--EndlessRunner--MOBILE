@@ -126,4 +126,3 @@ public class PlayerModel : MonoBehaviour
         playerCollider.center = originalCenter;
     }
 }
-
