@@ -2,23 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class View : MonoBehaviour
+public class View
 {
-    public Animator animator;
+    private Animator _animator;
 
+    public View SetAnimator(Animator animator)
+    {
+        _animator = animator;
+        return this;    
+    }
     public void Jump()
     {
-        animator.SetTrigger("JumpTrigger");
+        _animator.SetTrigger("JumpTrigger");
     }
 
     public void Roll()
     {
-        animator.SetTrigger("RollTrigger");
+        _animator.SetTrigger("RollTrigger");
     }
 
     public void Collisioner()
     {
-       animator.SetTrigger("CollisionTrigger");
+       _animator.SetTrigger("CollisionTrigger");
     }
 
 }

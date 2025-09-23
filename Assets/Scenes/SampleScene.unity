@@ -1721,7 +1721,6 @@ GameObject:
   - component: {fileID: 754182946}
   - component: {fileID: 754182945}
   - component: {fileID: 754182948}
-  - component: {fileID: 754182950}
   - component: {fileID: 754182951}
   m_Layer: 0
   m_Name: Player
@@ -1746,10 +1745,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   inputManager: {fileID: 754182951}
-  view: {fileID: 754182950}
   playerCollider: {fileID: 754182948}
   Feets: {fileID: 1013670210}
   PlayerBody: {fileID: 754182946}
+  _animator: {fileID: 2191590866507834882}
   Speed: 10
   acceleration: 0.5
   maxForwardSpeed: 20
@@ -1826,19 +1825,6 @@ CapsuleCollider:
   m_Height: 1.81
   m_Direction: 1
   m_Center: {x: 0, y: -0.58, z: 0}
---- !u!114 &754182950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754182944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 311b4c9a415d46148962e24e2063fdff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2191590866507834882}
 --- !u!114 &754182951
 MonoBehaviour:
   m_ObjectHideFlags: 0

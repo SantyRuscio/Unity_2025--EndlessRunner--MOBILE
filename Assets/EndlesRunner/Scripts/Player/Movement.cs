@@ -6,35 +6,67 @@ public class Movement
 {
     private Rigidbody playerBody;
     private Transform playerTransform;
-    private float speed;
-    private float forwardSpeed;
-    private float jumpForce;
+    private float _speed;
+    private float _forwardSpeed;
+    private float _jumpForce;
 
-    private float maxForwardSpeed;
-    private float acceleration;
+    private float _maxForwardSpeed;
+    private float _acceleration;
 
-    public Movement(Rigidbody rb, Transform transform, float speed, float forwardSpeed, float jumpForce, float acceleration, float maxForwardSpeed)
+    public Movement() {}
+
+    #region Builder
+    public Movement SetPlayerBody(Rigidbody rb)
     {
         playerBody = rb;
-        playerTransform = transform;
-        this.speed = speed;
-        this.forwardSpeed = forwardSpeed;
-        this.jumpForce = jumpForce;
-
-        this.acceleration = acceleration;
-        this.maxForwardSpeed = maxForwardSpeed;
+        return this;
     }
+    public Movement SetPlayerTransfomr(Transform transform)
+    {
+        playerTransform = transform;
+        return this;
+    }
+
+    public Movement SetPlayerSpeed(float speed)
+    {
+        _speed = speed;
+        return this;
+    }
+    public Movement SetPlayerForwardSpeed(float forwardSpeed)
+    {
+        _forwardSpeed = forwardSpeed;
+        return this;
+    }
+
+    public Movement SetPlayerJumpForce(float jumpForce)
+    {
+        _jumpForce = jumpForce;
+        return this;
+    }
+
+    public Movement SetPlayerAcceleration(float acceleration)
+    {
+        _acceleration = acceleration;
+        return this;
+    }
+
+    public Movement SetPlayerMaxForwardSpeed(float maxForwardSpeed)
+    {
+        _maxForwardSpeed = maxForwardSpeed;
+        return this;
+    }
+    #endregion
 
     public void Move(Vector3 input)
     {
         // Incrementar velocidad hacia adelante con el tiempo
-        forwardSpeed = Mathf.Min(forwardSpeed + acceleration * Time.deltaTime, maxForwardSpeed);
+        _forwardSpeed = Mathf.Min(_forwardSpeed + _acceleration * Time.deltaTime, _maxForwardSpeed);
 
         // Movimiento lateral (X, Z por input)
-        Vector3 moveVector = new Vector3(input.x, 0f, input.z) * speed;
+        Vector3 moveVector = new Vector3(input.x, 0f, input.z) * _speed;
 
         // Movimiento hacia adelante (con velocidad ya acelerada)
-        moveVector += playerTransform.forward * forwardSpeed;
+        moveVector += playerTransform.forward * _forwardSpeed;
 
         // Aplicar velocidad
         playerBody.velocity = new Vector3(moveVector.x, playerBody.velocity.y, moveVector.z);
@@ -42,6 +74,6 @@ public class Movement
 
     public void Jump()
     {
-        playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        playerBody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 }

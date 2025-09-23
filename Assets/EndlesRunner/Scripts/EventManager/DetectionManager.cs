@@ -6,8 +6,8 @@ public class DetectionManager : MonoBehaviour
 {
     public static DetectionManager instance;
 
-    [SerializeField] private float _distanceToMove = 2f; // Valor por defecto
-    [SerializeField] private float _distanceToSpeed = 2f; // Valor por defecto
+    [SerializeField] private float _distanceToMove = 2f; // Valor por defecto -- este lo cambiamos con el iman cuando entra
+    [SerializeField] private float _distanceToSpeed = 2f; // Valor por defecto -- este lo cambiamos con el iman cuando entra
 
     private float _defaultMove;
     private float _defaultSpeed;
@@ -35,7 +35,6 @@ public class DetectionManager : MonoBehaviour
 
     public void ActivateMagnet(float newDistance, float newSpeed, float duration)
     {
-        // Si ya está activa la corrutina, reiniciamos
         StopAllCoroutines();
         StartCoroutine(MagnetCoroutine(newDistance, newSpeed, duration));
     }

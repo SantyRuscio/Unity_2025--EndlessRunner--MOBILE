@@ -11,7 +11,6 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private LayerMask FloorMask;
 
     [SerializeField] Controller inputManager;
-    [SerializeField] View view;
 
     [SerializeField] CapsuleCollider playerCollider;
     private float originalHeight;
@@ -20,6 +19,7 @@ public class PlayerModel : MonoBehaviour
 
     [SerializeField] private Transform Feets;
     [SerializeField] private Rigidbody PlayerBody;
+    [SerializeField] private Animator _animator;
 
     [SerializeField] private float Speed = 5f;
     [SerializeField] private float acceleration = 0.5f;
@@ -34,10 +34,21 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private float deadZone = 0.1f;
 
     private Movement movimiento; //composición
+    private View view; 
 
     private void Awake()
     {
-        movimiento = new Movement(PlayerBody, transform, Speed, ForwardSpeed, JumpForce, acceleration, maxForwardSpeed); //Composicion
+        movimiento = new Movement()
+            .SetPlayerBody(PlayerBody)
+            .SetPlayerTransfomr(Feets)
+            .SetPlayerSpeed(Speed)
+            .SetPlayerForwardSpeed(ForwardSpeed)
+            .SetPlayerJumpForce(JumpForce)
+            .SetPlayerAcceleration(acceleration)
+            .SetPlayerMaxForwardSpeed(maxForwardSpeed); //Composicion
+
+        view = new View().SetAnimator(_animator);
+
         inputManager.OnJump += Jump;
         inputManager.OnMove += Move;
         inputManager.OnRoll += Roll;
@@ -62,6 +73,7 @@ public class PlayerModel : MonoBehaviour
     private void OnCollsionDead()
     {
         view.Collisioner();
+        Debug.Log("view.PARTIC");
     }
 
     private IEnumerator DeadTimeLapse()
@@ -102,12 +114,10 @@ public class PlayerModel : MonoBehaviour
     void Move(float dirHorizontal)
     {
 #if UNITY_ANDROID || UNITY_IOS
-        // Aplicar deadZone
         if (Mathf.Abs(dirHorizontal) < deadZone)
             dirHorizontal = 0f;
 #endif
 
-        // Construir input y mandar a Movement
         playerMovementInput = new Vector3(dirHorizontal, 0f, 0f);
         movimiento.Move(playerMovementInput);
     }
