@@ -59,18 +59,14 @@ public class Movement
 
     public void Move(Vector3 input)
     {
-        // Incrementar velocidad hacia adelante con el tiempo
-        _forwardSpeed = Mathf.Min(_forwardSpeed + _acceleration * Time.deltaTime, _maxForwardSpeed);
+        // Movimiento lateral solo en X (ignorar Z del input)
+        Vector3 moveVector = new Vector3(input.x * _speed, playerBody.velocity.y, 0f);
 
-        // Movimiento lateral (X, Z por input)
-        Vector3 moveVector = new Vector3(input.x, 0f, input.z) * _speed;
-
-        // Movimiento hacia adelante (con velocidad ya acelerada)
-        moveVector += playerTransform.forward * _forwardSpeed;
-
-        // Aplicar velocidad
-        playerBody.velocity = new Vector3(moveVector.x, playerBody.velocity.y, moveVector.z);
+        // Aplicar velocidad al Rigidbody
+        playerBody.velocity = moveVector;
     }
+
+
 
     public void Jump()
     {

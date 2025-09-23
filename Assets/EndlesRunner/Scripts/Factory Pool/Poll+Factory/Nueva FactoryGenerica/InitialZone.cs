@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class InitialZone : MonoBehaviour
+public class InitialZone : MonoBehaviour, IPlatformsMove
 {
     private bool _doOnce = false;
+
+    float speed = 10f;
 
     [SerializeField]
     private Levels FirstLevel;
@@ -14,6 +16,11 @@ public class InitialZone : MonoBehaviour
         _Factorygeneric = FindAnyObjectByType<F_Generic<Levels>>();
     }
 
+    private void Update()
+    {
+        ConstantMove();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (_doOnce) return;
@@ -21,5 +28,16 @@ public class InitialZone : MonoBehaviour
 
         var NewLevel = _Factorygeneric.Create();
         NewLevel.SetPosition(FirstLevel.GetNextPosition);
+    }
+
+    public void ConstantMove()
+    {
+        float speed = 10f;
+
+        Vector3 pos = transform.position;
+
+        pos.z -= speed * Time.deltaTime;
+
+        transform.position = pos;
     }
 }

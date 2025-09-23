@@ -40,16 +40,9 @@ public class PuntuacionManager : MonoBehaviour
 
     private void Update()
     {
-        if (!contadorActivo) return; 
-
-        if (jugador != null)
-        {
-            float distanciaFrame = Vector3.Distance(jugador.position, ultimaPosicionJugador);
-            metrosRecorridos += distanciaFrame;
-            ultimaPosicionJugador = jugador.position;
-
-            ActualizarUI();
-        }
+        if (!contadorActivo) return;
+        metrosRecorridos += Time.deltaTime * 5f;
+        ActualizarUI();
     }
 
     public void AgregarMonedas(int cantidad)
