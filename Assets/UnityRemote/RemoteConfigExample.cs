@@ -3,7 +3,6 @@ using Unity.Services.RemoteConfig;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
-using UnityEditor.ShaderGraph.Internal;
 
 public class RemoteConfigExample : MonoBehaviour
 {
