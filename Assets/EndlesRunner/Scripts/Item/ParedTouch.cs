@@ -9,8 +9,8 @@ public class ParedTouch : Item
     [SerializeField] float dissolveSpeed = 0.5f; // velocidad de disolución
 
     private Material mat;
-    private float dissolve = 0f;
-    private bool isDissolving = false;
+    private float _dissolve = 0f;
+    private bool _isDissolving = false;
 
     private void Start()
     {
@@ -20,16 +20,9 @@ public class ParedTouch : Item
     private void Update()
     {
         // Animación de disolución
-        if (isDissolving)
+        if (_isDissolving)
         {
-            dissolve += Time.deltaTime * dissolveSpeed;
-            mat.SetFloat("_DissolveAmount", dissolve);
-
-            if (dissolve >= 1f)
-            {
-                isDissolving = false;
-                Destroy(gameObject);
-            }
+            DisolvAnim();
         }
     }
 
@@ -41,10 +34,23 @@ public class ParedTouch : Item
 
     private void StartDissolve()
     {
-        if (!isDissolving)
+        if (!_isDissolving)
         {
             Debug.Log("Pared tocada, empezando disolución");
-            isDissolving = true;
+            _isDissolving = true;
+        }
+    }
+
+    private void DisolvAnim()
+    {
+        _dissolve += Time.deltaTime * dissolveSpeed;
+
+        mat.SetFloat("Disolver", _dissolve);
+
+        if (_dissolve >= 1f)
+        {
+            _isDissolving = false;
+            Destroy(gameObject);
         }
     }
 }
