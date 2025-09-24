@@ -9,12 +9,17 @@ public class ParedTouch : Item
     [SerializeField] float dissolveSpeed = 0.5f; // velocidad de disolución
 
     private Material mat;
+
     private float _dissolve = 0f;
+    public float dissolveDuration = 2f;   // Duración del efecto
+
     private bool _isDissolving = false;
+
+
 
     private void Start()
     {
-        mat = GetComponent<Renderer>().material;
+       mat = GetComponent<Renderer>().material;
     }
 
     private void Update()
@@ -40,7 +45,6 @@ public class ParedTouch : Item
             _isDissolving = true;
         }
     }
-
     private void DisolvAnim()
     {
         _dissolve += Time.deltaTime * dissolveSpeed;
