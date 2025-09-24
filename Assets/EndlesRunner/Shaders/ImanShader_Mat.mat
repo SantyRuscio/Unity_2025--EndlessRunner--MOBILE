@@ -45,7 +45,7 @@ Material:
     - _AuraIntensityMAX: 2
     - _AuraIntensityMIN: 4
     - _AuraIntensity_1: 3
-    - _PowerMode: 0
+    - _PowerMode: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _VelocidadParpadeo: -10
