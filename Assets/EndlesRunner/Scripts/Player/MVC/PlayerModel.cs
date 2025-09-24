@@ -78,8 +78,8 @@ public class PlayerModel : MonoBehaviour
 
     private IEnumerator DeadTimeLapse()
     {
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("2 segundos después");
+        yield return new WaitForSeconds(1f);
+        Debug.Log("1 segundos después");
         EventManager.Trigger(TypeEcvents.GameOver);
     }
     #endregion

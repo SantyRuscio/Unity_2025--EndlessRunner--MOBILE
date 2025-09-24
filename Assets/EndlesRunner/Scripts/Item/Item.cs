@@ -5,9 +5,6 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    [Header("settings")]
-
-    [Tooltip("tag de lo que puede juntar este item")]
     public string playerTag = "Player";
 
     public abstract void Execute();

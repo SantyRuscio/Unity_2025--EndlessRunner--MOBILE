@@ -9,12 +9,8 @@ public class PuntuacionManager : MonoBehaviour
 
     private int monedas = 0;
     private float metrosRecorridos = 0f;
-    private Vector3 ultimaPosicionJugador;
 
     private bool contadorActivo = true; 
-
-    [Header("Refes")]
-    public Transform jugador;
 
     [Header("UI")]
     public TMP_Text textoMonedas;
@@ -31,18 +27,13 @@ public class PuntuacionManager : MonoBehaviour
     private void Start()
     {
         EventManager.Subscribe(TypeEcvents.GameOver, StopCounter);
-
-        if (jugador != null)
-            ultimaPosicionJugador = jugador.position;
-
-        ActualizarUI();
     }
 
     private void Update()
     {
-        if (!contadorActivo) return;
-        metrosRecorridos += Time.deltaTime * 5f;
-        ActualizarUI();
+        if (!contadorActivo) return;    
+        metrosRecorridos += Time.deltaTime * GameManager.instance.Speed; //esto paara que sume mas rapido los metros 
+        ActualizarHUDMetros();
     }
 
     public void AgregarMonedas(int cantidad)
@@ -50,17 +41,20 @@ public class PuntuacionManager : MonoBehaviour
         if (!contadorActivo) return; 
 
         monedas += cantidad;
-        ActualizarUI();
+        ActualizaHUDMOnedas();
     }
 
     public int GetMonedas() => monedas;
     public float GetMetrosRecorridos() => metrosRecorridos;
 
-    private void ActualizarUI()
+    private void ActualizaHUDMOnedas()
     {
         if (textoMonedas != null)
             textoMonedas.text = monedas.ToString();
+    }
 
+    private void ActualizarHUDMetros()
+    {  
         if (textoMetros != null)
             textoMetros.text = Mathf.FloorToInt(metrosRecorridos).ToString() + " m";
     }

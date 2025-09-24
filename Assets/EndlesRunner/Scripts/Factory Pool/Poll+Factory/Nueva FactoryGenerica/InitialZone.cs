@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class InitialZone : MonoBehaviour, IPlatformsMove
+public class InitialZone : MonoBehaviour
 {
     private bool _doOnce = false;
 
-    float speed = 10f;
+    [SerializeField]
+    private float _positionToRetunrPool = -55f;
 
     [SerializeField]
     private Levels FirstLevel;
@@ -19,6 +20,7 @@ public class InitialZone : MonoBehaviour, IPlatformsMove
     private void Update()
     {
         ConstantMove();
+        Disable();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,12 +34,19 @@ public class InitialZone : MonoBehaviour, IPlatformsMove
 
     public void ConstantMove()
     {
-        float speed = 10f;
 
         Vector3 pos = transform.position;
 
-        pos.z -= speed * Time.deltaTime;
+        pos.z -= GameManager.instance.Speed * Time.deltaTime;
 
         transform.position = pos;
+    }
+
+    private void Disable()
+    {
+        if (transform.position.z <= _positionToRetunrPool)
+        {
+            Destroy(gameObject);
+        }
     }
 }

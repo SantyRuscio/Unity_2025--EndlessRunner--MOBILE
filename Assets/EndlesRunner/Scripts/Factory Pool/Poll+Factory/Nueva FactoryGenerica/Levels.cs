@@ -1,7 +1,8 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Levels : MonoBehaviour, IPlatformsMove
+public class Levels : MonoBehaviour
 {
     private F_Generic<Levels> _Factorygeneric;
 
@@ -10,13 +11,6 @@ public class Levels : MonoBehaviour, IPlatformsMove
 
     [SerializeField]
     private Transform _nextPosition;
-
-    [SerializeField]
-    private float _speed = 10f;
-
-    [SerializeField]
-    private float _acceleration = 0.5f;
-
 
     private bool _isStopped = false;
 
@@ -90,12 +84,8 @@ public class Levels : MonoBehaviour, IPlatformsMove
 
     public void ConstantMove()
     {
-     
-        //  _speed += _acceleration * Time.deltaTime;
-
-        // Mover en Z
         Vector3 pos = transform.position;
-        pos.z -= _speed * Time.deltaTime;
+        pos.z -= GameManager.instance.Speed * Time.deltaTime; //esto para que se muevan mas rapido
         transform.position = pos;
     }
 
