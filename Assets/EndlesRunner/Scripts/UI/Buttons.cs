@@ -20,7 +20,13 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public void GoToMenu()
     {
         SetClip(ClickClip);
-        // SceneManager.LoadScene("MenuDeInicio");
+        SceneManager.LoadScene("MenuDeInicio");
+    }
+
+    public void GoToGame()
+    {
+        SetClip(ClickClip);
+        SceneManager.LoadScene("GamseScene");
     }
 
     public void RestartLevel()

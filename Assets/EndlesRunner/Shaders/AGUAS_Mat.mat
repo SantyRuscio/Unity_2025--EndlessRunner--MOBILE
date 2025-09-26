@@ -50,12 +50,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DelgadezOndas: 5
-    - _DensidadOndas: 7
+    - _DelgadezOndas: 4
+    - _DensidadOndas: 20
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VelocidadOlas: 0.1
-    - _VelocidadOndas: 5
+    - _VelocidadOlas: 0.2
+    - _VelocidadOndas: 7
     m_Colors:
     - _ColorBase: {r: 0.12941177, g: 0.50980395, b: 0.9372549, a: 0}
     - _ColorOndas: {r: 0.3529411, g: 1.372549, b: 1.905882, a: 0}

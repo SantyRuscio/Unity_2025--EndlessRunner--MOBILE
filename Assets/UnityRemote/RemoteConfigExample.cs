@@ -65,5 +65,4 @@ public class RemoteConfigExample : MonoBehaviour
         distanceToActivate = RemoteConfigService.Instance.appConfig.GetFloat("DistanceToActivate");
     }
 
-
 }

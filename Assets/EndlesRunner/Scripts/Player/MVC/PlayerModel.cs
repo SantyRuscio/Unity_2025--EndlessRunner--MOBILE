@@ -1,9 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-//using UnityEditor.AnimatedValues;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerModel : MonoBehaviour
 {
@@ -23,12 +19,13 @@ public class PlayerModel : MonoBehaviour
 
     [SerializeField] private float Speed = 5f;
     [SerializeField] private float acceleration = 0.5f;
-    [SerializeField] private float maxForwardSpeed = 20f;
-    [SerializeField] private float ForwardSpeed = 10f; 
+    [SerializeField] private float maxForwardSpeed = 20f; //VARIABLES DEL REMOTE
+    [SerializeField] private float ForwardSpeed = 10f;     //VARIABLES DEL REMOTE
     [SerializeField] private float JumpForce = 5f;
     [SerializeField] private float GroundCheckDistance = 0.2f;
     [SerializeField] private float OverlapRadio = 10f;
 
+    //VARIABLES DEL REMOTE
 
     //mobile
     [SerializeField] private float deadZone = 0.1f;
@@ -42,10 +39,10 @@ public class PlayerModel : MonoBehaviour
             .SetPlayerBody(PlayerBody)
             .SetPlayerTransfomr(Feets)
             .SetPlayerSpeed(Speed)
-            .SetPlayerForwardSpeed(ForwardSpeed)
+            .SetPlayerForwardSpeed(ForwardSpeed) //ACA TENEMOS VALORES DEL REMOTE
             .SetPlayerJumpForce(JumpForce)
             .SetPlayerAcceleration(acceleration)
-            .SetPlayerMaxForwardSpeed(maxForwardSpeed); //Composicion
+            .SetPlayerMaxForwardSpeed(maxForwardSpeed); ///ACA TENEMOS VALORES DEL REMOTE
 
         view = new View().SetAnimator(_animator);
 
@@ -58,6 +55,13 @@ public class PlayerModel : MonoBehaviour
     {
         originalHeight = playerCollider.height;
         originalCenter = playerCollider.center;
+
+        // inicializar con los valores de RemoteConfig
+        if (RemoteConfigExample.Instance != null)
+        {
+            ForwardSpeed = RemoteConfigExample.Instance.forwardSpeed;
+            maxForwardSpeed = RemoteConfigExample.Instance.maxForwardSpeed;
+        }
     }
 
     #region Collisioner Detecter y Trigger Event Manager

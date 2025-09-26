@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ParedTouch : Item
 {
-    [SerializeField] float _distance = 10f;      // rango de detección
+    [SerializeField] float _distance = 10f;      // rango de detección Lo agregamos al remote
     [SerializeField] float dissolveSpeed = 0.5f; // velocidad de disolución
 
     private Material mat;
@@ -20,6 +20,11 @@ public class ParedTouch : Item
     private void Start()
     {
        mat = GetComponent<Renderer>().material;
+
+        if (RemoteConfigExample.Instance != null)
+        {
+            _distance = RemoteConfigExample.Instance.distanceToActivate;
+        }
     }
 
     private void Update()

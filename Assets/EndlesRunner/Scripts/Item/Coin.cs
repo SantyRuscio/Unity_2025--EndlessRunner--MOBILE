@@ -12,6 +12,14 @@ public class Coin : Item
         _audioSource = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        if (RemoteConfigExample.Instance != null)
+        {
+            valor = RemoteConfigExample.Instance.coinsValue;
+        }
+    }
+
     private void Update()
     {
         float distance = Vector3.Distance(transform.position, GameManager.instance.GetPlayerModel().transform.position);
