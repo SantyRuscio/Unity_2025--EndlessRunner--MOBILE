@@ -51,7 +51,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DelgadezOndas: 4
-    - _DensidadOndas: 20
+    - _DensidadOndas: 24
     - _QueueControl: 0
     - _QueueOffset: 0
     - _VelocidadOlas: 0.2

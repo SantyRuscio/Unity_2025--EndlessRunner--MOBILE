@@ -96,9 +96,16 @@ public class PlayerModel : MonoBehaviour
         {
             var ParedTouch = hit.GetComponent<ParedTouch>();
 
+            var PisoTactil = hit.GetComponent<PisoTactil>();
+
             if (ParedTouch != null)
             {
                 ParedTouch.Execute();
+            }
+
+            if (PisoTactil != null)
+            {
+                PisoTactil.Execute();
             }
         }
     }

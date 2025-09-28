@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ParedTouch : Item
+public class ParedTouch : Item, IObjectAction
 {
     [SerializeField] float _distance = 10f;      // rango de detección Lo agregamos al remote
     [SerializeField] float dissolveSpeed = 0.5f; // velocidad de disolución
-
     private Material mat;
 
     private float _dissolve = 0f;
@@ -32,17 +31,16 @@ public class ParedTouch : Item
         // Animación de disolución
         if (_isDissolving)
         {
-            DisolvAnim();
+            ObjectAction();
         }
     }
 
-
     public override void Execute()
     {
-        StartDissolve();
+        StartShadder();
     }
 
-    private void StartDissolve()
+    private void StartShadder()
     {
         if (!_isDissolving)
         {
@@ -50,7 +48,7 @@ public class ParedTouch : Item
             _isDissolving = true;
         }
     }
-    private void DisolvAnim()
+    private void ObjectAction()
     {
         _dissolve += Time.deltaTime * dissolveSpeed;
 
