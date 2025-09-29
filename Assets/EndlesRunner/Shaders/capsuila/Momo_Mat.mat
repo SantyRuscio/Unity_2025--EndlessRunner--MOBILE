@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mmomo
+  m_Name: Momo_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 63c9d30c4c122be4480c5d29a4c31056, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Disolver: 0
+    - _Disolver: 0.501
     - _Edge: 0
     - _Float: 422.49
     - _QueueControl: 0
