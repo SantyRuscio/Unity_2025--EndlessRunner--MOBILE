@@ -100,7 +100,7 @@ public class PlayerModel : MonoBehaviour
 
             if (ParedTouch != null)
             {
-                ParedTouch.Execute();
+                ParedTouch.Disolver(); 
             }
 
             if (PisoTactil != null)

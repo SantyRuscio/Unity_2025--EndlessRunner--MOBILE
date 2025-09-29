@@ -3,61 +3,56 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ParedTouch : Item, IObjectAction
+public class ParedTouch : MonoBehaviour
 {
-    [SerializeField] float _distance = 10f;      // rango de detección Lo agregamos al remote
-    [SerializeField] float dissolveSpeed = 0.5f; // velocidad de disolución
+    [SerializeField] private float dissolveDuration = 1f; 
     private Material mat;
-
     private float _dissolve = 0f;
-    public float dissolveDuration = 2f;   // Duración del efecto
-
     private bool _isDissolving = false;
 
-
-
-    private void Start()
+    private void Awake()
     {
-       mat = GetComponent<Renderer>().material;
-
-        if (RemoteConfigExample.Instance != null)
+        Renderer rend = GetComponent<Renderer>();
+        if (rend != null)
         {
-            _distance = RemoteConfigExample.Instance.distanceToActivate;
+            mat = rend.material;
+        }
+        else
+        {
+            Debug.LogError("ParedTouch requiere un Renderer en el mismo GameObject");
         }
     }
 
     private void Update()
     {
-        // Animación de disolución
-        if (_isDissolving)
-        {
+        if (_isDissolving && mat != null)
             ObjectAction();
-        }
     }
-
-    public override void Execute()
-    {
-        StartShadder();
-    }
-
-    private void StartShadder()
+    public void Disolver()
     {
         if (!_isDissolving)
         {
-            Debug.Log("Pared tocada, empezando disolución");
+            _dissolve = 0f;
             _isDissolving = true;
+            Debug.Log("Disolución iniciada");
         }
     }
+
     private void ObjectAction()
     {
-        _dissolve += Time.deltaTime * dissolveSpeed;
-
-        mat.SetFloat("Disolver", _dissolve);
-
+        _dissolve += Time.deltaTime / dissolveDuration;
+        mat.SetFloat("Disolver", _dissolve); 
         if (_dissolve >= 1f)
         {
+            _dissolve = 1f;
             _isDissolving = false;
-            Destroy(gameObject);
+            StartCoroutine(DestroyAfterFrame());
         }
+    }
+
+    private IEnumerator DestroyAfterFrame()
+    {
+        yield return null;
+        Destroy(gameObject); 
     }
 }
