@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PisoTactil : Item, IObjectAction
+public class PisoTactil : Item
 {
     [SerializeField] private Transform[] _movePoint;
     private int currentPointIndex = 0;

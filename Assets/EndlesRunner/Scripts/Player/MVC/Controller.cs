@@ -25,16 +25,16 @@ public class Controller : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR // SIMULO SWIPE DESDE PC
-        if (Input.GetMouseButtonDown(0)) startTouch = Input.mousePosition;
-        if (Input.GetMouseButtonUp(0))
-        {
-            Vector2 swipeDelta = (Vector2)Input.mousePosition - startTouch;
-            if (Mathf.Abs(swipeDelta.y) > Mathf.Abs(swipeDelta.x))
-            {
-                if (swipeDelta.y > 0) OnJump?.Invoke();
-                else OnRoll?.Invoke();
-            }
-        }
+       // if (Input.GetMouseButtonDown(0)) startTouch = Input.mousePosition;
+       // if (Input.GetMouseButtonUp(0))
+       // {
+       //     Vector2 swipeDelta = (Vector2)Input.mousePosition - startTouch;
+       //     if (Mathf.Abs(swipeDelta.y) > Mathf.Abs(swipeDelta.x))
+       //     {
+       //         if (swipeDelta.y > 0) OnJump?.Invoke();
+       //         else OnRoll?.Invoke();
+       //     }
+       // }
 #endif
 
 #if UNITY_ANDROID || UNITY_IOS // MÓVIL

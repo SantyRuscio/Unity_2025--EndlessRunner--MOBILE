@@ -94,18 +94,12 @@ public class PlayerModel : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            var ParedTouch = hit.GetComponent<ParedTouch>();
+            
+            var item = hit.GetComponent<Item>();
 
-            var PisoTactil = hit.GetComponent<PisoTactil>();
-
-            if (ParedTouch != null)
+            if (item != null)
             {
-                ParedTouch.Disolver(); 
-            }
-
-            if (PisoTactil != null)
-            {
-                PisoTactil.Execute();
+                item.Execute();
             }
         }
     }

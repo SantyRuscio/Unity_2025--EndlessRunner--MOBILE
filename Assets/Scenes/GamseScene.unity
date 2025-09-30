@@ -4388,6 +4388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285ed6ecaa4d65744a5db4f3a7d25b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTag: Player
   dissolveDuration: 2
 --- !u!65 &1365369439
 BoxCollider:
@@ -7852,7 +7853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3778744850370567069, guid: c8a4a4c4f91c30845938d9b99f33f8a8, type: 3}
       propertyPath: dissolveDuration
-      value: 0.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4074313305958554662, guid: c8a4a4c4f91c30845938d9b99f33f8a8, type: 3}
       propertyPath: m_LocalPosition.x

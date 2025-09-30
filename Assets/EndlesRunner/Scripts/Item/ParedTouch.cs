@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ParedTouch : MonoBehaviour
+public class ParedTouch : Item
 {
     [SerializeField] private float dissolveDuration = 1f; 
     private Material mat;
@@ -28,31 +28,36 @@ public class ParedTouch : MonoBehaviour
         if (_isDissolving && mat != null)
             ObjectAction();
     }
-    public void Disolver()
+
+    private void ObjectAction()
+    {
+        while (_dissolve < 1)
+        {
+            _dissolve += Time.deltaTime / dissolveDuration;
+            mat.SetFloat("_Disolver", _dissolve);
+            Debug.Log(_dissolve);
+
+        }
+
+        _dissolve = 1f;
+        _isDissolving = false;
+        StartCoroutine(DestroyAfterFrame());
+    }
+    
+    private IEnumerator DestroyAfterFrame()
+    {
+        yield return null;
+        Destroy(gameObject); 
+    }
+
+    public override void Execute()
     {
         if (!_isDissolving)
         {
             _dissolve = 0f;
             _isDissolving = true;
+            ObjectAction();
             Debug.Log("Disolución iniciada");
         }
-    }
-
-    private void ObjectAction()
-    {
-        _dissolve += Time.deltaTime / dissolveDuration;
-        mat.SetFloat("Disolver", _dissolve); 
-        if (_dissolve >= 1f)
-        {
-            _dissolve = 1f;
-            _isDissolving = false;
-            StartCoroutine(DestroyAfterFrame());
-        }
-    }
-
-    private IEnumerator DestroyAfterFrame()
-    {
-        yield return null;
-        Destroy(gameObject); 
     }
 }

@@ -36,11 +36,4 @@ public class ShaderManager : MonoBehaviour
             materialInstanciado.SetFloat("_PowerMode", 0f);
     }
 
-    public void ActivarDisolucion(ParedTouch pared)
-    {
-        if (pared != null)
-        {
-            pared.Disolver();
-        }
-    }
 }
