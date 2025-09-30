@@ -31,7 +31,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _PowerMode: 1
+    - _PowerMode: 0
     m_Colors:
     - _AuraColor: {r: 0.09540563, g: 0.5849056, b: 0.012283, a: 0}
     - _BaseColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
