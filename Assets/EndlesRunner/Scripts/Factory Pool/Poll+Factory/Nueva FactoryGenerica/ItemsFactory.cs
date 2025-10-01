@@ -47,7 +47,7 @@ public class ItemsFactory : MonoBehaviour
     {
         Debug.Log("entre a TrySpawnItem");
 
-        if (spawnPoint == null) return null;
+        if (spawnPoint == null) return null;     //ACA NO ESTARIA PASANDO ESTO 
 
         Debug.Log(" TrySpawnItem no es nulo ");
 
