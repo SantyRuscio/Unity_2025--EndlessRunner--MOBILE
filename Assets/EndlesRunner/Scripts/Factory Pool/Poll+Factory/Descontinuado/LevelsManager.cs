@@ -7,6 +7,13 @@ public class LevelsManager : MonoBehaviour
     [SerializeField]
     private Transform _currentNextPosition;
 
+    [SerializeField]
+    private Transform _spawnPoints;
+
+    [Header("Items Factory")]
+    [SerializeField] private ItemsFactory itemsFactory;
+
+
     public Transform CurrentNextPosition
     {
         get { return _currentNextPosition; }
@@ -19,5 +26,11 @@ public class LevelsManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+    }
+
+    public void SpawnRandomPowerUp(Transform spawnPoints)
+    {
+        Debug.Log("entre a SpawnRandomPowerUp ");
+        itemsFactory.TrySpawnItem(spawnPoints);
     }
 }

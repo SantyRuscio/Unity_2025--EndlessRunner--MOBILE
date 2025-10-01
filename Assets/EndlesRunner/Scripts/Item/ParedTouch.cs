@@ -35,7 +35,7 @@ public class ParedTouch : Item
         {
             _dissolve += Time.deltaTime / dissolveDuration;
             mat.SetFloat("_Disolver", _dissolve);
-            Debug.Log(_dissolve);
+          //  Debug.Log(_dissolve);
 
         }
 

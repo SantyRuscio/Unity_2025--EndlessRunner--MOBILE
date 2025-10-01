@@ -12,6 +12,10 @@ public class Levels : MonoBehaviour
     [SerializeField]
     private Transform _nextPosition;
 
+
+    [SerializeField]
+    private Transform _itemPositionm;
+
     private bool _isStopped = false;
 
     public Vector3 GetNextPosition
@@ -65,6 +69,9 @@ public class Levels : MonoBehaviour
         gameObject.SetActive(true);
 
         LevelsManager.instance.CurrentNextPosition = _nextPosition;
+
+        LevelsManager.instance.SpawnRandomPowerUp(_itemPositionm);
+
     }
 
     public void ResetObject()
