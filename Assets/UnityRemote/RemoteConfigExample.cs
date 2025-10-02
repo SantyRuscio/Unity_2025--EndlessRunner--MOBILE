@@ -15,6 +15,7 @@ public class RemoteConfigExample : MonoBehaviour
     public float forwardSpeed;
     public float maxForwardSpeed;
     public float distanceToActivate;
+    public bool gameActivate;
 
     private void Awake()
     {
@@ -63,6 +64,8 @@ public class RemoteConfigExample : MonoBehaviour
         maxForwardSpeed = RemoteConfigService.Instance.appConfig.GetFloat("MaxForwardSpeed");
 
         distanceToActivate = RemoteConfigService.Instance.appConfig.GetFloat("DistanceToActivate");
+
+        gameActivate = RemoteConfigService.Instance.appConfig.GetBool("GameActivate");
     }
 
 }

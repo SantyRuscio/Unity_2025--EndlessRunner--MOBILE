@@ -9,6 +9,18 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public AudioClip ClickClip;
     public AudioClip HoverClip;
 
+    private bool CanPlay = true;
+
+    private void Start()
+    {
+        // inicializar con los valores de RemoteConfig
+        if (RemoteConfigExample.Instance != null)
+        {
+            CanPlay = RemoteConfigExample.Instance.gameActivate;
+        }
+    }
+
+
     private void SetClip(AudioClip clip)
     {
         if (AudioSource != null && clip != null)
@@ -26,7 +38,10 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public void GoToGame()
     {
         SetClip(ClickClip);
-        SceneManager.LoadScene("GamseScene");
+        if (CanPlay)
+        {
+            SceneManager.LoadScene("GamseScene");
+        }
     }
 
     public void RestartLevel()

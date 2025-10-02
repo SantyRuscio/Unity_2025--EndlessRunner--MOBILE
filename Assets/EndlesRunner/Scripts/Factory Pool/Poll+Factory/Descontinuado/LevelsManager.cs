@@ -31,6 +31,9 @@ public class LevelsManager : MonoBehaviour
     public void SpawnRandomPowerUp(Transform spawnPoints)
     {
         Debug.Log("entre a SpawnRandomPowerUp ");
-        itemsFactory.TrySpawnItem(spawnPoints);
+        var i = itemsFactory.TrySpawnItem(spawnPoints);
+
+        if(i != null)
+            i.gameObject.transform.SetParent(spawnPoints);
     }
 }

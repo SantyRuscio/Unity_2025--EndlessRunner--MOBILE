@@ -32,6 +32,8 @@ public class Levels : MonoBehaviour
     void Start()
     {
         EventManager.Subscribe(TypeEcvents.GameOver, StopConstantMove);
+
+        EventManager.Subscribe(TypeEcvents.Win, StopConstantMove);
     }
 
     private void Update()
@@ -71,7 +73,6 @@ public class Levels : MonoBehaviour
         LevelsManager.instance.CurrentNextPosition = _nextPosition;
 
         LevelsManager.instance.SpawnRandomPowerUp(_itemPositionm);
-
     }
 
     public void ResetObject()
@@ -99,5 +100,12 @@ public class Levels : MonoBehaviour
     private void StopConstantMove(params object[] parameters)
     {
         _isStopped = true;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Unsubscribe(TypeEcvents.GameOver, StopConstantMove);
+
+        EventManager.Unsubscribe(TypeEcvents.Win, StopConstantMove);
     }
 }

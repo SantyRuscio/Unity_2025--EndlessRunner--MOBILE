@@ -27,6 +27,8 @@ public class PuntuacionManager : MonoBehaviour
     private void Start()
     {
         EventManager.Subscribe(TypeEcvents.GameOver, StopCounter);
+
+        EventManager.Subscribe(TypeEcvents.Win, StopCounter);
     }
 
     private void Update()
@@ -62,5 +64,12 @@ public class PuntuacionManager : MonoBehaviour
     private void StopCounter(params object[] parameters)
     {
         contadorActivo = false; 
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Unsubscribe(TypeEcvents.GameOver, StopCounter);
+
+        EventManager.Unsubscribe(TypeEcvents.Win, StopCounter);
     }
 }
