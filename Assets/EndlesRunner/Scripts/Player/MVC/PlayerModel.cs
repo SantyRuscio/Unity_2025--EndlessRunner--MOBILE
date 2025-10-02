@@ -25,7 +25,6 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private float GroundCheckDistance = 0.2f;
     [SerializeField] private float OverlapRadio = 10f;
 
-    //VARIABLES DEL REMOTE
 
     //mobile
     [SerializeField] private float deadZone = 0.1f;

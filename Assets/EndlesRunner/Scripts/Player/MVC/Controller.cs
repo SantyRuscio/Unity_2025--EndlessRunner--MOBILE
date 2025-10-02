@@ -11,7 +11,7 @@ public class Controller : MonoBehaviour
     public Action OnRoll;
 
     [Header("Acelerómetro (solo móvil)")]
-    [SerializeField] private float tiltSensitivity = 2f;
+    [SerializeField] private float tiltSensitivity = 1f;
 
     [Header("Swipe")]
     [SerializeField] private float minSwipeDistance = 100f;
@@ -90,4 +90,3 @@ public class Controller : MonoBehaviour
         EventManager.Unsubscribe(TypeEcvents.GameOver, StopController);
     }
 }
-
