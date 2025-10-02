@@ -1032,7 +1032,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbef51ce31f260b43b0c6365f2f7b138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _positionToRetunrPool: -55
   _nextPosition: {fileID: 3949554811052239140}
+  _itemPositionm: {fileID: 0}
 --- !u!65 &7663429231872361134
 BoxCollider:
   m_ObjectHideFlags: 0

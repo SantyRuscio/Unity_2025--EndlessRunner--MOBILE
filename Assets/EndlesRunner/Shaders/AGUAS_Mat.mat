@@ -51,11 +51,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _DelgadezOndas: 4
-    - _DensidadOndas: 24
+    - _DensidadOndas: 36
     - _QueueControl: 0
     - _QueueOffset: 0
     - _VelocidadOlas: 0.2
-    - _VelocidadOndas: 7
+    - _VelocidadOndas: 10
     m_Colors:
     - _ColorBase: {r: 0.12941177, g: 0.50980395, b: 0.9372549, a: 0}
     - _ColorOndas: {r: 0.3529411, g: 1.372549, b: 1.905882, a: 0}

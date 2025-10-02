@@ -95,11 +95,11 @@ public class PlayerModel : MonoBehaviour
         foreach (Collider hit in hits)
         {
             
-            var item = hit.GetComponent<Item>();
+            var obstacleInt = hit.GetComponent<ObstaculosInteractuables>();
 
-            if (item != null)
+            if (obstacleInt != null)
             {
-                item.Execute();
+                obstacleInt.Execute();
             }
         }
     }

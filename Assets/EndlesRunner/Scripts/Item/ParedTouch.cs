@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ParedTouch : Item
+public class ParedTouch : ObstaculosInteractuables
 {
     [SerializeField] private float dissolveDuration = 1f; 
     private Material mat;
@@ -29,7 +29,7 @@ public class ParedTouch : Item
             ObjectAction();
     }
 
-    private void ObjectAction()
+    public override void ObjectAction()   //esto lo hice publico para que lo pueda overridear del padre
     {
         while (_dissolve < 1)
         {

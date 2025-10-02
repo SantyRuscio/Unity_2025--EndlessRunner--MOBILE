@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PisoTactil : Item
+public class PisoTactil : ObstaculosInteractuables
 {
     [SerializeField] private Transform[] _movePoint;
     private int currentPointIndex = 0;
-    [SerializeField] float _distance = 10f;
     [SerializeField] private float moveSpeed = 10f;
 
     private Material mat;
@@ -44,7 +43,7 @@ public class PisoTactil : Item
             _isDissolving = true;
         }
     }
-    private void ObjectAction()
+    public override void ObjectAction()  //esto lo hice publico para que lo pueda overridear del padre
     {
         if (_movePoint.Length == 0) return; 
 
