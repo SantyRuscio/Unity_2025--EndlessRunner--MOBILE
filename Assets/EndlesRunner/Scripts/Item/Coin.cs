@@ -14,10 +14,10 @@ public class Coin : Item
 
     private void Start()
     {
-        if (RemoteConfigExample.Instance != null)
-        {
-            valor = RemoteConfigExample.Instance.coinsValue;
-        }
+      // if (RemoteConfigExample.Instance != null)
+      // {
+      //     valor = RemoteConfigExample.Instance.coinsValue;
+      // }
     }
 
     private void Update()
