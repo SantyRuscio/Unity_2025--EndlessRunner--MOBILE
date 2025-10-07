@@ -1,0 +1,3 @@
+"IDBPlay : "PLAY",
+"IDBShop : "SHOP",
+"IDBExit : "EXIT"
