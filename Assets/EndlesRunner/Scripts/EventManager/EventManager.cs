@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public enum TypeEcvents
 {
     GameOver,
-    Win
+    Win,
+    ShieldEvent
 }
 
 //IMPORTANTE DESSUSCRIBIRSE AL DESTRUIR 

@@ -12,32 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"38d57342-24b9-48ec-9bc7-cbbb67b1f6e2\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"101ae345-9d0b-4d81-af4d-f4d5b98f1c38\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"CoinsValue\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"ad8849a1-c1e0-44a5-babb-062a4e03f1bc\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"a0c19f73-7857-4a39-a364-048b31601a88\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"ForwardSpeed\",\r\n      \"type\": \"float\",\r\n      \"value\":
-    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"3b8e0d2f-7c92-4503-a89c-0439799aab7e\"\r\n   
+    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"6e414965-47d5-4ca0-88dc-9d713e04f765\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"MaxForwardSpeed\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 20.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"c4e201b2-9b65-4256-b4be-4baffece14a1\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"da865f12-c7d2-4b1c-978e-de1d80877328\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"DistanceToActivate\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"e780022f-c0f1-47d1-8af5-50e1c04b0585\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"4100185a-b5ac-4407-a59c-03af2162567d\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"GameActivate\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
     }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"38d57342-24b9-48ec-9bc7-cbbb67b1f6e2\"\r\n   
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"101ae345-9d0b-4d81-af4d-f4d5b98f1c38\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"CoinsValue\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 1\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"ad8849a1-c1e0-44a5-babb-062a4e03f1bc\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"a0c19f73-7857-4a39-a364-048b31601a88\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"ForwardSpeed\",\r\n      \"type\": \"float\",\r\n      \"value\":
-    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"3b8e0d2f-7c92-4503-a89c-0439799aab7e\"\r\n   
+    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"6e414965-47d5-4ca0-88dc-9d713e04f765\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"MaxForwardSpeed\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 20.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"c4e201b2-9b65-4256-b4be-4baffece14a1\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"da865f12-c7d2-4b1c-978e-de1d80877328\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"DistanceToActivate\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"e780022f-c0f1-47d1-8af5-50e1c04b0585\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"4100185a-b5ac-4407-a59c-03af2162567d\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"GameActivate\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
     }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"99a9eaaf-ef40-4ef5-b620-242b19fd3cc5\",\r\n   
