@@ -7,7 +7,8 @@ using UnityEngine;
 public class FloorShieldShader : MonoBehaviour
 {
     [SerializeField] private GameObject shieldObject;
-    [SerializeField] private bool disableOnAwake = true; 
+    [SerializeField] private bool disableOnAwake = true;
+    [SerializeField] private float _effectTime = 10f;
 
     private void Awake()
     {
@@ -25,7 +26,14 @@ public class FloorShieldShader : MonoBehaviour
         if (shieldObject != null)
         {
             shieldObject.SetActive(true);
+            StartCoroutine(ShieldEffectTimer());
         }
+    }
+
+    IEnumerator ShieldEffectTimer()
+    {
+        yield return new WaitForSeconds(_effectTime);
+        shieldObject.SetActive(false);
     }
 
     private void OnDestroy()
