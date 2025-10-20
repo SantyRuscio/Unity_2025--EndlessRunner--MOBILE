@@ -11,18 +11,23 @@ public class ScreenManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        _screens = new Stack<IScreen>();
     }
 
-    private void Update()
+    public void ActivatePowerUpScreen(IScreen screen, float duration)
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-            DesactivateScreen();
+        Debug.Log("ENTRE A ActivatePowerUpScreen ");
+
+        screen.Activate();
+
+        _screens.Push(screen);
+
+        StartCoroutine(ImageDuration(duration));
     }
 
     public void ActivateScreen(IScreen screen)
     {
         screen.Activate();
-
         _screens.Push(screen);
     }
 
@@ -30,5 +35,11 @@ public class ScreenManager : MonoBehaviour
     {
         if( _screens.Count > 0 )
         _screens.Pop().Deactivate();
+    }
+
+    private IEnumerator ImageDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        DesactivateScreen();
     }
 }

@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Device;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
@@ -9,13 +8,11 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private GameObject winPanel;
 
-
     void Start()
     {
         EventManager.Subscribe(TypeEcvents.GameOver, SetDefeatEnabled);
 
         EventManager.Subscribe(TypeEcvents.Win, SetWinEnabled);
-
     }
 
     private void SetDefeatEnabled(params object[] parameters)
