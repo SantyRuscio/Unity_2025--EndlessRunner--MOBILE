@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class PlayerModel : MonoBehaviour
+public class PlayerModel : Rewind
 {
     private Vector3 playerMovementInput;
     [SerializeField] private LayerMask FloorMask;
@@ -30,7 +30,26 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private float deadZone = 0.1f;
 
     private Movement movimiento; //composición
-    private View view; 
+    private View view;
+
+
+
+    public override void Save()
+    {
+        _state.Rec(Speed, transform.position, transform.rotation);
+    }
+
+    public override void Load()
+    {
+        if(!_state.IsRemembered()) return;
+
+        var x = _state.Remember();
+
+        transform.position = (Vector3)x.parametres[0];
+
+        transform.rotation = (Quaternion)x.parametres[1];
+
+    }
 
     private void Awake()
     {
@@ -84,6 +103,7 @@ public class PlayerModel : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Debug.Log("1 segundos después");
         EventManager.Trigger(TypeEcvents.GameOver);
+        _state.Delete();
     }
     #endregion
 
