@@ -1,26 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScreenTest : MonoBehaviour, IScreen
 {
-    public GameObject nextScreen;
-
-    public void BTN_OpenScreen()
+    private void Start()
     {
-        if(nextScreen == null)  return;
+        GetComponent<Image>().enabled = false;
 
-        var screen = nextScreen.GetComponent<IScreen>();
 
-        ScreenManager.Instance.ActivateScreen(screen);
     }
     public void Activate()
     {
-       gameObject.SetActive(true);
+        GetComponent<Image>().enabled = true;
     }
 
     public void Deactivate()
     {
-        gameObject.SetActive(false);
+        GetComponent<Image>().enabled = false;
+
+    }
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.B))
+        {
+            ScreenManager.Instance.ActivateScreen(this);
+        }
     }
 }

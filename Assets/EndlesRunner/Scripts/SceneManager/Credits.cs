@@ -1,22 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Credits : MonoBehaviour
+public class Credits : MonoBehaviour, IScreen
 {
-    [SerializeField] private GameObject _CredistScreen;
-    IScreen _CredistScreenRef;
 
-    void Start()
+    private void Start()
     {
-        _CredistScreenRef = _CredistScreen.GetComponent<IScreen>(); 
+        GetComponent<Image>().enabled = false;
+
+
+    }
+
+    public void Activate()
+    {
+        GetComponent<Image>().enabled = true;
+    }
+
+    public void Deactivate()
+    {
+        GetComponent<Image>().enabled = false;
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.V))
         {
-            ScreenManager.Instance.ActivateScreen(_CredistScreenRef);
+            ScreenManager.Instance.ActivateScreen(this);
         }
     }
 }
