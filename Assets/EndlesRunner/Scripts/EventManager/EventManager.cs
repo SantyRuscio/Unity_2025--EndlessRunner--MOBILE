@@ -5,7 +5,8 @@ public enum TypeEcvents
 {
     GameOver,
     Win,
-    ShieldEvent
+    ShieldEvent,
+    RewindEvent
 }
 
 //IMPORTANTE DESSUSCRIBIRSE AL DESTRUIR 

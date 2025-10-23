@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerModel : Rewind
@@ -37,13 +38,21 @@ public class PlayerModel : Rewind
     public override void Save()
     {
         _state.Rec(Speed, transform.position, transform.rotation);
+
+        Debug.Log("Guardo la posicion");
     }
 
     public override void Load()
     {
-        if(!_state.IsRemembered()) return;
+        if (!_state.IsRemembered())
+        {
+            Debug.Log("No tengo nada que recordar");
+
+            return;
+        }
 
         var x = _state.Remember();
+        Debug.Log("Pos" + (Vector3)x.parametres[0]);
 
         transform.position = (Vector3)x.parametres[0];
 
@@ -71,6 +80,8 @@ public class PlayerModel : Rewind
     }
     private void Start()
     {
+        EventManager.Subscribe(TypeEcvents.RewindEvent, OnCollsionRewind);
+
         originalHeight = playerCollider.height;
         originalCenter = playerCollider.center;
 
@@ -106,6 +117,13 @@ public class PlayerModel : Rewind
         _state.Delete();
     }
     #endregion
+
+
+    private void OnCollsionRewind(object[] parameters)
+    {
+        view.RewindAnim();
+        Debug.Log("view.PARTIC");
+    }
 
     private void CheackWall()
     {

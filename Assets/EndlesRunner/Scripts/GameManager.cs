@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     private float _defaultSpeed;
 
+    private Coroutine saveCoroutine;
 
     private void Awake()
     {
@@ -25,41 +26,58 @@ public class GameManager : MonoBehaviour
 
         playerModel = FindAnyObjectByType<PlayerModel>();
         _defaultSpeed = _speed;
+
+
+        Debug.Log("/////////////////" + rewinds.Length);
     }
-    private void Update()
+
+    public void SaveMethod()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            foreach (var rewind in rewinds) { rewind.Save(); }
+        // foreach (var rewind in rewinds)
+        //     rewind.Save();
+        //
+        // if (saveCoroutine != null)
+        //     StopCoroutine(saveCoroutine);
+        //
+        // saveCoroutine = StartCoroutine(CoroutineSave());
 
-            StartCoroutine(CoroutineSave());
+        Debug.Log("Entre a saveMethod");
+
+        for (int i = 0; i < rewinds.Length; i++)
+        {
+            rewinds[i].Save();
+        Debug.Log("Entre al foreacvhj");
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            foreach (var rewind in rewinds) { rewind.Load(); }
-
-            StartCoroutine(CoroutineLoad());
-
-        }
+        //StartCoroutine(CoroutineSave());
     }
+
+    public void LoadMethod() 
+    {
+        //foreach (var rewind in rewinds) { rewind.Load(); }
+
+        StartCoroutine(CoroutineLoad());
+    }
+
+
     IEnumerator CoroutineSave()
     {
+        Debug.Log("Entre a CoroutineSave");
+
         var WaitForSeconds = new WaitForSeconds(5f);
 
         while (true)
         {
             foreach (var rewind in rewinds)
-            {
                 rewind.Save();
-                yield return WaitForSeconds;
-            }
+
+            yield return WaitForSeconds;
         }
     }
 
     IEnumerator CoroutineLoad()
     {
-        var WaitForSeconds = new WaitForSeconds(5f);
+        var WaitForSeconds = new WaitForSeconds(.01f);
         bool isRemembered = true;
 
         while (isRemembered)

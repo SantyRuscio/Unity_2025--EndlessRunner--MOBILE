@@ -12,6 +12,8 @@ public class UiManager : MonoBehaviour
     {
         EventManager.Subscribe(TypeEcvents.GameOver, SetDefeatEnabled);
 
+        EventManager.Subscribe(TypeEcvents.RewindEvent, SetRewimd);
+
         EventManager.Subscribe(TypeEcvents.Win, SetWinEnabled);
     }
 
@@ -21,6 +23,14 @@ public class UiManager : MonoBehaviour
         {
             defeatPanel.SetActive(true); 
             Debug.Log("UI de GameOver activada");
+        }
+    }
+    private void SetRewimd(params object[] parameters)
+    {
+        if (defeatPanel != null)
+        {
+            defeatPanel.SetActive(false);
+            Debug.Log("UI de GameOver desactivada");
         }
     }
 
@@ -36,6 +46,11 @@ public class UiManager : MonoBehaviour
     {
         // IMPORTANTE: desuscribirse
         EventManager.Unsubscribe(TypeEcvents.GameOver, SetDefeatEnabled);
+
+        EventManager.Unsubscribe(TypeEcvents.RewindEvent, SetRewimd);
+
+        EventManager.Unsubscribe(TypeEcvents.Win, SetWinEnabled);
+
     }
 
 }

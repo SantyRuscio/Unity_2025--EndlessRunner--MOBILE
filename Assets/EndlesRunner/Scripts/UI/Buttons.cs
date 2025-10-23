@@ -50,6 +50,14 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void RestartLevelWithVideo()
+    {
+        SetClip(ClickClip);
+       // GameManager.instance.LoadMethod();
+
+        EventManager.Trigger(TypeEcvents.RewindEvent);
+    }
+
     // public void ShowCredits()
     // {
     //     SetClip(ClickClip);

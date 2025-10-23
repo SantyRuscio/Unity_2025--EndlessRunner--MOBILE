@@ -26,4 +26,9 @@ public class View
        _animator.SetTrigger("CollisionTrigger");
     }
 
+    public void RewindAnim()
+    {
+
+    }
+
 }

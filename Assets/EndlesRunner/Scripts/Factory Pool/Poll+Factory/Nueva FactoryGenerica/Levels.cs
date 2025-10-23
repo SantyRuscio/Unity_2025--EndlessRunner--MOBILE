@@ -33,6 +33,8 @@ public class Levels : MonoBehaviour
     {
         EventManager.Subscribe(TypeEcvents.GameOver, StopConstantMove);
 
+        EventManager.Subscribe(TypeEcvents.RewindEvent, StartConstantMoveRewind);
+
         EventManager.Subscribe(TypeEcvents.Win, StopConstantMove);
     }
 
@@ -102,9 +104,24 @@ public class Levels : MonoBehaviour
         _isStopped = true;
     }
 
+    private void StartConstantMoveRewind(params object[] parameters)
+    {
+        StartCoroutine(TimeToStayReady());
+    }
+
+    private IEnumerator TimeToStayReady()
+    {
+        yield return new WaitForSeconds(6f);
+        _isStopped = false;
+        Debug.Log("1 segundos después");
+    }
+
+
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEcvents.GameOver, StopConstantMove);
+
+        EventManager.Unsubscribe(TypeEcvents.RewindEvent, StartConstantMoveRewind);
 
         EventManager.Unsubscribe(TypeEcvents.Win, StopConstantMove);
     }

@@ -28,6 +28,8 @@ public class PuntuacionManager : MonoBehaviour
     {
         EventManager.Subscribe(TypeEcvents.GameOver, StopCounter);
 
+        EventManager.Subscribe(TypeEcvents.RewindEvent, StartCounterRewind);
+
         EventManager.Subscribe(TypeEcvents.Win, StopCounter);
     }
 
@@ -66,9 +68,23 @@ public class PuntuacionManager : MonoBehaviour
         contadorActivo = false; 
     }
 
+    private void StartCounterRewind(params object[] parameters)
+    {
+        StartCoroutine(TimeToActivateCounter());
+    }
+
+    private IEnumerator TimeToActivateCounter()
+    {
+        yield return new WaitForSeconds(6f);
+        contadorActivo = true;
+        Debug.Log("1 segundos después");
+    }
+
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEcvents.GameOver, StopCounter);
+
+        EventManager.Unsubscribe(TypeEcvents.RewindEvent, StartCounterRewind);
 
         EventManager.Unsubscribe(TypeEcvents.Win, StopCounter);
     }

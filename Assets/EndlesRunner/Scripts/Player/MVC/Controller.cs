@@ -20,6 +20,8 @@ public class Controller : MonoBehaviour
     private void Start()
     {
         EventManager.Subscribe(TypeEcvents.GameOver, StopController);
+
+        EventManager.Subscribe(TypeEcvents.RewindEvent, RewindControll);
     }
 
     void Update()
@@ -84,9 +86,23 @@ public class Controller : MonoBehaviour
         this.enabled = false;
     }
 
+    private void RewindControll(params object[] parameters)
+    {
+        StartCoroutine(TimeToActivateControls());
+    }
+
+    private IEnumerator TimeToActivateControls()
+    {
+        yield return new WaitForSeconds(6f);
+        this.enabled = true;
+        Debug.Log("1 segundos después");
+    }
+
     private void OnDestroy()
     {
         // IMPORTANTE: desuscribirse
         EventManager.Unsubscribe(TypeEcvents.GameOver, StopController);
+
+        EventManager.Unsubscribe(TypeEcvents.RewindEvent, RewindControll);
     }
 }
