@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerModel : Rewind
@@ -15,6 +16,7 @@ public class PlayerModel : Rewind
 
 
     [SerializeField] private Transform Feets;
+    [SerializeField] private Transform _myTransform;
     [SerializeField] private Rigidbody PlayerBody;
     [SerializeField] private Animator _animator;
 
@@ -26,7 +28,7 @@ public class PlayerModel : Rewind
     [SerializeField] private float GroundCheckDistance = 0.2f;
     [SerializeField] private float OverlapRadio = 10f;
 
-
+    private Collider[] _hits = new Collider[10];
     //mobile
     [SerializeField] private float deadZone = 0.1f;
 
@@ -37,7 +39,7 @@ public class PlayerModel : Rewind
 
     public override void Save()
     {
-        _state.Rec(Speed, transform.position, transform.rotation);
+       // _state.Rec(Speed, transform.position, transform.rotation);
 
         Debug.Log("Guardo la posicion");
     }
@@ -114,7 +116,7 @@ public class PlayerModel : Rewind
         yield return new WaitForSeconds(1f);
         Debug.Log("1 segundos después");
         EventManager.Trigger(TypeEcvents.GameOver);
-        _state.Delete();
+      //  _state.Delete();
     }
     #endregion
 
@@ -127,12 +129,12 @@ public class PlayerModel : Rewind
 
     private void CheackWall()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, OverlapRadio);
+        // Detecta colliders dentro del radio, sin generar garbage
+        int count = Physics.OverlapSphereNonAlloc(_myTransform.position, OverlapRadio, _hits);
 
-        foreach (Collider hit in hits)
+        for (int i = 0; i < count; i++)
         {
-            
-            var obstacleInt = hit.GetComponent<ObstaculosInteractuables>();
+            var obstacleInt = _hits[i].GetComponent<ObstaculosInteractuables>();
 
             if (obstacleInt != null)
             {
