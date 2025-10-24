@@ -53,10 +53,12 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public void RestartLevelWithVideo()
     {
         SetClip(ClickClip);
-       // GameManager.instance.LoadMethod();
 
-        EventManager.Trigger(TypeEcvents.RewindEvent);
+        ExecuteButton();
+       // GameManager.instance.LoadMethod();
     }
+
+    public void ExecuteButton() => AdsManager.Instance.ShowRewardedAd();
 
     // public void ShowCredits()
     // {
