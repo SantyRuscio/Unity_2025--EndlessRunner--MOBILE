@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shield : Item
+public class Shield : PowerUp
 {
-    [SerializeField] private GameObject _ShiedlImage;
+    [SerializeField] private Sprite _ShiedlImage;
     IScreen _ShiedlImageScreenRef;
     private float durationImage = 10f;
 

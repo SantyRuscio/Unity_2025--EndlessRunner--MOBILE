@@ -6,7 +6,8 @@ public enum TypeEcvents
     GameOver,
     Win,
     ShieldEvent,
-    RewindEvent
+    RewindEvent,
+    PowerUpImageSlot
 }
 
 //IMPORTANTE DESSUSCRIBIRSE AL DESTRUIR 
