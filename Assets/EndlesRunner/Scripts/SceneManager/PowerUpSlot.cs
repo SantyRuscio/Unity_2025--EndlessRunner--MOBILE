@@ -1,26 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
-public class PowerUpSlot : MonoBehaviour, IScreen
+public class PowerUpSlot : MonoBehaviour
 {
-    public void Activate()
+    [SerializeField] private Image powerUpImage;
+    [SerializeField] private float duration = 10f;
+    [SerializeField] private float blinkTime = 2f;
+    [SerializeField] private float blinkInterval = 0.15f;
+
+    private Coroutine activeRoutine;
+
+    private void Start()
     {
-        throw new System.NotImplementedException();
+        EventManager.Subscribe(TypeEcvents.PowerUpImageSlot, SetActiveUI);
+
+        // Empezar invisible
+        powerUpImage.enabled = false;
     }
 
-    public void Deactivate()
+    private void SetActiveUI(object[] parameters)
     {
-        throw new System.NotImplementedException();
+        if (parameters.Length > 0 && parameters[0] is Sprite sprite)
+        {
+            powerUpImage.sprite = sprite;
+            powerUpImage.enabled = true;
+
+            if (activeRoutine != null)
+                StopCoroutine(activeRoutine);
+
+            activeRoutine = StartCoroutine(ShowPowerUpRoutine());
+        }
     }
 
-    void Start()
+    private IEnumerator ShowPowerUpRoutine()
     {
-        
+        float timer = 0f;
+        bool blink = false;
+
+        while (timer < duration)
+        {
+            // Titileo solo en los últimos segundos
+            if (timer >= duration - blinkTime)
+            {
+                blink = !blink;
+                powerUpImage.enabled = blink;
+                yield return new WaitForSeconds(blinkInterval);
+                timer += blinkInterval;
+            }
+            else
+            {
+                powerUpImage.enabled = true;
+                yield return null;
+                timer += Time.deltaTime;
+            }
+        }
+
+        // Apagar al final
+        powerUpImage.enabled = false;
+        powerUpImage.sprite = null;
     }
 
-    void Update()
+    private void OnDestroy()
     {
-        
+        EventManager.Unsubscribe(TypeEcvents.PowerUpImageSlot, SetActiveUI);
     }
 }
+
