@@ -1,6 +1,4 @@
 ﻿using Patterns.combined_Factory_Pool;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemsFactory : MonoBehaviour

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TiendaManager : MonoBehaviour
+public class TiendaManager : MonoBehaviour, IScreen
 {
     public GameObject tiendaPanel;
     public GameObject itemSlotPrefab;
@@ -20,8 +18,7 @@ public class TiendaManager : MonoBehaviour
 
     public void AlternarTienda()
     {
-        tiendaAbierta = !tiendaAbierta;
-        tiendaPanel.SetActive(tiendaAbierta);
+        ScreenManager.Instance.ActivateScreen(this);
     }
 
     void LlenarTienda()
@@ -45,5 +42,16 @@ public class TiendaManager : MonoBehaviour
     {
         Debug.Log("Compraste: " + item.itemNombre);
         // Acá se puede restar monedas y agregar al inventario
+    }
+
+    public void Activate()
+    {
+        tiendaAbierta = !tiendaAbierta;
+        tiendaPanel.SetActive(tiendaAbierta);
+    }
+
+    public void Deactivate()
+    {
+        throw new System.NotImplementedException();
     }
 }

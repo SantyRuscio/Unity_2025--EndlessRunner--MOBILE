@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136710565}
   - component: {fileID: 136710567}
+  - component: {fileID: 136710568}
   - component: {fileID: 136710566}
   m_Layer: 5
   m_Name: Label
@@ -257,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136710564}
   m_CullTransparentMesh: 1
+--- !u!114 &136710568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136710564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48f16aebbbc9904ca5918b5c2c11a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ID: IDBMembers
 --- !u!1 &164523893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,6 +3170,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1595643286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1595643288}
+  - component: {fileID: 1595643287}
+  m_Layer: 0
+  m_Name: '[ScreenManager]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1595643287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595643286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc06b632760fd84fa11e0ea84789e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1595643288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595643286}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665914157
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,3 +4192,4 @@ SceneRoots:
   - {fileID: 753763564}
   - {fileID: 1811262657}
   - {fileID: 1595033280}
+  - {fileID: 1595643288}
