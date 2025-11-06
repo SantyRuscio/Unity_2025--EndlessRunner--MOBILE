@@ -10343,6 +10343,7 @@ MonoBehaviour:
   AudioSource: {fileID: 1099471443}
   ClickClip: {fileID: 0}
   HoverClip: {fileID: 8300000, guid: 5d7e9ec864e067843a2a017fb4049ec0, type: 3}
+  asyncLoader: {fileID: 0}
 --- !u!4 &1100478817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4954497549092862106, guid: 4a4549671ef81a6408500b135b741d02, type: 3}
@@ -13396,6 +13397,7 @@ MonoBehaviour:
   AudioSource: {fileID: 1537950827}
   ClickClip: {fileID: 0}
   HoverClip: {fileID: 8300000, guid: 5d7e9ec864e067843a2a017fb4049ec0, type: 3}
+  asyncLoader: {fileID: 0}
 --- !u!1001 &1565977212
 PrefabInstance:
   m_ObjectHideFlags: 0

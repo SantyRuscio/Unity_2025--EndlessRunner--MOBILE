@@ -1,7 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowListener
+public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] private string androidAdUnitId;
     [SerializeField] private string iosAdUnitId;
@@ -10,13 +10,12 @@ public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowLi
 
     private void Awake()
     {
-        #if UNITY_IOS
-                        adUnitId = iosAdUnitId;
-        #elif UNITY_ANDROID
-                adUnitId = androidAdUnitId;
-        #endif
+#if UNITY_IOS
+        adUnitId = iosAdUnitId;
+#elif UNITY_ANDROID
+        adUnitId = androidAdUnitId;
+#endif
     }
-
 
     public void LoadRewardedAd()
     {
@@ -29,20 +28,21 @@ public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowLi
         LoadRewardedAd();
     }
 
-
-
-
-    #region LoadCallbacks
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        Debug.Log("Interstitial Ad Loaded");
+        Debug.Log("Rewarded Ad Loaded");
     }
 
-    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message) { }
-    #endregion
+    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+    {
+        Debug.LogError($"Failed to load ad: {message}");
+    }
 
-    #region ShowCallbacks
-    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message) { }
+
+    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
+    {
+        Debug.LogError($"Ad show failed: {message}");
+    }
 
     public void OnUnityAdsShowStart(string placementId) { }
 
@@ -50,14 +50,11 @@ public class RewardedAds : MonoBehaviour ,IUnityAdsLoadListener ,IUnityAdsShowLi
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        if (placementId == adUnitId && 
-            showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
+        if (placementId == adUnitId && showCompletionState == UnityAdsShowCompletionState.COMPLETED)
         {
-            Debug.Log("Ads Fully Watched .....");
-            EventManager.Trigger(TypeEcvents.RewindEvent); //POR AHORA LO DEJAMOS ACA
+            Debug.Log(" Anuncio recompensado completado. Lanzando evento de rewind...");
+            EventManager.Trigger(TypeEcvents.RewindEvent);
         }
     }
-    #endregion
-
-
 }
+

@@ -11,22 +11,20 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     private bool CanPlay = true;
 
+    [SerializeField] private AsyncCharge asyncLoader;
+
     private void Start()
     {
-        // inicializar con los valores de RemoteConfig
         if (RemoteConfigExample.Instance != null)
         {
             CanPlay = RemoteConfigExample.Instance.gameActivate;
         }
     }
 
-
     private void SetClip(AudioClip clip)
     {
         if (AudioSource != null && clip != null)
-        {
             AudioSource.PlayOneShot(clip);
-        }
     }
 
     public void GoToMenu()
@@ -38,10 +36,11 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public void GoToGame()
     {
         SetClip(ClickClip);
-        if (CanPlay)
-        {
+
+        if (CanPlay && asyncLoader != null)
+            asyncLoader.StartLevel("GamseScene");
+        else if (CanPlay)
             SceneManager.LoadScene("GamseScene");
-        }
     }
 
     public void RestartLevel()
@@ -53,19 +52,8 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public void RestartLevelWithVideo()
     {
         SetClip(ClickClip);
-
-        ExecuteButton();
-       // GameManager.instance.LoadMethod();
+        AdsManager.Instance.ShowRewardedAd();
     }
-
-    public void ExecuteButton() => AdsManager.Instance.ShowRewardedAd();
-
-    // public void ShowCredits()
-    // {
-    //     SetClip(ClickClip);
-    //     if (Credits != null)
-    //         Credits.SetActive(true);
-    // }
 
     public void QuitGame()
     {
