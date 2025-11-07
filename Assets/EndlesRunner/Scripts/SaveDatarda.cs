@@ -1,7 +1,7 @@
 
 
 [System.Serializable]
-public class SaveData
+public class SaveDatarda
 {
     public int monedasTotales;
 }

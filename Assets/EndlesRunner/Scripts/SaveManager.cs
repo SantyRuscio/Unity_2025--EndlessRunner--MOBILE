@@ -5,23 +5,23 @@ public static class SaveManager
 {
     private static string path = Application.persistentDataPath + "/save.json";
 
-    public static void Save(SaveData data)
+    public static void Save(SaveDatarda data)
     {
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(path, json);
     }
 
-    public static SaveData Load()
+    public static SaveDatarda Load()
     {
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-            return JsonUtility.FromJson<SaveData>(json);
+            return JsonUtility.FromJson<SaveDatarda>(json);
         }
         else
         {
             // si no hay uno, se crea
-            return new SaveData();
+            return new SaveDatarda();
         }
     }
 }
