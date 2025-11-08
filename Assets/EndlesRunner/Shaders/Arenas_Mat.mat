@@ -32,7 +32,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _SineAmplitud
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -53,26 +53,26 @@ Material:
     - _DistortAmplitude: 3.09
     - _DistortNoisePeriod: 6
     - _GrainColorBlend: 0.5
-    - _GrainPeriod: 276.79
-    - _GrainShineStrenght: 0.71
-    - _NormalStrenght: 1.5
-    - _PolygonSides: 5.2
+    - _GrainPeriod: 260.67
+    - _GrainShineStrenght: 0.3
+    - _NormalStrenght: -0.56
+    - _PolygonSides: 3.55
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ShineDuneHeightMin: 0.5
-    - _ShineThreshold: -0.39
+    - _ShineDuneHeightMin: 0.6
+    - _ShineThreshold: -0.98
     - _SineAmplitud: 0.59
-    - _SineFrequency: 9.52
+    - _SineFrequency: 8.69
     - _SineRotation: 1.52
-    - _Smoothness: 0.2
+    - _Smoothness: 0.13
     - _SubstrateDuneHeightMax: 0.064
     - _SubstrateGrainHeightMax: 0.5
     - _SubstrateTightening: 1.71
-    - _UVScale: 0.98
+    - _UVScale: 0.67
     m_Colors:
     - _SandHighColor: {r: 0.8207547, g: 0.7551343, b: 0.5226504, a: 0}
     - _SandLowColor: {r: 0.4339623, g: 0.28555536, b: 0.13714845, a: 0}
     - _ShineColor: {r: 0.5188679, g: 0.380251, b: 0.3010413, a: 0}
     - _SubstrateColor: {r: 0.25151297, g: 0.27945018, b: 0.33962262, a: 0}
-    - _UVTiling: {r: -17.11, g: 0.9, b: 0, a: 0}
+    - _UVTiling: {r: -14.76, g: -9.7, b: 0, a: 0}
   m_BuildTextureStacks: []
