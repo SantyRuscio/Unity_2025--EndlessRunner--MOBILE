@@ -2,4 +2,8 @@
 "IDBShop : "SHOP",
 "IDBExit : "EXIT",
 "IDBMembers" : "Members",
-"IDBLoading" : "Loading..."
+"IDBLoading" : "Loading...",
+"IDBDistancesTraveled" : DISTANCE TRAVELED,
+"IDBCoinsCollected" : COINS COLLECTED,
+"IDBDistanceRecord" : MAX DISTANCE RECORD,
+"IDBDefeat" : DEFEAT

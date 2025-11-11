@@ -2,4 +2,8 @@
 "IDBShop : "TIENDA",
 "IDBExit : "SALIR",
 "IDBMembers" : "Miembros",
-"IDBLoading" : "CARGANDO..."
+"IDBLoading" : "CARGANDO...",
+"IDBDistancesTraveled" : DISTANCIA RECORRIDA,
+"IDBCoinsCollected" : MONEDAS RECOLECTADAS,
+"IDBDistanceRecord" : RECORD DE DISTANCIA,
+"IDBDefeat" : DERROTA
