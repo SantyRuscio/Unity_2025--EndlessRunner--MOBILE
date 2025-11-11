@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistortAmplitude: 3.09
+    - _DistortAmplitude: 1.9
     - _DistortNoisePeriod: 6
     - _GrainColorBlend: 0.5
     - _GrainPeriod: 260.67
@@ -68,7 +68,7 @@ Material:
     - _SubstrateDuneHeightMax: 0.064
     - _SubstrateGrainHeightMax: 0.5
     - _SubstrateTightening: 1.71
-    - _UVScale: 0.67
+    - _UVScale: 1.18
     m_Colors:
     - _SandHighColor: {r: 0.8207547, g: 0.7551343, b: 0.5226504, a: 0}
     - _SandLowColor: {r: 0.4339623, g: 0.28555536, b: 0.13714845, a: 0}
