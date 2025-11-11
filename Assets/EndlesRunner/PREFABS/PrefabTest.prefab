@@ -227,7 +227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldObject: {fileID: 1285629408513878686}
   disableOnAwake: 1
-  _effectTime: 10
 --- !u!1 &1560977638623584562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1445,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldObject: {fileID: 4972374499522563748}
   disableOnAwake: 1
-  _effectTime: 10
 --- !u!1 &5312959145922405050
 GameObject:
   m_ObjectHideFlags: 0

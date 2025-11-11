@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 public abstract class PowerUp : Item
 {
     [SerializeField, Tooltip("Sprite que representa este PowerUp")]

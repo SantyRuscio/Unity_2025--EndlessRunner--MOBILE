@@ -1,12 +1,15 @@
-
+﻿using System.Collections;
+using UnityEngine;
 
 public class Shield : PowerUp
 {
-    private float duration = 10f;
+    [SerializeField] private float duration = 10f;
 
     public override void Execute()
     {
         EventManager.Trigger(TypeEcvents.ShieldEvent, duration);
+
+        GameManager.instance.ShieldEventTimer(duration);
 
         base.TriggerEvent();
 

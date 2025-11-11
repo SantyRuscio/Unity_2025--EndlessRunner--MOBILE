@@ -5,8 +5,6 @@ public class FloorShieldShader : MonoBehaviour
 {
     [SerializeField] private GameObject shieldObject;
     [SerializeField] private bool disableOnAwake = true;
-    [SerializeField] private float _effectTime = 10f;
-
     private void Awake()
     {
         if (disableOnAwake && shieldObject != null)
@@ -14,7 +12,10 @@ public class FloorShieldShader : MonoBehaviour
             shieldObject.SetActive(false);
 
             Debug.Log("SUSCRITO al SHIELDS");
+
             EventManager.Subscribe(TypeEcvents.ShieldEvent, ShieldPicked);
+
+            EventManager.Subscribe(TypeEcvents.ShieldEndEvent, ShieldEndEvent);
         }
     }
 
@@ -23,19 +24,22 @@ public class FloorShieldShader : MonoBehaviour
         if (shieldObject != null)
         {
             shieldObject.SetActive(true);
-            StartCoroutine(ShieldEffectTimer());
         }
     }
 
-    IEnumerator ShieldEffectTimer()
+    private void ShieldEndEvent(object[] parameters)
     {
-        yield return new WaitForSeconds(_effectTime);
-        shieldObject.SetActive(false);
+        if (shieldObject != null)
+        {
+            shieldObject.SetActive(false);
+        }
     }
 
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEcvents.ShieldEvent, ShieldPicked);
+
+        EventManager.Unsubscribe(TypeEcvents.ShieldEndEvent, ShieldEndEvent);
     }
 }
 

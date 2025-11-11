@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     private float _defaultSpeed;
 
+    private float Effectduration;
+
     private void Awake()
     {
         if (instance == null)
@@ -32,26 +34,24 @@ public class GameManager : MonoBehaviour
         Debug.Log("Rewinds encontrados: " + rewinds.Length);
     }
 
-  // // ✅ Guarda el estado actual de todos los objetos con Rewind
-  // public void SaveMethod()
-  // {
-  //     Debug.Log("Entre a SaveMethod");
-  //
-  //     for (int i = 0; i < rewinds.Length; i++)
-  //     {
-  //         rewinds[i].Save();
-  //         Debug.Log("Guardado estado de: " + rewinds[i].name);
-  //     }
-  // }
-  //
-  // // 
-  // public void LoadMethod()
-  // {
-  //     for (int i = 0; i < rewinds.Length; i++)
-  //     {
-  //         rewinds[i].Load();
-  //     }
-  // }
+    public void SaveMethod()
+    {
+        Debug.Log("Entre a SaveMethod");
+   
+        for (int i = 0; i < rewinds.Length; i++)
+        {
+            rewinds[i].Save();
+            Debug.Log("Guardado estado de: " + rewinds[i].name);
+        }
+    }
+   
+    public void LoadMethod()
+    {
+        for (int i = 0; i < rewinds.Length; i++)
+        {
+            rewinds[i].Load();
+        }
+    }
 
     public float Speed => _speed;
 
@@ -59,6 +59,23 @@ public class GameManager : MonoBehaviour
     {
         return playerModel;
     }
+
+    public void ShieldEventTimer(float duration)
+    {
+        Effectduration = duration;
+        StartCoroutine(ShieldEffectTimer(Effectduration));
+    }
+
+    private IEnumerator ShieldEffectTimer(float Effectduration)
+    {
+        yield return new WaitForSeconds(Effectduration);
+
+        Debug.Log("ENTRÉ A LA CORUTINA DEL ESCUDO - DESACTIVANDO");
+
+        EventManager.Trigger(TypeEcvents.ShieldEndEvent);
+
+    }
+
 }
 
 

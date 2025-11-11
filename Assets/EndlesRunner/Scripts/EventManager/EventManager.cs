@@ -5,6 +5,7 @@ public enum TypeEcvents
     GameOver,
     Win,
     ShieldEvent,
+    ShieldEndEvent,
     RewindEvent,
     PowerUpImageSlot
 }
