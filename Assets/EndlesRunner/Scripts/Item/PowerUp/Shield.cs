@@ -7,7 +7,7 @@ public class Shield : PowerUp
 
     public override void Execute()
     {
-        EventManager.Trigger(TypeEcvents.ShieldEvent, duration);
+        EventManager.Trigger(TypeEvents.ShieldEvent, duration);
 
         GameManager.instance.ShieldEventTimer(duration);
 

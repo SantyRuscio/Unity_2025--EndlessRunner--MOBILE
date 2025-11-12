@@ -79,7 +79,7 @@ public class PlayerModel : Rewind
     }
     private void Start()
     {
-        EventManager.Subscribe(TypeEcvents.RewindEvent, OnCollsionRewind);
+        EventManager.Subscribe(TypeEvents.RewindEvent, OnCollsionRewind);
 
         originalHeight = playerCollider.height;
         originalCenter = playerCollider.center;
@@ -112,7 +112,7 @@ public class PlayerModel : Rewind
     {
         yield return new WaitForSeconds(1f);
         Debug.Log("1 segundos después");
-        EventManager.Trigger(TypeEcvents.GameOver);
+        EventManager.Trigger(TypeEvents.GameOver);
       //  _state.Delete();
     }
     #endregion

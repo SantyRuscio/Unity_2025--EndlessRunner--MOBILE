@@ -15,6 +15,6 @@ public abstract class PowerUp : Item
 
     public virtual void TriggerEvent()
     {
-        EventManager.Trigger(TypeEcvents.PowerUpImageSlot, sprite);
+        EventManager.Trigger(TypeEvents.PowerUpImageSlot, sprite);
     }
 }

@@ -30,11 +30,11 @@ public class Levels : MonoBehaviour
 
     void Start()
     {
-        EventManager.Subscribe(TypeEcvents.GameOver, StopConstantMove);
+        EventManager.Subscribe(TypeEvents.GameOver, StopConstantMove);
 
-        EventManager.Subscribe(TypeEcvents.RewindEvent, StartConstantMoveRewind);
+        EventManager.Subscribe(TypeEvents.RewindEvent, StartConstantMoveRewind);
 
-        EventManager.Subscribe(TypeEcvents.Win, StopConstantMove);
+        EventManager.Subscribe(TypeEvents.Win, StopConstantMove);
     }
 
     private void Update()
@@ -118,10 +118,10 @@ public class Levels : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Unsubscribe(TypeEcvents.GameOver, StopConstantMove);
+        EventManager.Unsubscribe(TypeEvents.GameOver, StopConstantMove);
 
-        EventManager.Unsubscribe(TypeEcvents.RewindEvent, StartConstantMoveRewind);
+        EventManager.Unsubscribe(TypeEvents.RewindEvent, StartConstantMoveRewind);
 
-        EventManager.Unsubscribe(TypeEcvents.Win, StopConstantMove);
+        EventManager.Unsubscribe(TypeEvents.Win, StopConstantMove);
     }
 }

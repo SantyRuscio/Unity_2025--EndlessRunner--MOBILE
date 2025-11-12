@@ -18,9 +18,9 @@ public class Controller : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Subscribe(TypeEcvents.GameOver, StopController);
+        EventManager.Subscribe(TypeEvents.GameOver, StopController);
 
-        EventManager.Subscribe(TypeEcvents.RewindEvent, RewindControll);
+        EventManager.Subscribe(TypeEvents.RewindEvent, RewindControll);
     }
 
     void Update()
@@ -100,8 +100,8 @@ public class Controller : MonoBehaviour
     private void OnDestroy()
     {
         // IMPORTANTE: desuscribirse
-        EventManager.Unsubscribe(TypeEcvents.GameOver, StopController);
+        EventManager.Unsubscribe(TypeEvents.GameOver, StopController);
 
-        EventManager.Unsubscribe(TypeEcvents.RewindEvent, RewindControll);
+        EventManager.Unsubscribe(TypeEvents.RewindEvent, RewindControll);
     }
 }

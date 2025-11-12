@@ -13,9 +13,9 @@ public class FloorShieldShader : MonoBehaviour
 
             Debug.Log("SUSCRITO al SHIELDS");
 
-            EventManager.Subscribe(TypeEcvents.ShieldEvent, ShieldPicked);
+            EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldPicked);
 
-            EventManager.Subscribe(TypeEcvents.ShieldEndEvent, ShieldEndEvent);
+            EventManager.Subscribe(TypeEvents.ShieldEndEvent, ShieldEndEvent);
         }
     }
 
@@ -37,9 +37,9 @@ public class FloorShieldShader : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Unsubscribe(TypeEcvents.ShieldEvent, ShieldPicked);
+        EventManager.Unsubscribe(TypeEvents.ShieldEvent, ShieldPicked);
 
-        EventManager.Unsubscribe(TypeEcvents.ShieldEndEvent, ShieldEndEvent);
+        EventManager.Unsubscribe(TypeEvents.ShieldEndEvent, ShieldEndEvent);
     }
 }
 

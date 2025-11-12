@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Rewinds encontrados: " + rewinds.Length);
     }
 
+    #region MEMENTO 
     public void SaveMethod()
     {
         Debug.Log("Entre a SaveMethod");
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
             rewinds[i].Load();
         }
     }
-
+#endregion
     public float Speed => _speed;
 
     public PlayerModel GetPlayerModel()
@@ -60,6 +61,11 @@ public class GameManager : MonoBehaviour
         return playerModel;
     }
 
+
+
+    #region Events
+
+    #region ShieldEventTimer
     public void ShieldEventTimer(float duration)
     {
         Effectduration = duration;
@@ -72,10 +78,27 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("ENTRÉ A LA CORUTINA DEL ESCUDO - DESACTIVANDO");
 
-        EventManager.Trigger(TypeEcvents.ShieldEndEvent);
+        EventManager.Trigger(TypeEvents.ShieldEndEvent);
 
     }
+    #endregion
+
+    #region CoinsMultiplier
+    public void CoinMultiplierEventTimer(float duration)
+    {
+        Effectduration = duration;
+        StartCoroutine(CoinEffectTimer(Effectduration));
+    }
+
+    private IEnumerator CoinEffectTimer(float Effectduration)
+    {
+        yield return new WaitForSeconds(Effectduration);
+
+        EventManager.Trigger(TypeEvents.ShieldEndEvent);
+    }
+
+    #endregion
+
+    #endregion
 
 }
-
-

@@ -13,7 +13,7 @@ public class PowerUpSlot : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Subscribe(TypeEcvents.PowerUpImageSlot, SetActiveUI);
+        EventManager.Subscribe(TypeEvents.PowerUpImageSlot, SetActiveUI);
 
         // Empezar invisible
         powerUpImage.enabled = false;
@@ -63,7 +63,7 @@ public class PowerUpSlot : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Unsubscribe(TypeEcvents.PowerUpImageSlot, SetActiveUI);
+        EventManager.Unsubscribe(TypeEvents.PowerUpImageSlot, SetActiveUI);
     }
 }
 

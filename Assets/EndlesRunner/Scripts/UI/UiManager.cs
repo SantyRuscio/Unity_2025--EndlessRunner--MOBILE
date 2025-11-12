@@ -7,16 +7,16 @@ public class UiManager : MonoBehaviour, IScreen
 
     private void Start()
     {
-        EventManager.Subscribe(TypeEcvents.GameOver, SetDefeatEnabled);
-        EventManager.Subscribe(TypeEcvents.RewindEvent, SetRewimd);
-        EventManager.Subscribe(TypeEcvents.Win, SetWinEnabled);
+        EventManager.Subscribe(TypeEvents.GameOver, SetDefeatEnabled);
+        EventManager.Subscribe(TypeEvents.RewindEvent, SetRewimd);
+        EventManager.Subscribe(TypeEvents.Win, SetWinEnabled);
     }
 
     private void OnDestroy()
     {
-        EventManager.Unsubscribe(TypeEcvents.GameOver, SetDefeatEnabled);
-        EventManager.Unsubscribe(TypeEcvents.RewindEvent, SetRewimd);
-        EventManager.Unsubscribe(TypeEcvents.Win, SetWinEnabled);
+        EventManager.Unsubscribe(TypeEvents.GameOver, SetDefeatEnabled);
+        EventManager.Unsubscribe(TypeEvents.RewindEvent, SetRewimd);
+        EventManager.Unsubscribe(TypeEvents.Win, SetWinEnabled);
     }
 
     #region ISCREEN

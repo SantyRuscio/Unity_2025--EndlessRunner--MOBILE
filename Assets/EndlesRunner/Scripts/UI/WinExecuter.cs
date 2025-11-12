@@ -7,7 +7,7 @@ public class WinExecuter : MonoBehaviour
         if (other != null && other.CompareTag("Player"))
         {
             Debug.Log("PLAYER DENTRO");
-            EventManager.Trigger(TypeEcvents.Win);
+            EventManager.Trigger(TypeEvents.Win);
         }
     }
 }

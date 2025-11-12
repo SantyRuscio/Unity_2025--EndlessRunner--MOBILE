@@ -53,7 +53,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         if (placementId == adUnitId && showCompletionState == UnityAdsShowCompletionState.COMPLETED)
         {
             Debug.Log(" Anuncio recompensado completado. Lanzando evento de rewind...");
-            EventManager.Trigger(TypeEcvents.RewindEvent);
+            EventManager.Trigger(TypeEvents.RewindEvent);
         }
     }
 }
