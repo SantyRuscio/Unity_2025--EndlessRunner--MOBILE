@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lineas_Velocidad
+  m_Name: Lineas de Velocidad Actualizado
   m_Shader: {fileID: -6465566751694194690, guid: 8b582c5f321944b4e80f8f22a33f166f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,6 +42,7 @@ Material:
     - _CantidadDeLineas: 20
     - _DensidadLineas: 0.5
     - _Frames: 50
+    - _Strength: 0
     - _Tama_oMascaraCentro: 0.0625
     - _Velocidad: 3
     m_Colors:

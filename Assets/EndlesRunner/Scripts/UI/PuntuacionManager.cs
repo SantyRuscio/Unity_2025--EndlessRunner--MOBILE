@@ -2,14 +2,6 @@
 using UnityEngine;
 using TMPro;
 
-using System.Collections;
-using UnityEngine;
-using TMPro;
-
-using System.Collections;
-using UnityEngine;
-using TMPro;
-
 public class PuntuacionManager : MonoBehaviour
 {
     public static PuntuacionManager Instance;

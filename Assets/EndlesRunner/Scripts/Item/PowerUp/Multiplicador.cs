@@ -4,19 +4,35 @@ using UnityEngine;
 public class Multiplicador : PowerUp
 {
     [Header("Configuración del PowerUp")]
-    [SerializeField] private float multiplicador = 4f; // Cuánto multiplica los metros (x2 por defecto)
-    [SerializeField] private float duracion = 10f;     //  Duración del efecto en segundos
+    [SerializeField] private float multiplicador = 4f;
+    [SerializeField] private float duracion = 10f;
+
+    [Header("Shader del PowerUp")]
+    public FullscreenFeatureController shaderController;
 
     public override void Execute()
     {
         Debug.Log("Entre al Multiplicador");
 
+        if (shaderController != null)
+            shaderController.TurnOn();
+
+        // Aplica efecto al juego
         EventManager.Trigger(TypeEvents.MultiplierEvent, multiplicador, duracion);
 
-        base.TriggerEvent();
+        StartCoroutine(DesactivarLuegoDeTiempo());
 
-        // Destruye el objeto del PowerUp
+        base.TriggerEvent();
         Destroy(gameObject);
     }
 
+    private IEnumerator DesactivarLuegoDeTiempo()
+    {
+        yield return new WaitForSeconds(duracion);
+
+        Debug.Log("Se terminó el multiplicador, apagando shader...");
+
+        if (shaderController != null)
+            shaderController.TurnOff();
+    }
 }
