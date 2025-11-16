@@ -42,8 +42,8 @@ Material:
     - _CantidadDeLineas: 20
     - _DensidadLineas: 0.5
     - _Frames: 50
-    - _Strength: 0
-    - _Tama_oMascaraCentro: 0.0625
+    - _Strength: 1
+    - _Tama_oMascaraCentro: 1
     - _Velocidad: 3
     m_Colors:
     - _Centro: {r: 0.5, g: 0.5, b: 0, a: 0}
