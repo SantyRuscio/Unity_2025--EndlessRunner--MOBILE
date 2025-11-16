@@ -110,6 +110,11 @@ public class PlayerModel : Rewind
 
     private IEnumerator DeadTimeLapse()
     {
+        DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
+        if (deathFX != null)
+        {
+            deathFX.ShowDeathScreen();
+        }
         yield return new WaitForSeconds(1f);
         Debug.Log("1 segundos después");
         EventManager.Trigger(TypeEvents.GameOver);

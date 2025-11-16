@@ -29,6 +29,11 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void GoToMenu()
     {
+        DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
+        if (deathFX != null)
+        {
+            deathFX.HideDeathScreen();
+        }
         SetClip(ClickClip);
         SceneManager.LoadScene("MenuDeInicio");
     }
@@ -45,18 +50,36 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void RestartLevel()
     {
+        DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
+        if (deathFX != null)
+        {
+            deathFX.HideDeathScreen();
+        }
+
         SetClip(ClickClip);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void RestartLevelWithVideo()
     {
+        DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
+        if (deathFX != null)
+        {
+            deathFX.HideDeathScreen();
+        }
+
         SetClip(ClickClip);
         AdsManager.Instance.ShowRewardedAd();
     }
 
     public void QuitGame()
     {
+        DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
+        if (deathFX != null)
+        {
+            deathFX.HideDeathScreen();
+        }
+
         SetClip(ClickClip);
         Application.Quit();
     }

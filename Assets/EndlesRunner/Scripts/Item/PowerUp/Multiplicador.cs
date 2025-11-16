@@ -4,7 +4,7 @@ using UnityEngine;
 public class Multiplicador : PowerUp
 {
     [Header("Configuración del PowerUp")]
-    [SerializeField] private float multiplicador = 4f; )
+    [SerializeField] private float multiplicador = 4f;
     [SerializeField] private float duracion = 10f;     
 
     private FullscreenFeatureController fullscreenFeatureController;
