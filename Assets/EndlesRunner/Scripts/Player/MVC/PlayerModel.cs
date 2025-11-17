@@ -34,12 +34,12 @@ public class PlayerModel : Rewind
 
 
 
-    public override void Save()
-    {
-       // _state.Rec(Speed, transform.position, transform.rotation);
-
-        Debug.Log("Guardo la posicion");
-    }
+    public override void Save()                                          //MEMENTO
+    {                                                                    //MEMENTO
+        _state.Rec(Speed, transform.position, transform.rotation);       //MEMENTO
+                                                                         //MEMENTO
+        Debug.Log("Guardo la posicion");                                 //MEMENTO
+    }                                                                    //MEMENTO
 
     public override void Load()
     {

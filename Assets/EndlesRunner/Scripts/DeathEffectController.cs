@@ -17,7 +17,7 @@ public class DeathEffectController : MonoBehaviour
     {
         if (deathMaterial != null)
         {
-            deathMaterial.SetFloat(SHADER_PROPERTY, 1f);
+            deathMaterial.SetFloat(SHADER_PROPERTY, 5f);
         }
     }
     public void HideDeathScreen()

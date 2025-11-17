@@ -42,6 +42,7 @@ Material:
     - _CantidadDeLineas: 20
     - _DensidadLineas: 0.5
     - _Frames: 50
+    - _Fullscreen_DepthWrite: 0
     - _Strength: 1
     - _Tama_oMascaraCentro: 1
     - _Velocidad: 3

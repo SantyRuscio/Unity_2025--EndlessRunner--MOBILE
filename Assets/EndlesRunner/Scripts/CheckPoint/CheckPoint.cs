@@ -7,7 +7,7 @@ public class CheckPoint : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             Debug.Log("CheckPointGuarda");
-           // GameManager.instance.SaveMethod();
+            GameManager.instance.SaveMethod();
         }
     }
 }
