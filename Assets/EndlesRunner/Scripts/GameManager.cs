@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
         playerModel = FindAnyObjectByType<PlayerModel>();
         _defaultSpeed = _speed;
 
-        // Busca automáticamente todos los objetos que tengan scripts que hereden de Rewind
         rewinds = FindObjectsOfType<Rewind>();
 
         Debug.Log("Rewinds encontrados: " + rewinds.Length);

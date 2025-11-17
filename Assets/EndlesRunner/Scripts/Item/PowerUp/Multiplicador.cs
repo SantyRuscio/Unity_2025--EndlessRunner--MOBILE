@@ -28,6 +28,8 @@ public class Multiplicador : PowerUp
         if (fullscreenFeatureController != null)
         {
             fullscreenFeatureController.StartPowerUp(duracion);
+
+            Debug.Log("aRRANCA SHADER");
         }
         base.TriggerEvent();
 

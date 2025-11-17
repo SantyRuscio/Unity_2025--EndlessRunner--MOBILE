@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AGUAS_Mat
+  m_Name: AGUAS_2
   m_Shader: {fileID: -6465566751694194690, guid: b6eca64aae1f7394da5c48592db0ada5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Altura_Olas: 1
+    - _Altura_Olas: 3.3
     - _DelgadezOndas: 4
     - _DensidadOndas: 36
     - _QueueControl: 0
