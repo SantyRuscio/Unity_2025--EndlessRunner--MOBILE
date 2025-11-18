@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     private float _defaultSpeed;
 
-    private float Effectduration;
+    private float Effectduration = 10f;
 
     private void Awake()
     {
@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
         rewinds = FindObjectsOfType<Rewind>();
 
         Debug.Log("Rewinds encontrados: " + rewinds.Length);
+    }
+
+    private void Start()
+    {
+        EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldEventTimer);
     }
 
     #region MEMENTO 
@@ -65,9 +70,8 @@ public class GameManager : MonoBehaviour
     #region Events
 
     #region ShieldEventTimer
-    public void ShieldEventTimer(float duration)
+    public void ShieldEventTimer(params object[] parameters)
     {
-        Effectduration = duration;
         StartCoroutine(ShieldEffectTimer(Effectduration));
     }
 
@@ -93,11 +97,16 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(Effectduration);
 
-        EventManager.Trigger(TypeEvents.ShieldEndEvent);
+       // EventManager.Trigger(TypeEvents.ShieldEndEvent);
     }
 
     #endregion
 
     #endregion
 
+
+    private void OnDestroy()
+    {
+      EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldEventTimer);
+    }
 }

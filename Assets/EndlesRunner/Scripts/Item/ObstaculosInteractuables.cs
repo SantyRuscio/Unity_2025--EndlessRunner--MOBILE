@@ -1,5 +1,5 @@
 
 public abstract class ObstaculosInteractuables : Item
 {
-   public virtual void ObjectAction() {}
+    public abstract void ObjectAction();
 }

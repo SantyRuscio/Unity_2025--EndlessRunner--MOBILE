@@ -9,8 +9,6 @@ public class Shield : PowerUp
     {
         EventManager.Trigger(TypeEvents.ShieldEvent, duration);
 
-        GameManager.instance.ShieldEventTimer(duration);
-
         base.TriggerEvent();
 
         Destroy(gameObject);
