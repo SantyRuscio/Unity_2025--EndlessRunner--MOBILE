@@ -1,57 +1,86 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TiendaManager : MonoBehaviour, IScreen
 {
+    [Header("UI Tienda")]
     public GameObject tiendaPanel;
+    public TMP_Text monedasTexto;  // ← MONEDAS VISIBLES EN LA TIENDA
     public GameObject itemSlotPrefab;
-    public Transform contenidoPanel; 
+    public Transform contenidoPanel;
 
-    public TiendaItem[] items; 
+    [Header("Items")]
+    public TiendaItem[] items;
 
     private bool tiendaAbierta = false;
 
     private void Start()
     {
         LlenarTienda();
+        ActualizarMonedasUI(); // ← muestra monedas al entrar
     }
 
     public void AlternarTienda()
     {
         ScreenManager.Instance.ActivateScreen(this);
+        ActualizarMonedasUI(); // ← refresca cuando se abre
     }
 
-    void LlenarTienda()
+    private void LlenarTienda()
     {
         foreach (Transform child in contenidoPanel)
-        {
-            Destroy(child.gameObject); // Limpiar antes
-        }
+            Destroy(child.gameObject);
 
         foreach (TiendaItem item in items)
         {
             GameObject slot = Instantiate(itemSlotPrefab, contenidoPanel);
             slot.transform.Find("Icono").GetComponent<Image>().sprite = item.icono;
 
-            // Podés agregar un tooltip o botón para comprar/equipar
             slot.GetComponent<Button>().onClick.AddListener(() => ComprarItem(item));
         }
     }
 
-    void ComprarItem(TiendaItem item)
+    private void ComprarItem(TiendaItem item)
     {
-        Debug.Log("Compraste: " + item.itemNombre);
-        // Acá se puede restar monedas y agregar al inventario
+        int monedas = PlayerPrefs.GetInt("MonedasTotales", 0);
+
+        if (monedas >= item.precio)
+        {
+            monedas -= item.precio;
+
+            // Guardar
+            PlayerPrefs.SetInt("MonedasTotales", monedas);
+            PlayerPrefs.Save();
+
+            Debug.Log("Compraste: " + item.itemNombre);
+
+            // Actualizar UI
+            ActualizarMonedasUI();
+        }
+        else
+        {
+            Debug.Log("No tienes suficientes monedas.");
+        }
+    }
+
+    private void ActualizarMonedasUI()
+    {
+        int monedas = PlayerPrefs.GetInt("MonedasTotales", 0);
+        monedasTexto.text = monedas.ToString();
     }
 
     public void Activate()
     {
-        tiendaAbierta = !tiendaAbierta;
-        tiendaPanel.SetActive(tiendaAbierta);
+        tiendaAbierta = true;
+        tiendaPanel.SetActive(true);
+        ActualizarMonedasUI();
     }
 
     public void Deactivate()
     {
-        throw new System.NotImplementedException();
+        tiendaAbierta = false;
+        tiendaPanel.SetActive(false);
     }
 }
+

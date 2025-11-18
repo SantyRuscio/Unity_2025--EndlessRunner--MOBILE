@@ -4,16 +4,16 @@ using System.Collections;
 public class Coin : Item
 {
     [Header("Variables")]
-    public int valor = 1;
-
+    public int valorMonedas = 1;
     private AudioSource _audioSource;
+
     private int valorOriginal;
     private Coroutine boostCoroutine;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        valorOriginal = valor;
+        valorOriginal = valorMonedas;
     }
 
     private void OnEnable()
@@ -40,7 +40,7 @@ public class Coin : Item
 
     public override void Execute()
     {
-        PuntuacionManager.Instance.AgregarMonedas(valor);
+        PuntuacionManager.Instance.AgregarMonedas(valorMonedas);
 
         if (_audioSource != null)
             _audioSource.Play();
@@ -62,10 +62,10 @@ public class Coin : Item
 
     private IEnumerator MultiplicarValorTemporal(float multiplicador, float duracion)
     {
-        valor = Mathf.RoundToInt(valorOriginal * multiplicador);
-        Debug.Log($" {name}: Valor de moneda aumentado a {valor} por {duracion} segundos.");
+        valorMonedas = Mathf.RoundToInt(valorOriginal * multiplicador);
+        Debug.Log($" {name}: Valor de moneda aumentado a {valorMonedas} por {duracion} segundos.");
         yield return new WaitForSeconds(duracion);
-        valor = valorOriginal;
+        valorMonedas = valorOriginal;
         Debug.Log($" {name}: Valor de moneda volvió a {valorOriginal}.");
     }
     #endregion

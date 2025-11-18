@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.92
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.85187286, g: 0.6731171, b: 0.50796914, a: 0.92}
+  m_IndirectSpecularColor: {r: 0.6637667, g: 0.54482615, b: 0.43751714, a: 0.92}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7822,6 +7822,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 5524295802877018538, guid: 4aee80c8fac56b94aa4eb57654281ae7, type: 3}
   - {fileID: 784828136594676520, guid: 3998ba5b797ffa249b9db8111fa38bfa, type: 3}
+  - {fileID: 6894539020701629630, guid: 3a2a91ab23cf8004f877f1b3fcb49d06, type: 3}
   initialAmount: 10
   spawnProbability: 1
 --- !u!4 &598328076
@@ -9563,6 +9564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoMonedas: {fileID: 841473598}
   textoMetros: {fileID: 748290138}
+  textoMonedasTotales: {fileID: 0}
 --- !u!4 &735749971
 Transform:
   m_ObjectHideFlags: 0

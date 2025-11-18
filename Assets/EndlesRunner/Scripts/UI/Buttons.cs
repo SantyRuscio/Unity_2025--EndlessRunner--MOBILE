@@ -50,6 +50,11 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void RestartLevel()
     {
+        // Reinicio del run (monedas y metros vuelven a 0)
+        if (PuntuacionManager.Instance != null)
+            PuntuacionManager.Instance.ReiniciarRun();
+
+        // Oculta la pantalla de muerte
         DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
         if (deathFX != null)
         {
@@ -57,8 +62,10 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         }
 
         SetClip(ClickClip);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 
     public void RestartLevelWithVideo()
     {
@@ -69,6 +76,7 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         }
 
         SetClip(ClickClip);
+
         AdsManager.Instance.ShowRewardedAd();
     }
 
