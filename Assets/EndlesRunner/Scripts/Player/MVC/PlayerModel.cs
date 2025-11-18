@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 public class PlayerModel : Rewind
 {
@@ -182,3 +183,52 @@ public class PlayerModel : Rewind
         playerCollider.center = originalCenter;
     }
 }
+
+
+
+
+
+
+
+
+
+// public class Contador
+// {
+//     int monedas = 0;
+// 
+//     public void AddMoneda()
+//     {
+//         monedas++;
+//     }
+// 
+//     public void VolverMenu()
+//     {
+//         int monedasActuales = PlayerPrefs.GetInt("ContadortDeMonedas");
+//         monedasActuales += monedas;
+//         PlayerPrefs.SetInt("ContadortDeMonedas", monedasActuales);
+//     }
+// }
+// 
+// 
+// public class Menu
+// {
+//     [SerializeField]
+//     TMP_Text TXT_Monedas;
+//      
+//     int monedas =0;
+// 
+//     private void Start()
+//     {
+//         monedas = PlayerPrefs.GetInt("ContadortDeMonedas");
+//         TXT_Monedas.SetText(monedas.ToString());
+//     }
+// 
+//     public void Comprar(int precio)
+//     {
+//         if(monedas < precio) return;
+// 
+//         monedas -= precio;
+// 
+//         PlayerPrefs.SetInt("ContadortDeMonedas", monedas);
+//     }
+// }
