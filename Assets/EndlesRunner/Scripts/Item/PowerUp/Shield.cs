@@ -8,6 +8,8 @@ public class Shield : PowerUp
     public override void Execute()
     {
         EventManager.Trigger(TypeEvents.ShieldEvent, duration);
+        
+       SoundManager.Instance.PlaySFX(AudioClip);
 
         base.TriggerEvent();
 

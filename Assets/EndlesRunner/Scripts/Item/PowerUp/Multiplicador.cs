@@ -23,6 +23,8 @@ public class Multiplicador : PowerUp
     {
         Debug.Log("Entre al Multiplicador");
 
+        SoundManager.Instance.PlaySFX(AudioClip);
+
         EventManager.Trigger(TypeEvents.MultiplierEvent, multiplicador, duracion);
 
         if (fullscreenFeatureController != null)

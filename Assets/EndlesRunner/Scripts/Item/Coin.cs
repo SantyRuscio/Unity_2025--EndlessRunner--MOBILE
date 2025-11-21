@@ -5,14 +5,14 @@ public class Coin : Item
 {
     [Header("Variables")]
     public int valorMonedas = 1;
-    private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip coinClip;
 
     private int valorOriginal;
     private Coroutine boostCoroutine;
 
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
         valorOriginal = valorMonedas;
     }
 
@@ -42,10 +42,9 @@ public class Coin : Item
     {
         PuntuacionManager.Instance.AgregarMonedas(valorMonedas);
 
-        if (_audioSource != null)
-            _audioSource.Play();
-
+        SoundManager.Instance.PlaySFX(coinClip);
         Destroy(gameObject);
+
     }
 
     #region  Multiplicador temporal de valor de moneda

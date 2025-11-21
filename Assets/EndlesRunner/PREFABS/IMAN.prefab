@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   sprite: {fileID: 21300000, guid: 3b3ed7afbebc8c744b7596063286ce18, type: 3}
+  audioClip: {fileID: 8300000, guid: a4b977cf7a6d711458387aed3239d2b1, type: 3}
 --- !u!95 &6138115829097100892
 Animator:
   serializedVersion: 5

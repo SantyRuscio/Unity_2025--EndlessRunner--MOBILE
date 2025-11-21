@@ -7,6 +7,8 @@ public class Iman : PowerUp
 
     public override void Execute()
     {
+        SoundManager.Instance.PlaySFX(AudioClip);
+
         DetectionManager.instance.ActivateMagnet(ChangeCoinDistance, ChangeCoinSpeed, ImanDuration);
 
         ShaderManager.instance.ActivarPowerMode(ImanDuration);

@@ -33,6 +33,9 @@ public class PlayerModel : Rewind
     private Movement movimiento; //composición
     private View view;
 
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _jumpSound;
+    [SerializeField] private AudioClip _rollSound;
 
 
     public override void Save()                                          //MEMENTO
@@ -155,6 +158,7 @@ public class PlayerModel : Rewind
     void Jump()
     {
         if ( ! CheckIsGrounded() ) return;
+        _audioSource.PlayOneShot(_jumpSound);
         movimiento.Jump();
         view.Jump();
     }
@@ -172,6 +176,7 @@ public class PlayerModel : Rewind
     void Roll()
     {
         if ( ! CheckIsGrounded() )  return;
+        _audioSource.PlayOneShot(_rollSound);
         playerCollider.height = originalHeight * 0.7f;
         playerCollider.center = originalCenter * 0.9f;
         view.Roll();
@@ -192,43 +197,43 @@ public class PlayerModel : Rewind
 
 
 
-public class Contador
-{
-    int monedas = 0;
-
-    public void AddMoneda()
-    {
-        monedas++;
-    }
-
-    public void VolverMenu()
-    {
-        int monedasActuales = PlayerPrefs.GetInt("ContadortDeMonedas");
-        monedasActuales += monedas;
-        PlayerPrefs.SetInt("ContadortDeMonedas", monedasActuales);
-    }
-}
-
-
-public class Menu
-{
-    [SerializeField]
-    TMP_Text TXT_Monedas;
-     
-    int monedas =0;
-
-    private void Start()
-    {
-        monedas = PlayerPrefs.GetInt("ContadortDeMonedas");
-        TXT_Monedas.SetText(monedas.ToString());
-    }
-
-    public void Comprar(int precio)
-    {
-        if(monedas < precio) return;
-
-        monedas -= precio;
-
-        PlayerPrefs.SetInt("ContadortDeMonedas", monedas);
-    }
-}
+//public class Contador
+//{
+//    int monedas = 0;
+//
+//    public void AddMoneda()
+//    {
+//        monedas++;
+//    }
+//
+//    public void VolverMenu()
+//    {
+//        int monedasActuales = PlayerPrefs.GetInt("ContadortDeMonedas");
+//        monedasActuales += monedas;
+//        PlayerPrefs.SetInt("ContadortDeMonedas", monedasActuales);
+//    }
+//}
+//
+//
+//public class Menu
+//{
+//    [SerializeField]
+//    TMP_Text TXT_Monedas;
+//     
+//    int monedas =0;
+//
+//    private void Start()
+//    {
+//        monedas = PlayerPrefs.GetInt("ContadortDeMonedas");
+//        TXT_Monedas.SetText(monedas.ToString());
+//    }
+//
+//    public void Comprar(int precio)
+//    {
+//        if(monedas < precio) return;
+//
+//        monedas -= precio;
+//
+//        PlayerPrefs.SetInt("ContadortDeMonedas", monedas);
+//    }
+//}
