@@ -9,12 +9,17 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public AudioClip ClickClip;
     public AudioClip HoverClip;
 
+    [Header("Delete Data Settings")] 
+    [SerializeField] private GameObject confirmationPanel;
+
     private bool CanPlay = true;
 
     [SerializeField] private AsyncCharge asyncLoader;
 
     private void Start()
     {
+        if (confirmationPanel != null) confirmationPanel.SetActive(false);
+
         if (RemoteConfigExample.Instance != null)
         {
             CanPlay = RemoteConfigExample.Instance.gameActivate;
@@ -25,6 +30,35 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     {
         if (AudioSource != null && clip != null)
             AudioSource.PlayOneShot(clip);
+    }
+
+    public void OpenConfirmation()
+    {
+        if (confirmationPanel != null)
+        {
+            SetClip(ClickClip);
+            confirmationPanel.SetActive(true);
+        }
+    }
+
+    public void CloseConfirmation()
+    {
+        if (confirmationPanel != null)
+        {
+            SetClip(ClickClip);
+            confirmationPanel.SetActive(false);
+        }
+    }
+    public void ConfirmDelete()
+    {
+        SetClip(ClickClip); 
+
+        SaveManager.DeleteSave();
+
+        Debug.Log("DATOS BORRADOS DESDE EL MENU");
+
+        CloseConfirmation();
+
     }
 
     public void GoToMenu()
@@ -50,11 +84,9 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void RestartLevel()
     {
-        // Reinicio del run (monedas y metros vuelven a 0)
         if (PuntuacionManager.Instance != null)
             PuntuacionManager.Instance.ReiniciarRun();
 
-        // Oculta la pantalla de muerte
         DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
         if (deathFX != null)
         {
@@ -65,7 +97,6 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
 
     public void RestartLevelWithVideo()
     {

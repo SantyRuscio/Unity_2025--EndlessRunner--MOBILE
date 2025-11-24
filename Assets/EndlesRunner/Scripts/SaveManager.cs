@@ -24,4 +24,16 @@ public static class SaveManager
             return new SaveDatarda();
         }
     }
+
+    public static void DeleteSave()
+    {
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log("Archivo de guardado eliminado.");
+        }
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Debug.Log("Datos borrados exitosamente.");
+    }
 }
