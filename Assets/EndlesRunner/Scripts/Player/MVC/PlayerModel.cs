@@ -157,6 +157,7 @@ public class PlayerModel : Rewind
 
     void Jump()
     {
+        if (Time.timeScale == 0) return;
         if ( ! CheckIsGrounded() ) return;
         _audioSource.PlayOneShot(_jumpSound);
         movimiento.Jump();
@@ -175,6 +176,7 @@ public class PlayerModel : Rewind
 
     void Roll()
     {
+        if (Time.timeScale == 0) return;
         if ( ! CheckIsGrounded() )  return;
         _audioSource.PlayOneShot(_rollSound);
         playerCollider.height = originalHeight * 0.7f;

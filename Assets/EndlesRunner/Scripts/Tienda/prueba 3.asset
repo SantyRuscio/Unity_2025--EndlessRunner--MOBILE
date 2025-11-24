@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemNombre: ejemplo 3
   icono: {fileID: 21300004, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-  precio: 0
+  precio: 5
   equipable: 0
