@@ -6,4 +6,6 @@
 "IDBDistancesTraveled" : DISTANCIA RECORRIDA,
 "IDBCoinsCollected" : MONEDAS RECOLECTADAS,
 "IDBDistanceRecord" : RECORD DE DISTANCIA,
-"IDBDefeat" : DERROTA
+"IDBDefeat" : DERROTA,
+"IDBDerestart" : REINICIAR,
+"IDBDeresume" : CONTINUAR

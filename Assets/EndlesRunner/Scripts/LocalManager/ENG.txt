@@ -6,4 +6,7 @@
 "IDBDistancesTraveled" : DISTANCE TRAVELED,
 "IDBCoinsCollected" : COINS COLLECTED,
 "IDBDistanceRecord" : MAX DISTANCE RECORD,
-"IDBDefeat" : DEFEAT
+"IDBDefeat" : DEFEAT,
+"IDBDerestart" : RESTART,
+"IDBDeresume" : RESUME
+
