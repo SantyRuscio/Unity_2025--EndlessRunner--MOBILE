@@ -1,7 +1,7 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
-public class Levels : MonoBehaviour
+public class Levels : Rewind
 {
     private F_Generic<Levels> _Factorygeneric;
 
@@ -10,7 +10,6 @@ public class Levels : MonoBehaviour
 
     [SerializeField]
     private Transform _nextPosition;
-
 
     [SerializeField]
     private Transform _itemPositionm;
@@ -26,14 +25,13 @@ public class Levels : MonoBehaviour
     private void Awake()
     {
         _Factorygeneric = FindAnyObjectByType<F_Generic<Levels>>();
+        _state = new MementoState();
     }
 
     void Start()
     {
         EventManager.Subscribe(TypeEvents.GameOver, StopConstantMove);
-
         EventManager.Subscribe(TypeEvents.RewindEvent, StartConstantMoveRewind);
-
         EventManager.Subscribe(TypeEvents.Win, StopConstantMove);
     }
 
@@ -94,7 +92,7 @@ public class Levels : MonoBehaviour
     public void ConstantMove()
     {
         Vector3 pos = transform.position;
-        pos.z -= GameManager.instance.Speed * Time.deltaTime; //esto para que se muevan mas rapido
+        pos.z -= GameManager.instance.Speed * Time.deltaTime;
         transform.position = pos;
     }
 
@@ -105,23 +103,55 @@ public class Levels : MonoBehaviour
 
     private void StartConstantMoveRewind(params object[] parameters)
     {
-        StartCoroutine(TimeToStayReady());
+        GameManager.instance.LoadMethod();
+
+        GameManager.instance.StartCoroutine(TimeToStayReady());
     }
 
     private IEnumerator TimeToStayReady()
     {
         yield return new WaitForSeconds(6f);
         _isStopped = false;
-        Debug.Log("1 segundos después");
     }
-
 
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEvents.GameOver, StopConstantMove);
-
         EventManager.Unsubscribe(TypeEvents.RewindEvent, StartConstantMoveRewind);
-
         EventManager.Unsubscribe(TypeEvents.Win, StopConstantMove);
     }
+
+
+    #region   //  SAVE Y LOAD DEL MEMENTO
+    // =============================
+    public override void Save()
+    {
+        _state.Rec(
+            transform.position,
+            transform.rotation,
+            gameObject.activeSelf,
+            _isStopped
+        );
+    }
+
+    public override void Load()
+    {
+        if (!_state.IsRemembered())
+        {
+            return;
+        }
+
+        var x = _state.Remember();
+
+        Vector3 savedPosition = (Vector3)x.parametres[0];
+        Quaternion savedRotation = (Quaternion)x.parametres[1];
+        bool savedActive = (bool)x.parametres[2];
+        bool savedIsStopped = (bool)x.parametres[3];
+
+        transform.position = savedPosition;
+        transform.rotation = savedRotation;
+        gameObject.SetActive(savedActive);
+        _isStopped = savedIsStopped;
+    }
+    #endregion
 }

@@ -4,6 +4,10 @@ public class ParamsMemento
 
     public ParamsMemento(params object[] p)
     {
-        parametres = p;
+        parametres = new object[p.Length];
+        for(int i = 0; i < parametres.Length; i++)
+        {
+            parametres[i] = p[i];   
+        }
     }
 }

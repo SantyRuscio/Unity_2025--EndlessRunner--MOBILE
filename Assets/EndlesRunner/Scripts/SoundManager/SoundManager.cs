@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton básico
+
         if (Instance == null)
         {
             Instance = this;

@@ -40,7 +40,7 @@ public class PlayerModel : Rewind
 
     public override void Save()                                          //MEMENTO
     {                                                                    //MEMENTO
-        //_state.Rec(Speed, transform.position, transform.rotation);       //MEMENTO
+        _state.Rec(Speed, transform.position, transform.rotation);       //MEMENTO
                                                                          //MEMENTO
         Debug.Log("Guardo la posicion");                                 //MEMENTO
     }                                                                    //MEMENTO
@@ -55,12 +55,14 @@ public class PlayerModel : Rewind
         }
 
         var x = _state.Remember();
-        Debug.Log("Pos" + (Vector3)x.parametres[0]);
 
-        transform.position = (Vector3)x.parametres[0];
+        Debug.Log("Pos" + (Vector3)x.parametres[1]);
 
-        transform.rotation = (Quaternion)x.parametres[1];
+        transform.position = (Vector3)x.parametres[1];
 
+        transform.rotation = (Quaternion)x.parametres[2];
+
+        view.RewindAnim();
     }
 
     private void Awake()
@@ -80,6 +82,9 @@ public class PlayerModel : Rewind
         inputManager.OnMove += Move;
         inputManager.OnRoll += Roll;
         inputManager.OnTouchAndClick += CheackWall;
+
+        _state = new MementoState();
+
     }
     private void Start()
     {
@@ -122,7 +127,7 @@ public class PlayerModel : Rewind
         yield return new WaitForSeconds(1f);
         Debug.Log("1 segundos después");
         EventManager.Trigger(TypeEvents.GameOver);
-      //  _state.Delete();
+        //_state.Delete(); //memento
     }
     #endregion
 

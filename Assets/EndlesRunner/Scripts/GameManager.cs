@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private float _defaultSpeed;
 
     private float Effectduration = 10f;
+    public bool IsFromRewarded { get; set; } = false;
 
     private void Awake()
     {
@@ -42,30 +43,30 @@ public class GameManager : MonoBehaviour
     public void SaveMethod()
     {
         Debug.Log("Entre a SaveMethod");
-   
+
         for (int i = 0; i < rewinds.Length; i++)
         {
             rewinds[i].Save();
             Debug.Log("Guardado estado de: " + rewinds[i].name);
         }
     }
-   
+
     public void LoadMethod()
     {
+        Debug.Log("Entro a LoadMethod");
         for (int i = 0; i < rewinds.Length; i++)
         {
             rewinds[i].Load();
         }
     }
-#endregion
+    #endregion
+
     public float Speed => _speed;
 
     public PlayerModel GetPlayerModel()
     {
         return playerModel;
     }
-
-
 
     #region Events
 
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(Effectduration);
 
-       // EventManager.Trigger(TypeEvents.ShieldEndEvent);
+        // EventManager.Trigger(TypeEvents.ShieldEndEvent);
     }
 
     #endregion
@@ -107,6 +108,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-      EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldEventTimer);
+        EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldEventTimer);
     }
 }
+
+
