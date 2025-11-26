@@ -26,7 +26,10 @@ public class View
 
     public void RewindAnim()
     {
+        _animator.ResetTrigger("JumpTrigger");
+        _animator.ResetTrigger("RollTrigger");
+        _animator.ResetTrigger("CollisionTrigger");
 
+        _animator.Play("Run");
     }
-
 }

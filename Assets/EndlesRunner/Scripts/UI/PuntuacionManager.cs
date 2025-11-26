@@ -137,7 +137,7 @@ public class PuntuacionManager : MonoBehaviour
 
     private IEnumerator TimeToActivateCounter()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(GameManager.RewindControlDelay);
         contadorActivo = true;
     }
 

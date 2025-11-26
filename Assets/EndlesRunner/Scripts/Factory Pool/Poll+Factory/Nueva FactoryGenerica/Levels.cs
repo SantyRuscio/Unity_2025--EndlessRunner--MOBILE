@@ -110,7 +110,7 @@ public class Levels : Rewind
 
     private IEnumerator TimeToStayReady()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(GameManager.RewindControlDelay);
         _isStopped = false;
     }
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShaderManager : MonoBehaviour
@@ -17,6 +18,8 @@ public class ShaderManager : MonoBehaviour
 
         if (cuerpoRenderer != null)
             materialInstanciado = cuerpoRenderer.material;
+
+        EventManager.Subscribe(TypeEvents.GameOver, ResetShadders);
     }
 
     public void ActivarPowerMode(float duracion)
@@ -35,4 +38,13 @@ public class ShaderManager : MonoBehaviour
             materialInstanciado.SetFloat("_PowerMode", 0f);
     }
 
+    public void ResetShadders(object[] parameters)
+    {
+        materialInstanciado.SetFloat("_PowerMode", 0f);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Unsubscribe(TypeEvents.GameOver, ResetShadders);
+    }
 }

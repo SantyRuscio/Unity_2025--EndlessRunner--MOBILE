@@ -5,7 +5,6 @@ using System.Collections;
 public class PowerUpSlot : MonoBehaviour
 {
     [SerializeField] private Image powerUpImage;
-    [SerializeField] private float duration = 10f;
     [SerializeField] private float blinkTime = 2f;
     [SerializeField] private float blinkInterval = 0.15f;
 
@@ -14,6 +13,8 @@ public class PowerUpSlot : MonoBehaviour
     private void Start()
     {
         EventManager.Subscribe(TypeEvents.PowerUpImageSlot, SetActiveUI);
+
+        EventManager.Subscribe(TypeEvents.GameOver, SetInActiveUI);
 
         // Empezar invisible
         powerUpImage.enabled = false;
@@ -38,10 +39,10 @@ public class PowerUpSlot : MonoBehaviour
         float timer = 0f;
         bool blink = false;
 
-        while (timer < duration)
+        while (timer < GameManager.PowerUpDuration)
         {
             // Titileo solo en los últimos segundos
-            if (timer >= duration - blinkTime)
+            if (timer >= GameManager.PowerUpDuration - blinkTime)
             {
                 blink = !blink;
                 powerUpImage.enabled = blink;
@@ -61,9 +62,16 @@ public class PowerUpSlot : MonoBehaviour
         powerUpImage.sprite = null;
     }
 
+    private void SetInActiveUI(object[] parameters)
+    {
+        powerUpImage.enabled = false;
+        powerUpImage.sprite = null;
+    }
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEvents.PowerUpImageSlot, SetActiveUI);
+
+        EventManager.Unsubscribe(TypeEvents.GameOver, SetInActiveUI);
     }
 }
 

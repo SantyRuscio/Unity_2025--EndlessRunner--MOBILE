@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public static float RewindControlDelay = 6f;
+    public static float PowerUpDuration = 10f;
+
 
     private PlayerModel playerModel;
     public Rewind[] rewinds;
@@ -13,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     private float _defaultSpeed;
 
-    private float Effectduration = 10f;
     public bool IsFromRewarded { get; set; } = false;
 
     private void Awake()
@@ -73,12 +75,12 @@ public class GameManager : MonoBehaviour
     #region ShieldEventTimer
     public void ShieldEventTimer(params object[] parameters)
     {
-        StartCoroutine(ShieldEffectTimer(Effectduration));
+        StartCoroutine(ShieldEffectTimer(PowerUpDuration));
     }
 
-    private IEnumerator ShieldEffectTimer(float Effectduration)
+    private IEnumerator ShieldEffectTimer(float PowerUpDuration)
     {
-        yield return new WaitForSeconds(Effectduration);
+        yield return new WaitForSeconds(PowerUpDuration);
 
         Debug.Log("ENTRÉ A LA CORUTINA DEL ESCUDO - DESACTIVANDO");
 
@@ -90,13 +92,13 @@ public class GameManager : MonoBehaviour
     #region CoinsMultiplier
     public void CoinMultiplierEventTimer(float duration)
     {
-        Effectduration = duration;
-        StartCoroutine(CoinEffectTimer(Effectduration));
+        PowerUpDuration = duration;
+        StartCoroutine(CoinEffectTimer(PowerUpDuration));
     }
 
-    private IEnumerator CoinEffectTimer(float Effectduration)
+    private IEnumerator CoinEffectTimer(float PowerUpDuration)
     {
-        yield return new WaitForSeconds(Effectduration);
+        yield return new WaitForSeconds(PowerUpDuration);
 
         // EventManager.Trigger(TypeEvents.ShieldEndEvent);
     }

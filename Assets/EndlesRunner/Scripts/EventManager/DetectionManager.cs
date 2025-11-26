@@ -20,6 +20,8 @@ public class DetectionManager : MonoBehaviour
 
         _defaultMove = _distanceToMove;
         _defaultSpeed = _distanceToSpeed;
+
+        EventManager.Subscribe(TypeEvents.GameOver, SetInActiveMagnet);
     }
 
     public float CurrentDistance()
@@ -47,6 +49,16 @@ public class DetectionManager : MonoBehaviour
 
         _distanceToMove = _defaultMove;
         _distanceToSpeed = _defaultSpeed;
+    }
+
+    public void SetInActiveMagnet(object[] parameters)
+    {
+        _distanceToMove = _defaultMove;
+        _distanceToSpeed = _defaultSpeed;
+    }
+    private void OnDestroy()
+    {
+        EventManager.Unsubscribe(TypeEvents.GameOver, SetInActiveMagnet);
     }
 }
 

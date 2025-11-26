@@ -92,7 +92,7 @@ public class Controller : MonoBehaviour
 
     private IEnumerator TimeToActivateControls()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(GameManager.RewindControlDelay);
         this.enabled = true;
         Debug.Log("1 segundos después");
     }

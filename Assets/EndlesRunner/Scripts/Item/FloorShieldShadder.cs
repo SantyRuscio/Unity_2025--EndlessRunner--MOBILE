@@ -16,6 +16,8 @@ public class FloorShieldShader : MonoBehaviour
             EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldPicked);
 
             EventManager.Subscribe(TypeEvents.ShieldEndEvent, ShieldEndEvent);
+
+            EventManager.Subscribe(TypeEvents.GameOver, ShieldEndEvent);
         }
     }
 
@@ -40,6 +42,8 @@ public class FloorShieldShader : MonoBehaviour
         EventManager.Unsubscribe(TypeEvents.ShieldEvent, ShieldPicked);
 
         EventManager.Unsubscribe(TypeEvents.ShieldEndEvent, ShieldEndEvent);
+
+        EventManager.Unsubscribe(TypeEvents.GameOver, ShieldEndEvent);
     }
 }
 

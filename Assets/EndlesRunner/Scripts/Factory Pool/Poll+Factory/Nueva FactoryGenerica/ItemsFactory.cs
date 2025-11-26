@@ -11,7 +11,7 @@ public class ItemsFactory : MonoBehaviour
 
     [Header("Spawn Settings")]
     [Range(0f, 1f)]
-    [SerializeField] private float spawnProbability = 1f; 
+    [SerializeField] private float spawnProbability = 1f;  // posibilidad de que salga item
 
     private Pool2M<Item> _pool;
 

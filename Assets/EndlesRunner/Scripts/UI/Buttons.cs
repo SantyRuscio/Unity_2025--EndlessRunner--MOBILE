@@ -100,7 +100,6 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void RestartLevelWithVideo()
     {
-
         DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
         if (deathFX != null)
         {

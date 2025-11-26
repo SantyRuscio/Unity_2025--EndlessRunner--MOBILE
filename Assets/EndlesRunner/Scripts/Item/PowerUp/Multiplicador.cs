@@ -5,7 +5,7 @@ public class Multiplicador : PowerUp
 {
     [Header("Configuración del PowerUp")]
     [SerializeField] private float multiplicador = 4f;
-    [SerializeField] private float duracion = 10f;     
+   // [SerializeField] private float duracion = 10f; //queda abierto a futuro si se quiere q cada power tenga su duracion
 
     private FullscreenFeatureController fullscreenFeatureController;
 
@@ -25,11 +25,11 @@ public class Multiplicador : PowerUp
 
         SoundManager.Instance.PlaySFX(AudioClip);
 
-        EventManager.Trigger(TypeEvents.MultiplierEvent, multiplicador, duracion);
+        EventManager.Trigger(TypeEvents.MultiplierEvent, multiplicador, GameManager.RewindControlDelay);
 
         if (fullscreenFeatureController != null)
         {
-            fullscreenFeatureController.StartPowerUp(duracion);
+            fullscreenFeatureController.StartPowerUp(GameManager.PowerUpDuration);
 
             Debug.Log("aRRANCA SHADER");
         }
