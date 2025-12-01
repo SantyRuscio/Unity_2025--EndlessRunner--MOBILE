@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
@@ -12,9 +13,14 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     [Header("Delete Data Settings")] 
     [SerializeField] private GameObject confirmationPanel;
 
+    [SerializeField] private GameObject noStaminaPanel;
+
     private bool CanPlay = true;
 
     [SerializeField] private AsyncCharge asyncLoader;
+    [SerializeField] private StaminaSystemWithNotifications stamina;
+
+    private float ShowNoStaminaPanel = 2f;
 
     private void Start()
     {
@@ -51,11 +57,16 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     }
     public void ConfirmDelete()
     {
-        SetClip(ClickClip); 
+        SetClip(ClickClip);
 
+        // Borrar TODOS los datos del save
         SaveManager.DeleteSave();
 
-        Debug.Log("DATOS BORRADOS DESDE EL MENU");
+        // Resetear stamina también
+        if (stamina != null)
+            stamina.ResetStaminaSystem();
+
+        Debug.Log("DATOS BORRADOS Y STAMINA RESETEADA DESDE EL MENU");
 
         CloseConfirmation();
 
@@ -76,11 +87,28 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     {
         SetClip(ClickClip);
 
-        if (CanPlay && asyncLoader != null)
-            asyncLoader.StartLevel("GamseScene");
-        else if (CanPlay)
-            SceneManager.LoadScene("GamseScene");
+        // Chequeamos si tiene stamina
+        if (stamina != null && stamina.HasEnoughStamina(1))
+        {
+            stamina.UseStamina(1);
+
+            if (CanPlay && asyncLoader != null)
+                asyncLoader.StartLevel("GamseScene");
+            else if (CanPlay)
+                SceneManager.LoadScene("GamseScene");
+        }
+        else
+        {
+            Debug.Log("NO tenés stamina suficiente.");
+
+            // MOSTRAR PANEL
+            if (noStaminaPanel != null)
+                noStaminaPanel.SetActive(true);
+
+            StartCoroutine(HideNoStaminaPanel());
+        }
     }
+
 
     public void RestartLevel()
     {
@@ -133,5 +161,12 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         SetClip(ClickClip);
+    }
+
+    private IEnumerator HideNoStaminaPanel()
+    {
+        yield return new WaitForSeconds(ShowNoStaminaPanel);
+        if (noStaminaPanel != null)
+            noStaminaPanel.SetActive(false);
     }
 }

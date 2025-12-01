@@ -8,4 +8,10 @@
 "IDBDistanceRecord" : RECORD DE DISTANCIA,
 "IDBDefeat" : DERROTA,
 "IDBDerestart" : REINICIAR,
-"IDBDeresume" : CONTINUAR
+"IDBDeresume" : CONTINUAR,
+"IDBDNoStamina" : Energia agotada.Espera a que se recargue para seguir jugando.,
+"IDBDResetData" : BORRAR DATOS,
+"IDBDConfirmationResetData" : ESTAS SEGURO DE QUE QUERES BORRAR TODOS TUS DATOS GUARDADOS? ESTO ES IRREVERSIBLE.,
+"IDBDAutorizationResetData" : SI. PROSEGUIR,
+"IDBDResetDataDelegated" : NO. VOLVER,
+

@@ -8,5 +8,9 @@
 "IDBDistanceRecord" : MAX DISTANCE RECORD,
 "IDBDefeat" : DEFEAT,
 "IDBDerestart" : RESTART,
-"IDBDeresume" : RESUME
-
+"IDBDeresume" : RESUME,
+"IDBDNoStamina" : Wait for it to recharge before playing again.,
+"IDBDResetData" : RESET DATA,
+"IDBDConfirmationResetData" : ARE YOU SURE YOU WANT TO DELETE ALL YOUR SAVED DATA? THIS IS IRREVERSIBLE.,
+"IDBDAutorizationResetData" : YES. PROCEED,
+"IDBDResetDataDelegated" : NO.TAKE ME BACK,
