@@ -16,3 +16,4 @@ MonoBehaviour:
   icono: {fileID: 21300052, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   precio: 3
   equipable: 0
+  musicaClip: {fileID: 8300000, guid: f88f6ee94b543114da23836fd84b7323, type: 3}

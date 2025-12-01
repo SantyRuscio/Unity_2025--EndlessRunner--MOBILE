@@ -13,6 +13,7 @@ public class PuntuacionManager : MonoBehaviour
 
     private bool contadorActivo = true;
     private float multiplicadorMetros = 1f;
+    private float multiplicadorMonedas = 1f;
     private Coroutine boostCoroutine;
 
     [Header("UI")]
@@ -71,9 +72,12 @@ public class PuntuacionManager : MonoBehaviour
     private IEnumerator MultiplicadorTemporal(float nuevoMultiplicador, float duracion)
     {
         multiplicadorMetros = nuevoMultiplicador;
+        multiplicadorMonedas = nuevoMultiplicador; // <-- Nuevo: aplica a monedas
         yield return new WaitForSeconds(duracion);
         multiplicadorMetros = 1f;
+        multiplicadorMonedas = 2f; // <-- Resetear después del tiempo
     }
+
     #endregion
 
 
@@ -82,10 +86,10 @@ public class PuntuacionManager : MonoBehaviour
     {
         if (!contadorActivo) return;
 
-        monedas += cantidad;   // solo del run
-
+        monedas += Mathf.RoundToInt(cantidad * multiplicadorMonedas); // aplica multiplicador
         ActualizaHUDMonedas();
     }
+
 
     // Guarda solo al morir/ganar
     public void GuardarMonedasDelRun()

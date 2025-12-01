@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldEventTimer);
+
+        AudioShop.Instance.LoadMusic();
     }
 
     #region MEMENTO 

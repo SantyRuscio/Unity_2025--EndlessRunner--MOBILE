@@ -11056,6 +11056,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -3392044936731815175, guid: 1451b6b2187b5fe498007d42ba1059af, type: 3}
+      propertyPath: valorMonedas
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 5617675705708491105, guid: 1451b6b2187b5fe498007d42ba1059af, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -20433,6 +20437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1827437101}
   - component: {fileID: 1827437100}
+  - component: {fileID: 1827437102}
   m_Layer: 0
   m_Name: MusicaFondo
   m_TagString: Untagged
@@ -20450,11 +20455,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 918395b78757fd64ca2c46d93432005d, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0.07
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -20551,6 +20556,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1827437102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827437099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19d477b7be17644fbd7ee5266fb14c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1827437100}
+  musicClips:
+  - {fileID: 8300000, guid: 918395b78757fd64ca2c46d93432005d, type: 3}
+  - {fileID: 8300000, guid: f88f6ee94b543114da23836fd84b7323, type: 3}
 --- !u!1001 &1828170091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26021,6 +26042,10 @@ PrefabInstance:
     - target: {fileID: 6455854465564896835, guid: 3a2a91ab23cf8004f877f1b3fcb49d06, type: 3}
       propertyPath: m_Name
       value: star
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894539020701629630, guid: 3a2a91ab23cf8004f877f1b3fcb49d06, type: 3}
+      propertyPath: multiplicador
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6894539020701629630, guid: 3a2a91ab23cf8004f877f1b3fcb49d06, type: 3}
       propertyPath: shaderController

@@ -48,14 +48,22 @@ public class TiendaManager : MonoBehaviour, IScreen
         if (monedas >= item.precio)
         {
             monedas -= item.precio;
-
-            // Guardar
             PlayerPrefs.SetInt("MonedasTotales", monedas);
-            PlayerPrefs.Save();
 
+            PlayerPrefs.SetInt(item.itemNombre + "_Comprado", 1);
+
+            if (item.equipable)
+            {
+                // Equipar automáticamente usando el índice del item
+                AudioShop.Instance.PlayMusic(item.clipIndex);
+
+                // Guardar el índice seleccionado
+                PlayerPrefs.SetInt("SelectedMusic", item.clipIndex);
+            }
+
+            PlayerPrefs.Save();
             Debug.Log("Compraste: " + item.itemNombre);
 
-            // Actualizar UI
             ActualizarMonedasUI();
         }
         else
@@ -63,6 +71,9 @@ public class TiendaManager : MonoBehaviour, IScreen
             Debug.Log("No tienes suficientes monedas.");
         }
     }
+
+
+
 
     private void ActualizarMonedasUI()
     {
