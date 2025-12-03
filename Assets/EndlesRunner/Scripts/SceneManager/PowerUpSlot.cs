@@ -16,6 +16,8 @@ public class PowerUpSlot : MonoBehaviour
 
         EventManager.Subscribe(TypeEvents.GameOver, SetInActiveUI);
 
+        EventManager.Subscribe(TypeEvents.DefubCrabEvent, SetInActiveUI);
+
         // Empezar invisible
         powerUpImage.enabled = false;
     }
@@ -72,6 +74,8 @@ public class PowerUpSlot : MonoBehaviour
         EventManager.Unsubscribe(TypeEvents.PowerUpImageSlot, SetActiveUI);
 
         EventManager.Unsubscribe(TypeEvents.GameOver, SetInActiveUI);
+
+        EventManager.Unsubscribe(TypeEvents.DefubCrabEvent, SetInActiveUI);
     }
 }
 

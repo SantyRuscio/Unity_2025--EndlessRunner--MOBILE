@@ -112,8 +112,9 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Subscribe(TypeEvents.ShieldEvent, ShieldEventTimer);
+        EventManager.Unsubscribe(TypeEvents.ShieldEvent, ShieldEventTimer);
     }
+
 }
 
 

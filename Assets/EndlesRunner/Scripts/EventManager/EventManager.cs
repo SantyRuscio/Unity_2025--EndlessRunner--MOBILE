@@ -8,7 +8,8 @@ public enum TypeEvents
     ShieldEndEvent,
     RewindEvent,
     PowerUpImageSlot,
-    MultiplierEvent
+    MultiplierEvent,
+    DefubCrabEvent
 }
 
 //IMPORTANTE DESSUSCRIBIRSE AL DESTRUIR 

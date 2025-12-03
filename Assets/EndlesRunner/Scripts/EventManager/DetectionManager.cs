@@ -22,6 +22,9 @@ public class DetectionManager : MonoBehaviour
         _defaultSpeed = _distanceToSpeed;
 
         EventManager.Subscribe(TypeEvents.GameOver, SetInActiveMagnet);
+
+        EventManager.Subscribe(TypeEvents.DefubCrabEvent, SetInActiveMagnet);
+
     }
 
     public float CurrentDistance()
@@ -59,6 +62,8 @@ public class DetectionManager : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEvents.GameOver, SetInActiveMagnet);
+
+        EventManager.Unsubscribe(TypeEvents.DefubCrabEvent, SetInActiveMagnet);
     }
 }
 

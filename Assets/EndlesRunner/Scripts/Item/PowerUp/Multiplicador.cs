@@ -25,7 +25,7 @@ public class Multiplicador : PowerUp
 
         SoundManager.Instance.PlaySFX(AudioClip);
 
-        EventManager.Trigger(TypeEvents.MultiplierEvent, multiplicador, GameManager.RewindControlDelay);
+        EventManager.Trigger(TypeEvents.MultiplierEvent, multiplicador, GameManager.PowerUpDuration);
 
         if (fullscreenFeatureController != null)
         {

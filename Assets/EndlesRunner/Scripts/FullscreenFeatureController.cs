@@ -11,9 +11,7 @@ public class FullscreenFeatureController : MonoBehaviour
     public float fadeOutTime = 1.0f;
 
     private const string SHADER_PROPERTY = "_Tama_oMascaraCentro";
-
     private const float SHADER_VALUE_OFF = 1.0f;
-
     private const float SHADER_VALUE_ON = 0.0f;
 
     private Coroutine activePowerUpCoroutine;
@@ -24,6 +22,9 @@ public class FullscreenFeatureController : MonoBehaviour
         {
             powerUpMaterial.SetFloat(SHADER_PROPERTY, SHADER_VALUE_OFF);
         }
+
+        EventManager.Subscribe(TypeEvents.DefubCrabEvent, ResetPowerUp);
+        EventManager.Subscribe(TypeEvents.GameOver, ResetPowerUp);
     }
 
     public void StartPowerUp(float duration)
@@ -63,12 +64,28 @@ public class FullscreenFeatureController : MonoBehaviour
         powerUpMaterial.SetFloat(SHADER_PROPERTY, endValue);
     }
 
+    public void ResetPowerUp(object[] parameters = null)
+    {
+        if (activePowerUpCoroutine != null)
+        {
+            StopCoroutine(activePowerUpCoroutine);
+            activePowerUpCoroutine = null;
+        }
+
+        if (powerUpMaterial != null)
+        {
+            powerUpMaterial.SetFloat(SHADER_PROPERTY, SHADER_VALUE_OFF);
+        }
+    }
+
     private void OnDestroy()
     {
         if (powerUpMaterial != null)
         {
-
             powerUpMaterial.SetFloat(SHADER_PROPERTY, SHADER_VALUE_OFF);
         }
+
+        EventManager.Unsubscribe(TypeEvents.DefubCrabEvent, ResetPowerUp);
+        EventManager.Unsubscribe(TypeEvents.GameOver, ResetPowerUp);
     }
 }

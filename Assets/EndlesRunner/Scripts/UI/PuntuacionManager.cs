@@ -2,6 +2,10 @@
 using UnityEngine;
 using TMPro;
 
+using System.Collections;
+using TMPro;
+using UnityEngine;
+
 public class PuntuacionManager : MonoBehaviour
 {
     public static PuntuacionManager Instance;
@@ -17,7 +21,7 @@ public class PuntuacionManager : MonoBehaviour
     private Coroutine boostCoroutine;
 
     [Header("UI")]
-    public TMP_Text textoMonedas;            // monedas del run
+    public TMP_Text textoMonedas;            // Monedas del run
     public TMP_Text textoMetros;
     public TMP_Text textoMonedasTotales;     // opcional (tienda/menu)
 
@@ -38,6 +42,7 @@ public class PuntuacionManager : MonoBehaviour
         EventManager.Subscribe(TypeEvents.RewindEvent, StartCounterRewind);
         EventManager.Subscribe(TypeEvents.Win, StopCounter);
         EventManager.Subscribe(TypeEvents.MultiplierEvent, ActivarMultiplicador);
+        EventManager.Subscribe(TypeEvents.DefubCrabEvent, CancelarMultiplicador);
 
         ActualizaHUDMonedas();
         ActualizaHUDMonedasTotales();
@@ -51,7 +56,7 @@ public class PuntuacionManager : MonoBehaviour
         ActualizarHUDMetros();
     }
 
-    #region// -------------------- MULTIPLICADOR --------------------
+    #region MULTIPLICADOR
     public void ActivarMultiplicador(params object[] parameters)
     {
         if (parameters.Length < 2)
@@ -72,16 +77,27 @@ public class PuntuacionManager : MonoBehaviour
     private IEnumerator MultiplicadorTemporal(float nuevoMultiplicador, float duracion)
     {
         multiplicadorMetros = nuevoMultiplicador;
-        multiplicadorMonedas = nuevoMultiplicador; // <-- Nuevo: aplica a monedas
+        multiplicadorMonedas = nuevoMultiplicador;  // Aplica solo aquí
         yield return new WaitForSeconds(duracion);
         multiplicadorMetros = 1f;
-        multiplicadorMonedas = 2f; // <-- Resetear después del tiempo
+        multiplicadorMonedas = 1f; // Reset al terminar
+        boostCoroutine = null;
     }
 
+    public void CancelarMultiplicador(object[] parameters = null)
+    {
+        if (boostCoroutine != null)
+        {
+            StopCoroutine(boostCoroutine);
+            boostCoroutine = null;
+        }
+
+        multiplicadorMetros = 1f;
+        multiplicadorMonedas = 1f;
+    }
     #endregion
 
-
-    #region // -------------------- MONEDAS - METROS - PLAYER PREF --------------------
+    #region MONEDAS - METROS - PLAYER PREF
     public void AgregarMonedas(int cantidad)
     {
         if (!contadorActivo) return;
@@ -90,8 +106,6 @@ public class PuntuacionManager : MonoBehaviour
         ActualizaHUDMonedas();
     }
 
-
-    // Guarda solo al morir/ganar
     public void GuardarMonedasDelRun()
     {
         monedasTotales += monedas;
@@ -125,7 +139,7 @@ public class PuntuacionManager : MonoBehaviour
     }
     #endregion
 
-    #region// -------------------- CONTROL --------------------
+    #region CONTROL
     private void StopCounter(params object[] parameters)
     {
         contadorActivo = false;
@@ -153,14 +167,15 @@ public class PuntuacionManager : MonoBehaviour
         ActualizaHUDMonedas();
         ActualizarHUDMetros();
     }
+    #endregion
 
-#endregion
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEvents.GameOver, StopCounter);
         EventManager.Unsubscribe(TypeEvents.RewindEvent, StartCounterRewind);
         EventManager.Unsubscribe(TypeEvents.Win, StopCounter);
         EventManager.Unsubscribe(TypeEvents.MultiplierEvent, ActivarMultiplicador);
+        EventManager.Unsubscribe(TypeEvents.DefubCrabEvent, CancelarMultiplicador);
     }
 }
 
