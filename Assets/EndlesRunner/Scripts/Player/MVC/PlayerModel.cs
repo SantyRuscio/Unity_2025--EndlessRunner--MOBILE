@@ -37,6 +37,8 @@ public class PlayerModel : Rewind
     [SerializeField] private AudioClip _jumpSound;
     [SerializeField] private AudioClip _rollSound;
 
+    [SerializeField] private GameObject vfxMuertePrefab;
+
 
     public override void Save()                                          //MEMENTO
     {                                                                    //MEMENTO
@@ -119,15 +121,21 @@ public class PlayerModel : Rewind
 
     private IEnumerator DeadTimeLapse()
     {
+        if (vfxMuertePrefab != null)
+        {
+            Instantiate(vfxMuertePrefab, transform.position, Quaternion.identity);
+        }
+
         DeathEffectController deathFX = FindObjectOfType<DeathEffectController>();
         if (deathFX != null)
         {
             deathFX.ShowDeathScreen();
         }
+
         yield return new WaitForSeconds(1f);
+
         Debug.Log("1 segundos después");
         EventManager.Trigger(TypeEvents.GameOver);
-        //_state.Delete(); //memento
     }
     #endregion
 

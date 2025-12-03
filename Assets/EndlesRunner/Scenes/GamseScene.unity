@@ -9178,6 +9178,7 @@ MonoBehaviour:
   _audioSource: {fileID: 754182952}
   _jumpSound: {fileID: 8300000, guid: 051fdffb3b228ce4597e7416f13a2fb3, type: 3}
   _rollSound: {fileID: 8300000, guid: 85557650a30db6b4abf53642a8e93c34, type: 3}
+  vfxMuertePrefab: {fileID: 2962350100041176460, guid: b4bdd3cf519619c42bbdaa6d990108ca, type: 3}
 --- !u!54 &754182946
 Rigidbody:
   m_ObjectHideFlags: 0

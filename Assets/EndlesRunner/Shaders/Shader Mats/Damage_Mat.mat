@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Fullscreen_DepthWrite: 0
-    - _Oscurecimiento_Vi_eta: 0
+    - _Oscurecimiento_Vi_eta: 5
     - _Radio_Vi_eta: 0.72
     - _Suavidad_Vi_eta: 0
     m_Colors:
