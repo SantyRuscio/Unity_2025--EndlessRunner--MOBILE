@@ -14,6 +14,10 @@ public class Levels : Rewind
     [SerializeField]
     private Transform _itemPositionm;
 
+    [SerializeField]
+    private Transform _debufPosition;
+
+
     private bool _isStopped = false;
 
     public Vector3 GetNextPosition
@@ -71,8 +75,13 @@ public class Levels : Rewind
 
         LevelsManager.instance.CurrentNextPosition = _nextPosition;
 
+        // PowerUp
         LevelsManager.instance.SpawnRandomPowerUp(_itemPositionm);
+
+       
+       // LevelsManager.instance.SpawnRandomDebuf(_debufPosition);
     }
+
 
     public void ResetObject()
     {

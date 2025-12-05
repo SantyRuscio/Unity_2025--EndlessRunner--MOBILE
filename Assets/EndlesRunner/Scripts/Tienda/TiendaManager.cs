@@ -59,6 +59,7 @@ public class TiendaManager : MonoBehaviour, IScreen
 
                 // Guardar el índice seleccionado
                 PlayerPrefs.SetInt("SelectedMusic", item.clipIndex);
+                Debug.Log("Item index" + item.clipIndex);
             }
 
             PlayerPrefs.Save();

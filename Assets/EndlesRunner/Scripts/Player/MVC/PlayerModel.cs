@@ -202,4 +202,10 @@ public class PlayerModel : Rewind
         playerCollider.height = originalHeight;
         playerCollider.center = originalCenter;
     }
+
+    private void OnDestroy()
+    {
+        EventManager.Unsubscribe(TypeEvents.RewindEvent, OnCollsionRewind);
+    }
+
 }

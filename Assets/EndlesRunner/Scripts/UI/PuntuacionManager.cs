@@ -2,10 +2,6 @@
 using UnityEngine;
 using TMPro;
 
-using System.Collections;
-using TMPro;
-using UnityEngine;
-
 public class PuntuacionManager : MonoBehaviour
 {
     public static PuntuacionManager Instance;
@@ -144,7 +140,6 @@ public class PuntuacionManager : MonoBehaviour
     {
         contadorActivo = false;
 
-        // Guardar monedas del run al morir
         GuardarMonedasDelRun();
     }
 

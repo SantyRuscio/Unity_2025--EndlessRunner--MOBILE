@@ -14,6 +14,8 @@ public class PowerUpSlot : MonoBehaviour
     {
         EventManager.Subscribe(TypeEvents.PowerUpImageSlot, SetActiveUI);
 
+        EventManager.Subscribe(TypeEvents.RewindEvent, SetActiveUI);
+
         EventManager.Subscribe(TypeEvents.GameOver, SetInActiveUI);
 
         EventManager.Subscribe(TypeEvents.DefubCrabEvent, SetInActiveUI);
@@ -24,6 +26,16 @@ public class PowerUpSlot : MonoBehaviour
 
     private void SetActiveUI(object[] parameters)
     {
+        // ACTIVAR PADRE Y ESTE GAMEOBJECT
+        Transform p = transform;
+        while (p != null)
+        {
+            if (!p.gameObject.activeSelf)
+                p.gameObject.SetActive(true);
+
+            p = p.parent;
+        }
+
         if (parameters.Length > 0 && parameters[0] is Sprite sprite)
         {
             powerUpImage.sprite = sprite;
@@ -35,6 +47,8 @@ public class PowerUpSlot : MonoBehaviour
             activeRoutine = StartCoroutine(ShowPowerUpRoutine());
         }
     }
+
+
 
     private IEnumerator ShowPowerUpRoutine()
     {
@@ -72,6 +86,8 @@ public class PowerUpSlot : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.Unsubscribe(TypeEvents.PowerUpImageSlot, SetActiveUI);
+
+        EventManager.Unsubscribe(TypeEvents.RewindEvent, SetActiveUI);
 
         EventManager.Unsubscribe(TypeEvents.GameOver, SetInActiveUI);
 

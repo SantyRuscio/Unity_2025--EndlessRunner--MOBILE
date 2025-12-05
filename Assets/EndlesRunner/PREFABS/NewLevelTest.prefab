@@ -5401,6 +5401,7 @@ Transform:
   - {fileID: 8251738002049629032}
   - {fileID: 4637847927311709046}
   - {fileID: 1432128193882485023}
+  - {fileID: 1645762331852874683}
   - {fileID: 3317474987109019260}
   - {fileID: 775078613437763907}
   - {fileID: 3252369505464366779}
@@ -5426,6 +5427,7 @@ MonoBehaviour:
   _positionToRetunrPool: -180
   _nextPosition: {fileID: 4637847927311709046}
   _itemPositionm: {fileID: 1432128193882485023}
+  _debufPosition: {fileID: 1645762331852874683}
 --- !u!65 &506957078377028329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5696,6 +5698,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5647647287940291692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1645762331852874683}
+  m_Layer: 0
+  m_Name: DebufPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1645762331852874683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647647287940291692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -2.285, y: 0.316, z: 54.91}
+  m_LocalScale: {x: 1.3256, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1484598172708463130}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5684646200442408058
 GameObject:
   m_ObjectHideFlags: 0

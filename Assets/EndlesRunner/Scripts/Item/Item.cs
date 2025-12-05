@@ -8,10 +8,11 @@ public abstract class Item : MonoBehaviour
 
     public abstract void Execute();
 
-    public virtual void Initialize(ItemsFactory factory)
+    public virtual void Initialize(object factory)
     {
         gameObject.SetActive(true);
     }
+
 
     public virtual void ResetObject()
     {

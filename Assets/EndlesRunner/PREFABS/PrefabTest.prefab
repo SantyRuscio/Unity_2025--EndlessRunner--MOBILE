@@ -1383,6 +1383,7 @@ Transform:
   - {fileID: 3797204553986036393}
   - {fileID: 3949554811052239140}
   - {fileID: 8583775269488355981}
+  - {fileID: 2871124205443891389}
   - {fileID: 1239722372066060065}
   - {fileID: 5992246966154068424}
   - {fileID: 4469103783115587149}
@@ -1411,6 +1412,7 @@ MonoBehaviour:
   _positionToRetunrPool: -180
   _nextPosition: {fileID: 3949554811052239140}
   _itemPositionm: {fileID: 8583775269488355981}
+  _debufPosition: {fileID: 2871124205443891389}
 --- !u!65 &7663429231872361134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2145,6 +2147,37 @@ Transform:
   - {fileID: 2007041628625328986}
   m_Father: {fileID: 5793413556335376020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6808318769114637345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2871124205443891389}
+  m_Layer: 0
+  m_Name: DebugPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2871124205443891389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808318769114637345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.58, y: 0.95, z: 50.59}
+  m_LocalScale: {x: 1.3256, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5793413556335376020}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &8738858016003840393
 GameObject:
   m_ObjectHideFlags: 0
