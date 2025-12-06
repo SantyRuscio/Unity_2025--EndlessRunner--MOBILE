@@ -19,8 +19,9 @@ MonoBehaviour:
   - {fileID: 9020917607522737456}
   - {fileID: 6515107179045731288}
   - {fileID: 2571327746280364484}
+  - {fileID: 281848646310680076}
   - {fileID: 4865865849985668137}
-  m_RendererFeatureMap: 309d75e8c4bc307dd83b9ef8754f6a5ac4992536f630af23299419c935078743
+  m_RendererFeatureMap: 309d75e8c4bc307dd83b9ef8754f6a5ac4992536f630af230cd6c5bbd953e903299419c935078743
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -59,6 +60,23 @@ MonoBehaviour:
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &281848646310680076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d613f08f173d4dd895bb07b3230baa9, type: 3}
+  m_Name: DebuxPixelCrt
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  passMaterial: {fileID: 2100000, guid: 50eff21a06e93c143be1792ad5f296be, type: 2}
+  injectionPoint: 600
+  requirements: 4
+  passIndex: 0
 --- !u!114 &2571327746280364484
 MonoBehaviour:
   m_ObjectHideFlags: 0

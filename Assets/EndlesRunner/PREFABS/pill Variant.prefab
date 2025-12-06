@@ -94,6 +94,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   audioClip: {fileID: 8300000, guid: 0321e325136ca684d90b2d4870a6089d, type: 3}
+  materialPixel: {fileID: 2100000, guid: 50eff21a06e93c143be1792ad5f296be, type: 2}
+  duracion: 8
+  resolucionPixelada: {x: 180, y: 180}
 --- !u!136 &2675354022414811176
 CapsuleCollider:
   m_ObjectHideFlags: 0
