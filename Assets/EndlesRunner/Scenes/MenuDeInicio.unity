@@ -6613,6 +6613,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d40af9fdc5aed4c42a0bfd76f5c11edc, type: 2}
   - {fileID: 11400000, guid: af39a33d4ed7cf746a5e57bf2c43bfa0, type: 2}
   - {fileID: 11400000, guid: 1cbe327619eea4a4badbbc84d2f3cf5d, type: 2}
+  - {fileID: 11400000, guid: 12ce13afa1177e94c87974f0626ef56a, type: 2}
+  - {fileID: 11400000, guid: 8d77497785e92434381fdb51dda95b16, type: 2}
+  staminaSystem: {fileID: 1961287048}
 --- !u!1 &1750319523
 GameObject:
   m_ObjectHideFlags: 0

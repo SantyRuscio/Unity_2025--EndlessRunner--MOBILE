@@ -11246,7 +11246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3392044936731815175, guid: 1451b6b2187b5fe498007d42ba1059af, type: 3}
       propertyPath: valorMonedas
-      value: 1
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5617675705708491105, guid: 1451b6b2187b5fe498007d42ba1059af, type: 3}
       propertyPath: m_Enabled

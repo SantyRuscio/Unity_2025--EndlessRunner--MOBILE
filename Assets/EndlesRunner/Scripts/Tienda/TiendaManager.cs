@@ -1,6 +1,7 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class TiendaManager : MonoBehaviour, IScreen
 {
@@ -13,18 +14,24 @@ public class TiendaManager : MonoBehaviour, IScreen
     [Header("Items")]
     public TiendaItem[] items;
 
+    [Header("Referencias")]
+    [SerializeField] private StaminaSystemWithNotifications staminaSystem;
+
+
     private bool tiendaAbierta = false;
 
     private void Start()
     {
+        if (staminaSystem == null)return;
+
         LlenarTienda();
-        ActualizarMonedasUI(); // ← muestra monedas al entrar
+        ActualizarMonedasUI(); //muestra monedas al entrar
     }
 
     public void AlternarTienda()
     {
         ScreenManager.Instance.ActivateScreen(this);
-        ActualizarMonedasUI(); // ← refresca cuando se abre
+        ActualizarMonedasUI(); //refresca cuando se abre
     }
 
     private void LlenarTienda()
@@ -52,28 +59,79 @@ public class TiendaManager : MonoBehaviour, IScreen
 
             PlayerPrefs.SetInt(item.itemNombre + "_Comprado", 1);
 
+            int itemIndex = Array.IndexOf(items, item);
+
+            //SUMAR STAMINA DE A 1 
+            if (itemIndex == 3)
+            {
+                int extraStamina = PlayerPrefs.GetInt("ExtraStamina", 0);
+                int maxStamina = 3 + extraStamina;
+
+                int currentStamina = PlayerPrefs.GetInt(PlayerPrefsKeys.currentStaminaKey, maxStamina);
+
+                if (currentStamina >= maxStamina)
+                {
+                    Debug.Log("Stamina llena, no podés comprar este ítem.");
+                    return;
+                }
+
+                currentStamina++;
+                PlayerPrefs.SetInt(PlayerPrefsKeys.currentStaminaKey, currentStamina);
+                PlayerPrefs.Save();
+
+                Debug.Log("Sumaste +1 stamina. Ahora tenés: " + currentStamina);
+
+                if (staminaSystem != null)
+                    staminaSystem.ForceRefreshUI();
+            }
+
+            // STAMINA A 5/5 (SOLO UNA VEZ)
+            if (itemIndex == 4)
+            {
+                // Ya comprado ,no permitir repetir
+                if (PlayerPrefs.GetInt("ITEM5_Comprado", 0) == 1)
+                {
+                    Debug.Log("El ítem 5 ya fue comprado. No se puede repetir.");
+                    return;
+                }
+
+                // Marcar como comprado
+                PlayerPrefs.SetInt("ITEM5_Comprado", 1);
+
+                // Upgrade del máximo
+                int extraStamina = 2; // 3 base + 2 = 5 máximo total
+                PlayerPrefs.SetInt("ExtraStamina", extraStamina);
+
+                int newMax = 3 + extraStamina;
+
+                // Llenar stamina actual a 5/5
+                PlayerPrefs.SetInt(PlayerPrefsKeys.currentStaminaKey, newMax);
+                PlayerPrefs.Save();
+
+                Debug.Log("Upgrade comprado: nuevo máximo = " + newMax);
+
+                // Refrescar UI
+                if (staminaSystem != null)
+                    staminaSystem.ForceRefreshUI();
+            }
+
+            // Si el ítem es equipable
             if (item.equipable)
             {
-                // Equipar automáticamente usando el índice del item
                 AudioShop.Instance.PlayMusic(item.clipIndex);
-
-                // Guardar el índice seleccionado
                 PlayerPrefs.SetInt("SelectedMusic", item.clipIndex);
-                Debug.Log("Item index" + item.clipIndex);
             }
 
             PlayerPrefs.Save();
-            Debug.Log("Compraste: " + item.itemNombre);
-
             ActualizarMonedasUI();
+
+            Debug.Log("Compraste: " + item.itemNombre);
         }
         else
         {
             Debug.Log("No tienes suficientes monedas.");
         }
     }
-
-
 
 
     private void ActualizarMonedasUI()

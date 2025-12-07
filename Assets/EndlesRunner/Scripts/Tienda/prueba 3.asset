@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e7e66f98739d84d8a41ea09850cb6c, type: 3}
   m_Name: prueba 3
   m_EditorClassIdentifier: 
-  itemNombre: ejemplo 3
-  icono: {fileID: 21300004, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-  precio: 5
+  itemNombre: SoundTrackFernan
+  icono: {fileID: 21300000, guid: ae445f91d150509498a6256b2df103ee, type: 3}
+  precio: 60
   equipable: 0
-  musicaClip: {fileID: 8300000, guid: f88f6ee94b543114da23836fd84b7323, type: 3}
+  musicaClip: {fileID: 8300000, guid: 7929865cfc5add2439009c14b726cd39, type: 3}
   clipIndex: 0

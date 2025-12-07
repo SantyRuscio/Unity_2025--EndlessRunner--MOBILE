@@ -9,6 +9,8 @@ public class StaminaSystemWithNotifications : MonoBehaviour
     [SerializeField] int _maxStamina = 3;
     [SerializeField] float _timerToRecharge = 500f;
     int _currentStamina;
+    private int _extraStamina = 0;
+
 
     DateTime _nextStaminaTime;
     DateTime _lastStaminaTime;
@@ -152,6 +154,19 @@ public class StaminaSystemWithNotifications : MonoBehaviour
         //_staminaText.text = _currentStamina + " / " + _maxStamina; 
     }
 
+    public void ForceRefreshUI()
+    {
+        int extraStamina = PlayerPrefs.GetInt("ExtraStamina", 0);
+
+        _maxStamina = 3 + extraStamina;
+        _currentStamina = PlayerPrefs.GetInt(PlayerPrefsKeys.currentStaminaKey, _currentStamina);
+
+        UpdateStamina();
+        UpdateTimer();
+    }
+
+
+
     private void UpdateTimer()
     {
         if (_currentStamina >= _maxStamina)
@@ -183,16 +198,15 @@ public class StaminaSystemWithNotifications : MonoBehaviour
     {
         _currentStamina = PlayerPrefs.GetInt(PlayerPrefsKeys.currentStaminaKey, _maxStamina);
 
-        //Esta bien
-        //_nextStaminaTime = DateTime.Parse(PlayerPrefs.GetString(PlayerPrefsKeys.nextStaminaTimeKey));
-        //_lastStaminaTime = DateTime.Parse(PlayerPrefs.GetString(PlayerPrefsKeys.lastStaminaTimeKey));
+        _extraStamina = PlayerPrefs.GetInt("ExtraStamina", 0);
+        _maxStamina = 3 + _extraStamina;
 
-        //Mas lindo
         _nextStaminaTime = StringToDateTime(PlayerPrefs.GetString(PlayerPrefsKeys.nextStaminaTimeKey));
         _lastStaminaTime = StringToDateTime(PlayerPrefs.GetString(PlayerPrefsKeys.lastStaminaTimeKey));
 
         UpdateStamina();
     }
+
 
     DateTime StringToDateTime(string date)
     {
@@ -203,25 +217,26 @@ public class StaminaSystemWithNotifications : MonoBehaviour
     }
     public void ResetStaminaSystem()
     {
-        // Cancela notificación pendiente
         NotificationManager.Instance.CancelNotification(id);
 
-        // Borra PlayerPrefs específicos
         PlayerPrefs.DeleteKey(PlayerPrefsKeys.currentStaminaKey);
         PlayerPrefs.DeleteKey(PlayerPrefsKeys.nextStaminaTimeKey);
         PlayerPrefs.DeleteKey(PlayerPrefsKeys.lastStaminaTimeKey);
+        PlayerPrefs.DeleteKey("ExtraStamina");
 
-        // Reinicia valores en memoria
-        _currentStamina = _maxStamina;
+        _currentStamina = 3;
+        _maxStamina = 3;
+
         _nextStaminaTime = DateTime.Now;
         _lastStaminaTime = DateTime.Now;
 
-        // Actualiza UI
         UpdateStamina();
         _timertext.text = "Full stamina!";
 
         Debug.Log("Stamina reseteada completamente.");
     }
+
+
 
     private void OnApplicationPause(bool pause)
     {

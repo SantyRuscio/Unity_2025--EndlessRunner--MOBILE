@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e7e66f98739d84d8a41ea09850cb6c, type: 3}
+  m_Name: SoundTrackCruising
+  m_EditorClassIdentifier: 
+  itemNombre: SoundTrackCruising
+  icono: {fileID: 21300000, guid: 2a998ae2586f73741b8f9d64d1c0065b, type: 3}
+  precio: 55
+  equipable: 0
+  musicaClip: {fileID: 8300000, guid: 16fd42f43ff2b7c4b9ee37a2e427a6f1, type: 3}
+  clipIndex: 0
