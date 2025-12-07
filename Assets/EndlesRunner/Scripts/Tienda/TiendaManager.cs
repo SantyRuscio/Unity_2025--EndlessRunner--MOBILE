@@ -61,8 +61,8 @@ public class TiendaManager : MonoBehaviour, IScreen
 
             int itemIndex = Array.IndexOf(items, item);
 
-            //SUMAR STAMINA DE A 1 
-            if (itemIndex == 3)
+            // SUMAR STAMINA DE A 1 (ITEM 5)
+            if (itemIndex == 4)
             {
                 int extraStamina = PlayerPrefs.GetInt("ExtraStamina", 0);
                 int maxStamina = 3 + extraStamina;
@@ -79,43 +79,34 @@ public class TiendaManager : MonoBehaviour, IScreen
                 PlayerPrefs.SetInt(PlayerPrefsKeys.currentStaminaKey, currentStamina);
                 PlayerPrefs.Save();
 
-                Debug.Log("Sumaste +1 stamina. Ahora tenés: " + currentStamina);
-
                 if (staminaSystem != null)
                     staminaSystem.ForceRefreshUI();
             }
 
-            // STAMINA A 5/5 (SOLO UNA VEZ)
-            if (itemIndex == 4)
+            // STAMINA A 5/5 (ITEM 6)
+            if (itemIndex == 5)
             {
-                // Ya comprado ,no permitir repetir
                 if (PlayerPrefs.GetInt("ITEM5_Comprado", 0) == 1)
                 {
                     Debug.Log("El ítem 5 ya fue comprado. No se puede repetir.");
                     return;
                 }
 
-                // Marcar como comprado
                 PlayerPrefs.SetInt("ITEM5_Comprado", 1);
 
-                // Upgrade del máximo
-                int extraStamina = 2; // 3 base + 2 = 5 máximo total
+                int extraStamina = 2;
                 PlayerPrefs.SetInt("ExtraStamina", extraStamina);
 
                 int newMax = 3 + extraStamina;
 
-                // Llenar stamina actual a 5/5
                 PlayerPrefs.SetInt(PlayerPrefsKeys.currentStaminaKey, newMax);
                 PlayerPrefs.Save();
 
-                Debug.Log("Upgrade comprado: nuevo máximo = " + newMax);
-
-                // Refrescar UI
                 if (staminaSystem != null)
                     staminaSystem.ForceRefreshUI();
             }
 
-            // Si el ítem es equipable
+            // MÚSICA — SOLO SE EJECUTA SI REALMENTE FUE COMPRADO
             if (item.equipable)
             {
                 AudioShop.Instance.PlayMusic(item.clipIndex);
@@ -132,6 +123,7 @@ public class TiendaManager : MonoBehaviour, IScreen
             Debug.Log("No tienes suficientes monedas.");
         }
     }
+
 
 
     private void ActualizarMonedasUI()

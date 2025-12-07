@@ -6612,6 +6612,7 @@ MonoBehaviour:
   itemSlotPrefab: {fileID: 1135586494559946533, guid: 7264fdfa185e01b4e99195d9ff3e2122, type: 3}
   contenidoPanel: {fileID: 1791237115}
   items:
+  - {fileID: 11400000, guid: 7f7a721144b778d4eb47bbcaf8f41be5, type: 2}
   - {fileID: 11400000, guid: d40af9fdc5aed4c42a0bfd76f5c11edc, type: 2}
   - {fileID: 11400000, guid: af39a33d4ed7cf746a5e57bf2c43bfa0, type: 2}
   - {fileID: 11400000, guid: 1cbe327619eea4a4badbbc84d2f3cf5d, type: 2}

@@ -23,6 +23,10 @@ public class AudioShop : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        LoadMusic();
+    }
 
     // Reproducir música usando índice de array
     public void PlayMusic(int clipIndex)
