@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Portal Copado
+  m_Name: Portal Copado_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 369932a0f73608746b6a7723ab3fbc59, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

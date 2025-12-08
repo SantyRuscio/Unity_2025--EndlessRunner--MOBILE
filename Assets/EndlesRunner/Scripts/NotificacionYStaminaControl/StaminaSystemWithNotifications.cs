@@ -91,9 +91,9 @@ public class StaminaSystemWithNotifications : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        //Change
-        NotificationManager.Instance.CancelNotification(id);
-        recharging = false;
+ //DESCOMENTAR ESTO !!       //Change
+ //DESCOMENTAR ESTO !!       NotificationManager.Instance.CancelNotification(id);
+ //DESCOMENTAR ESTO !!       recharging = false;
     }
 
     private DateTime AddDuration(DateTime timeToAdd, float timerToRecharge)
@@ -116,36 +116,38 @@ public class StaminaSystemWithNotifications : MonoBehaviour
     //Goes to
     public bool HasEnoughStamina(int stamina) => _currentStamina - stamina >= 0;
 
-    public void UseStamina(int staminaToUse)
-    {
-        if(HasEnoughStamina(staminaToUse))
-        {
-            //Jugar nivel
-            _currentStamina -= staminaToUse;
-            UpdateStamina();
-
-            //Change
-            NotificationManager.Instance.CancelNotification(id);
-            DisplayNotif();
-
-            if (!recharging)
-            {
-                //Setear next stamina time y comenzar recarga
-                _nextStaminaTime = AddDuration(DateTime.Now, _timerToRecharge);          
-                StartCoroutine(RechargeStamina());
-            }
-        }
-        else
-        {
-            Debug.Log("Feedback no tenes stamina suficiente");
-        }
-    }
+ // DESCOMENTAR ESTO !!   public void UseStamina(int staminaToUse)
+ // DESCOMENTAR ESTO !!   {
+ // DESCOMENTAR ESTO !!       if(HasEnoughStamina(staminaToUse))
+ // DESCOMENTAR ESTO !!       {
+ // DESCOMENTAR ESTO !!           //Jugar nivel
+ // DESCOMENTAR ESTO !!           _currentStamina -= staminaToUse;
+ // DESCOMENTAR ESTO !!           UpdateStamina();
+ // DESCOMENTAR ESTO !!
+ // DESCOMENTAR ESTO !!           //Change
+ // DESCOMENTAR ESTO !!           NotificationManager.Instance.CancelNotification(id);
+ // DESCOMENTAR ESTO !!           DisplayNotif();
+ // DESCOMENTAR ESTO !!
+ // DESCOMENTAR ESTO !!           if (!recharging)
+ // DESCOMENTAR ESTO !!           {
+ // DESCOMENTAR ESTO !!               //Setear next stamina time y comenzar recarga
+ // DESCOMENTAR ESTO !!               _nextStaminaTime = AddDuration(DateTime.Now, _timerToRecharge);          
+ // DESCOMENTAR ESTO !!               StartCoroutine(RechargeStamina());
+ // DESCOMENTAR ESTO !!           }
+ // DESCOMENTAR ESTO !!       }
+ // DESCOMENTAR ESTO !!       else
+ // DESCOMENTAR ESTO !!       {
+ // DESCOMENTAR ESTO !!           Debug.Log("Feedback no tenes stamina suficiente");
+ // DESCOMENTAR ESTO !!       }
+ // DESCOMENTAR ESTO !!   }
 
     void DisplayNotif()
     {
-            id = NotificationManager.Instance.DisplayNotification(_titleNotif, _textNotif, _smallIcon, _largeIcon,
-                AddDuration(DateTime.Now, ((_maxStamina - (_currentStamina) + 1) * _timerToRecharge) + 1 + (float)timer.TotalSeconds));
-            //AddDuration(Tiempo actual, ((stamina maxima - (actual) + 1 por tema de que la stamina ya podria haber comenzado a recargarse) y todo eso multiplicado por tiempo de recarga) + segundos para darme tiempo a cancelar la notificacion + Segundos extras por timer de stamina ya comenzado);
+        // DESCOMENTAR ESTO !!    id = NotificationManager.Instance.DisplayNotification(_titleNotif, _textNotif, _smallIcon, _largeIcon,
+        // DESCOMENTAR ESTO !!        AddDuration(DateTime.Now, ((_maxStamina - (_currentStamina) + 1) * _timerToRecharge) + 1 + (float)timer.TotalSeconds));
+
+
+        //AddDuration(Tiempo actual, ((stamina maxima - (actual) + 1 por tema de que la stamina ya podria haber comenzado a recargarse) y todo eso multiplicado por tiempo de recarga) + segundos para darme tiempo a cancelar la notificacion + Segundos extras por timer de stamina ya comenzado);
     }
 
     private void UpdateStamina()
@@ -215,26 +217,26 @@ public class StaminaSystemWithNotifications : MonoBehaviour
         else
             return DateTime.Parse(date);
     }
-    public void ResetStaminaSystem()
-    {
-        NotificationManager.Instance.CancelNotification(id);
-
-        PlayerPrefs.DeleteKey(PlayerPrefsKeys.currentStaminaKey);
-        PlayerPrefs.DeleteKey(PlayerPrefsKeys.nextStaminaTimeKey);
-        PlayerPrefs.DeleteKey(PlayerPrefsKeys.lastStaminaTimeKey);
-        PlayerPrefs.DeleteKey("ExtraStamina");
-
-        _currentStamina = 3;
-        _maxStamina = 3;
-
-        _nextStaminaTime = DateTime.Now;
-        _lastStaminaTime = DateTime.Now;
-
-        UpdateStamina();
-        _timertext.text = "Full stamina!";
-
-        Debug.Log("Stamina reseteada completamente.");
-    }
+ //DESCOMENTAR ESTO!!   public void ResetStaminaSystem()
+ //DESCOMENTAR ESTO!!   {
+ //DESCOMENTAR ESTO!!       NotificationManager.Instance.CancelNotification(id);
+ //DESCOMENTAR ESTO!!
+ //DESCOMENTAR ESTO!!       PlayerPrefs.DeleteKey(PlayerPrefsKeys.currentStaminaKey);
+ //DESCOMENTAR ESTO!!       PlayerPrefs.DeleteKey(PlayerPrefsKeys.nextStaminaTimeKey);
+ //DESCOMENTAR ESTO!!       PlayerPrefs.DeleteKey(PlayerPrefsKeys.lastStaminaTimeKey);
+ //DESCOMENTAR ESTO!!       PlayerPrefs.DeleteKey("ExtraStamina");
+ //DESCOMENTAR ESTO!!
+ //DESCOMENTAR ESTO!!       _currentStamina = 3;
+ //DESCOMENTAR ESTO!!       _maxStamina = 3;
+ //DESCOMENTAR ESTO!!
+ //DESCOMENTAR ESTO!!       _nextStaminaTime = DateTime.Now;
+ //DESCOMENTAR ESTO!!       _lastStaminaTime = DateTime.Now;
+ //DESCOMENTAR ESTO!!
+ //DESCOMENTAR ESTO!!       UpdateStamina();
+ //DESCOMENTAR ESTO!!       _timertext.text = "Full stamina!";
+ //DESCOMENTAR ESTO!!
+ //DESCOMENTAR ESTO!!       Debug.Log("Stamina reseteada completamente.");
+ //DESCOMENTAR ESTO!!   }
 
 
 
