@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+public class CheckPoint : Item
 {
-    private void OnTriggerEnter(Collider other)
+    public override void Execute()
     {
-        if (other.CompareTag("Player")) 
-        {
-            Debug.Log("CheckPointGuarda");
-
-            GameManager.instance.SaveMethod();
-        }
+        Debug.Log("CheckPointGuarda");
+        GameManager.instance.SaveMethod();
     }
 }
 
