@@ -62,9 +62,9 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         // Borrar TODOS los datos del save
         SaveManager.DeleteSave();
 
-     //DESCOMENTAR ESTO!!  // Resetear stamina también
-     //DESCOMENTAR ESTO!!  if (stamina != null)
-     //DESCOMENTAR ESTO!!      stamina.ResetStaminaSystem();
+       // Resetear stamina también
+       if (stamina != null)
+           stamina.ResetStaminaSystem();
 
         Debug.Log("DATOS BORRADOS Y STAMINA RESETEADA DESDE EL MENU");
 
@@ -90,7 +90,7 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         // Chequeamos si tiene stamina
         if (stamina != null && stamina.HasEnoughStamina(1))
         {
-          //DESCOMENTAR ESTO!!  stamina.UseStamina(1);
+            stamina.UseStamina(1);
 
             if (CanPlay && asyncLoader != null)
                 asyncLoader.StartLevel("GamseScene");
