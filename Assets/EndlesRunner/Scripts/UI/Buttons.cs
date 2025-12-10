@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
@@ -15,6 +16,8 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     [SerializeField] private GameObject noStaminaPanel;
 
+    [SerializeField] GameObject ConfirmacionSalirPanel;
+
     private bool CanPlay = true;
 
     [SerializeField] private AsyncCharge asyncLoader;
@@ -24,6 +27,8 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     private void Start()
     {
+        if (confirmationPanel != null) ConfirmacionSalirPanel.SetActive(false);
+
         if (confirmationPanel != null) confirmationPanel.SetActive(false);
 
         if (RemoteConfigExample.Instance != null)
@@ -70,6 +75,16 @@ public class Butons : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
         CloseConfirmation();
 
+    }
+
+    public void Salida()
+    {
+        ConfirmacionSalirPanel.SetActive(true);
+    }
+
+    public void CancelarSalida()
+    {
+        ConfirmacionSalirPanel.SetActive(false);
     }
 
     public void GoToMenu()
