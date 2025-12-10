@@ -1857,10 +1857,10 @@ RectTransform:
   - {fileID: 1504604477}
   m_Father: {fileID: 1724657067}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700.7, y: -453.6}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0.045515638, y: 0.027}
+  m_AnchorMax: {x: 0.28551564, y: 0.134}
+  m_AnchoredPosition: {x: -6.699951, y: -34.099976}
+  m_SizeDelta: {x: -330, y: -87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &633081114
 MonoBehaviour:
@@ -5545,8 +5545,8 @@ MonoBehaviour:
   audioSource: {fileID: 1445272105}
   musicClips:
   - {fileID: 8300000, guid: 918395b78757fd64ca2c46d93432005d, type: 3}
-  - {fileID: 8300000, guid: f88f6ee94b543114da23836fd84b7323, type: 3}
-  - {fileID: 8300000, guid: 16fd42f43ff2b7c4b9ee37a2e427a6f1, type: 3}
+  - {fileID: 8300000, guid: 3acd9b1b6a277ff42a41600cd827b14e, type: 3}
+  - {fileID: 8300000, guid: 3fd0130eee36cdb4fa3b210470b2379c, type: 3}
   - {fileID: 8300000, guid: 7929865cfc5add2439009c14b726cd39, type: 3}
 --- !u!82 &1445272105
 AudioSource:

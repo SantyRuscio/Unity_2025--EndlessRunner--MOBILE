@@ -9,6 +9,6 @@ public class TiendaItem : ScriptableObject
     public bool equipable;
 
     [Header("Música")]
-    public AudioClip musicaClip; // Opcional, si querés usar el AudioClip directamente
+    public AudioClip musicaClip;
     public int clipIndex;        // Índice en AudioShop.musicClips
 }

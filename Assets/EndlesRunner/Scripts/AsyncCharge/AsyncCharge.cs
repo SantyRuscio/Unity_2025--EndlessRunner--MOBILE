@@ -49,4 +49,16 @@ public class AsyncCharge : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        if (_panel != null)
+            _panel.SetActive(false);
+
+        if (_loader != null)
+            _loader.fillAmount = 0;
+
+        _operation = null;
+    }
+
+
 }

@@ -36,6 +36,8 @@ public class PlayerModel : Rewind
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _jumpSound;
     [SerializeField] private AudioClip _rollSound;
+    [SerializeField] private AudioClip _PunchSound;
+
 
     [SerializeField] private GameObject vfxMuertePrefab;
 
@@ -117,6 +119,7 @@ public class PlayerModel : Rewind
     {
         view.Collisioner();
         Debug.Log("view.PARTIC");
+        _audioSource.PlayOneShot(_PunchSound);
     }
 
     private IEnumerator DeadTimeLapse()
@@ -144,7 +147,21 @@ public class PlayerModel : Rewind
     {
         view.RewindAnim();
         Debug.Log("view.PARTIC");
+        StartCoroutine(IgnoreObstacleCollision(5f));
     }
+
+    private IEnumerator IgnoreObstacleCollision(float time)
+    {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int obstacleLayer = LayerMask.NameToLayer("Obstacle");
+
+        Physics.IgnoreLayerCollision(playerLayer, obstacleLayer, true);
+
+        yield return new WaitForSeconds(time);
+
+        Physics.IgnoreLayerCollision(playerLayer, obstacleLayer, false);
+    }
+
 
     private void CheackWall()
     {

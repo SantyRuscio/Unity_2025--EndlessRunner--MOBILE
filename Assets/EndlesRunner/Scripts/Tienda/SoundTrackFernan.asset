@@ -17,4 +17,4 @@ MonoBehaviour:
   precio: 60
   equipable: 1
   musicaClip: {fileID: 8300000, guid: 7929865cfc5add2439009c14b726cd39, type: 3}
-  clipIndex: 0
+  clipIndex: 3

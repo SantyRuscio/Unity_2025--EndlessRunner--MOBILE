@@ -6,20 +6,23 @@ public class PuntuacionManager : MonoBehaviour
 {
     public static PuntuacionManager Instance;
 
-    private int monedas = 0;               // Monedas del RUN actual
-    private int monedasTotales = 0;        // Monedas guardadas en PlayerPrefs
+    [Header("Monedas")]
+    private int monedas = 0;
+    private int monedasTotales = 0;
 
+    [Header("Metros")]
+    private float metrosTotales = 0f;
     private float metrosRecorridos = 0f;
-
     private bool contadorActivo = true;
+
     private float multiplicadorMetros = 1f;
     private float multiplicadorMonedas = 1f;
     private Coroutine boostCoroutine;
 
     [Header("UI")]
-    public TMP_Text textoMonedas;            // Monedas del run
+    public TMP_Text textoMonedas;
     public TMP_Text textoMetros;
-    public TMP_Text textoMonedasTotales;     // opcional (tienda/menu)
+    public TMP_Text textoMonedasTotales;
 
     private void Awake()
     {
@@ -31,8 +34,8 @@ public class PuntuacionManager : MonoBehaviour
 
     private void Start()
     {
-        // Cargar monedas totales
         monedasTotales = PlayerPrefs.GetInt("MonedasTotales", 0);
+        metrosTotales = PlayerPrefs.GetFloat("MetrosTotales", 0f);
 
         EventManager.Subscribe(TypeEvents.GameOver, StopCounter);
         EventManager.Subscribe(TypeEvents.RewindEvent, StartCounterRewind);
@@ -73,10 +76,10 @@ public class PuntuacionManager : MonoBehaviour
     private IEnumerator MultiplicadorTemporal(float nuevoMultiplicador, float duracion)
     {
         multiplicadorMetros = nuevoMultiplicador;
-        multiplicadorMonedas = nuevoMultiplicador;  // Aplica solo aquí
+        multiplicadorMonedas = nuevoMultiplicador;
         yield return new WaitForSeconds(duracion);
         multiplicadorMetros = 1f;
-        multiplicadorMonedas = 1f; // Reset al terminar
+        multiplicadorMonedas = 1f;
         boostCoroutine = null;
     }
 
@@ -98,7 +101,7 @@ public class PuntuacionManager : MonoBehaviour
     {
         if (!contadorActivo) return;
 
-        monedas += Mathf.RoundToInt(cantidad * multiplicadorMonedas); // aplica multiplicador
+        monedas += Mathf.RoundToInt(cantidad * multiplicadorMonedas);
         ActualizaHUDMonedas();
     }
 
@@ -112,9 +115,26 @@ public class PuntuacionManager : MonoBehaviour
         ActualizaHUDMonedasTotales();
     }
 
+    public void GuardarMetrosDelRun()
+    {
+        metrosTotales += metrosRecorridos;
+        PlayerPrefs.SetFloat("MetrosTotales", metrosTotales);
+
+        // ✅ GUARDAR RECORD SI SUPERA EL ANTERIOR
+        float recordActual = PlayerPrefs.GetFloat("RecordDistancia", 0f);
+
+        if (metrosRecorridos > recordActual)
+        {
+            PlayerPrefs.SetFloat("RecordDistancia", metrosRecorridos);
+        }
+
+        PlayerPrefs.Save();
+    }
+
     public int GetMonedas() => monedas;
     public int GetMonedasTotales() => monedasTotales;
     public float GetMetrosRecorridos() => metrosRecorridos;
+    public float GetMetrosTotales() => metrosTotales;
 
     private void ActualizaHUDMonedas()
     {
@@ -131,7 +151,7 @@ public class PuntuacionManager : MonoBehaviour
     private void ActualizarHUDMetros()
     {
         if (textoMetros != null)
-            textoMetros.text = Mathf.FloorToInt(metrosRecorridos).ToString() + " m";
+            textoMetros.text = Mathf.FloorToInt(metrosRecorridos) + " m";
     }
     #endregion
 
@@ -139,8 +159,8 @@ public class PuntuacionManager : MonoBehaviour
     private void StopCounter(params object[] parameters)
     {
         contadorActivo = false;
-
         GuardarMonedasDelRun();
+        GuardarMetrosDelRun();
     }
 
     private void StartCounterRewind(params object[] parameters)
@@ -173,4 +193,3 @@ public class PuntuacionManager : MonoBehaviour
         EventManager.Unsubscribe(TypeEvents.DefubCrabEvent, CancelarMultiplicador);
     }
 }
-

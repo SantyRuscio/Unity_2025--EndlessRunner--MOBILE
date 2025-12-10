@@ -7,7 +7,7 @@ public class TiendaManager : MonoBehaviour, IScreen
 {
     [Header("UI Tienda")]
     public GameObject tiendaPanel;
-    public TMP_Text monedasTexto;  // ← MONEDAS VISIBLES EN LA TIENDA
+    public TMP_Text monedasTexto;  // MONEDAS VISIBLES EN LA TIENDA
     public GameObject itemSlotPrefab;
     public Transform contenidoPanel;
 
@@ -42,11 +42,28 @@ public class TiendaManager : MonoBehaviour, IScreen
         foreach (TiendaItem item in items)
         {
             GameObject slot = Instantiate(itemSlotPrefab, contenidoPanel);
+
+            // Icono
             slot.transform.Find("Icono").GetComponent<Image>().sprite = item.icono;
 
+            // Hover precio
+            HoverPrecio hover = slot.GetComponent<HoverPrecio>();
+            if (hover != null)
+                hover.precio = item.precio;
+
+            // Si ya fue comprado, aplicamos estilo pero SIN desactivar el botón
+            bool comprado = PlayerPrefs.GetInt(item.itemNombre + "_Comprado", 0) == 1;
+            if (comprado)
+            {
+                AplicarEstiloComprado(slot);
+            }
+
+            // Botón comprar/seleccionar
             slot.GetComponent<Button>().onClick.AddListener(() => ComprarItem(item));
         }
     }
+
+
 
     private void ComprarItem(TiendaItem item)
     {
@@ -106,7 +123,7 @@ public class TiendaManager : MonoBehaviour, IScreen
                     staminaSystem.ForceRefreshUI();
             }
 
-            // MÚSICA — SOLO SE EJECUTA SI REALMENTE FUE COMPRADO
+            // MÚSICA ( SOLO SE EJECUTA SI REALMENTE FUE COMPRADO)
             if (item.equipable)
             {
                 AudioShop.Instance.PlayMusic(item.clipIndex);
@@ -121,6 +138,28 @@ public class TiendaManager : MonoBehaviour, IScreen
         else
         {
             Debug.Log("No tienes suficientes monedas.");
+        }
+    }
+
+    private void AplicarEstiloComprado(GameObject slot)
+    {
+        // OSCURECER EL FONDO 
+        Image bg = slot.GetComponent<Image>();
+        if (bg != null)
+            bg.color = new Color(0.75f, 0.75f, 0.75f, 1f);
+
+
+        Image icono = slot.transform.Find("Icono").GetComponent<Image>();
+        if (icono != null)
+            icono.color = new Color(0.2f, 0.2f, 0.2f, 1f);
+
+        // OPCIONAL: texto "Comprado" (solo si querés)
+        Transform texto = slot.transform.Find("Texto");
+        if (texto != null)
+        {
+            TMP_Text txt = texto.GetComponent<TMP_Text>();
+            if (txt != null)
+                txt.text = "Comprado";
         }
     }
 
